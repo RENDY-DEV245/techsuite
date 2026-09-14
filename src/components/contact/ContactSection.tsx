@@ -3,7 +3,6 @@ import { motion, AnimatePresence } from 'framer-motion';
 import {
   Copy,
   Check,
-  ExternalLink,
   Mail,
   MapPin,
   MessageSquare,
