@@ -30,7 +30,7 @@ export function App() {
         <EditorialProfile />
         <ProjectShowcase onOpenProject={setActiveModalProject} />
         <TechGrid onOpenProject={setActiveModalProject} />
-        <GithubActivitySection />
+      
         <JourneyTimeline />
         <ContactSection />
       </main>
