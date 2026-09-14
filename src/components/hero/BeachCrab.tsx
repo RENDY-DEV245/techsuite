@@ -17,8 +17,7 @@ const CRAB_DIALOGUES = [
   'Jalan miring adalah gaya terbaik buat main voli pantai!',
   'Lapangan voli sudah siap buat turnamen pantai hari ini!',
   'Awas kena capit tangguhku!',
-  'Pasir pantainya hangat dan empuk banget hari ini ~',
-  'Kode buatan Reyhand rapi dan kokoh banget!'
+  'Pasir pantainya hangat dan empuk banget hari ini ~'
 ];
 
 const createShuffledDeck = (items: string[], lastItem?: string): string[] => {
