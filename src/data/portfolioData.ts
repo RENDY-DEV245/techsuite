@@ -325,37 +325,105 @@ export const projectsData: Project[] = [
       { label: 'Integrasi', value: 'BOM & Fabrikasi' }
     ]
   },
-  {
+{
     id: 'erp-system',
-    title: 'Custom ERP Enterprise Ecosystem',
-    subtitle: 'Finance (GL/COA), Multi-Warehouse, Purchasing & Sales',
+    title: 'Sistem Operasional Bisnis ,Bukan Sekadar Akuntansi',
+    subtitle: 'Setiap Transaksi Langsung Jadi Laporan. Tanpa Rekap. Tanpa Akuntan. Tanpa Excel.',
     category: 'fullstack',
-    summary: 'Sistem ERP kustom terpusat yang menyatukan seluruh mata rantai operasional: akuntansi double-entry (157+ COA), stok antar gudang, order pembelian, POS kasir, dan laporan eksekutif.',
-    description: 'Satu sumber kebenaran data perusahaan yang dirancang khusus menyesuaikan proses bisnis unik, menggantikan spreadsheet manual dan aplikasi terpisah yang sering menimbulkan selisih data.',
+    summary: 'Clarate ERP menghubungkan kasir, stok, pembelian, penjualan, dan akuntansi dalam satu sistem. Setiap kali ada transaksi, laporan keuangan langsung terupdate ,tanpa kamu harus input apapun dua kali.',
+    description: `Coba Gratis 14 Hari | Lihat Harga
+Trial gratis 14 hari • Tanpa kartu kredit • Data 100% milikmu • Support tersedia
+
+Kenapa Clarate ERP?
+Terlalu banyak pengusaha kerja keras, tapi tidak tahu bisnisnya untung atau rugi. Karena data bisnis mereka tersebar di buku kas, Excel, dan aplikasi yang tidak terhubung satu sama lain.
+
+[Retail]
+“Stok laptop terakhir terjual Sabtu malam. Senin pagi, 3 customer datang ,dan baru ketahuan habis. Padahal kalau ada notifikasi, sudah bisa restock Jumat.”
+Dampak: 3 customer kecewa. 1 pindah ke kompetitor.
+💡 Data ada , tapi tersebar di kasir dan Excel yang tidak terhubung.
+
+[F&B]
+“Restoran ramai sepanjang bulan. Tapi pas laporan akhir bulan keluar, food cost ternyata 52% ,jauh di atas target 35%. Margin sudah terkikis, dan baru ketahuan sekarang.”
+Dampak: Terlambat mengambil tindakan. Margin bulan ini hilang.
+💡 Tanpa cost tracking real-time, kamu tahu masalah setelah sudah terlambat.
+
+[B2B / Distributor]
+“Ada 12 invoice ke customer yang sudah lewat tempo. Tidak ada yang mengingatkan. Baru ketahuan saat butuh bayar supplier , cashflow mendadak kritis.”
+Dampak: Harus tarik pinjaman darurat untuk bayar supplier.
+💡 Piutang tidak terpantau = cashflow yang tidak bisa diprediksi.
+
+Keputusan Lebih Cepat:
+Saat Kompetitor Masih Rekap, Kamu Sudah Tahu Hasilnya.
+Dashboard real-time bukan sekadar grafik cantik ,ini adalah keunggulan kompetitif. Tahu jam berapa produk paling laku, cabang mana yang underperform, dan kapan harus restock, sebelum masalah muncul.
+- Profit per produk, per cabang, per karyawan, real-time
+- Deteksi otomatis transaksi tidak wajar berdasarkan aturan yang kamu set
+- Akses dari HP kapan saja, dari mana saja
+Dashboard 30 hari terakhir: Pendapatan Rp48.500.000 (+12%), Pengeluaran Rp21.200.000 (−4%), Laba Bersih Rp27.300.000 (+18%)
+Grafik Pendapatan: Setiap transaksi kasir, penjualan, dan pembelian langsung membentuk angka ini , tanpa rekap.
+
+Tidak Lagi Kehabisan Stok:
+Kehabisan Stok di Momen Ramai Adalah Kerugian yang Bisa Dicegah.
+Clarate memantau pergerakan stokmu dan memberi peringatan otomatis saat stok menyentuh titik minimum yang kamu tetapkan , bahkan bisa langsung siapkan draf purchase order ke supplier. Tidak ada lagi customer kecewa karena kehabisan.
+- Peringatan dini otomatis saat stok mendekati titik minimum
+- Kelola stok di banyak gudang dari satu tampilan
+- Draf PO ke supplier siap kirim , tidak perlu buat dari awal
+Inventory (234 produk):
+• Laptop Asus VivoBook (LPT-001) - 24pcs (Aman)
+• Mouse Wireless Logitech (MSE-024) - 5pcs (Menipis)
+• Keyboard Mechanical (KBD-012) - 0pcs (Habis)
+• Monitor 24 inch IPS (MNT-008) - 12pcs (Aman)
+Alert Stok: MSE-024 di bawah titik minimum. Draf PO siap dikirim ke supplier.
+Stok berkurang saat surat jalan diposting, bukan saat pesanan dibuat.
+
+Laporan Otomatis:
+Laporan yang Biasanya 3 Hari , Sekarang Terbuat Sendiri.
+Setiap transaksi otomatis membuat jurnal, mengupdate stok, dan masuk ke laporan keuangan. Tidak perlu akuntan untuk bikin laporan bulanan. Tidak perlu Excel yang bisa salah formula. Data akurat, audit trail lengkap ,siap untuk bank, investor, atau pajak.
+- Standar SAK ETAP , sesuai regulasi UMKM Indonesia
+- Export ke Excel, PDF, atau langsung ke konsultan pajak
+- Audit trail lengkap, siap untuk due diligence investor
+Laporan Keuangan Maret 2025 (Laporan Laba Rugi):
+• Pendapatan Penjualan: 48.500.000
+• HPP: (21.200.000)
+• Laba Kotor: 27.300.000
+• Biaya Operasional: (8.500.000)
+• Laba Bersih: Rp 18.800.000
+Export Excel & Export PDF. Dihitung dari jurnal yang sama dengan Neraca,angkanya tidak mungkin berbeda.`,
     architecture: [
-      'General Ledger Double-Entry',
-      'Real-Time Multi-Warehouse Inventory',
-      'Executive BI Dashboard',
-      'Purchasing & AP/AR'
+      'SAK ETAP: Laporan Keuangan Otomatis (Jurnal terbuat sendiri setiap ada transaksi. Laporan Laba Rugi, Neraca, dan Arus Kas tersedia kapan saja tanpa rekap manual, tanpa formula Excel yang bisa salah)',
+      'Real-time: Kasir yang Terhubung ke Segalanya (Setiap penjualan di kasir langsung tercatat ke stok dan akuntansi bersamaan. Tidak ada rekap malam hari. Tidak ada data yang tidak nyambung)',
+      'Multi-gudang: Stok Tidak Pernah Keliru (Pantau stok di semua lokasi dari satu layar. Notifikasi otomatis sebelum stok habis bukan setelah customer sudah kecewa dan minta refund)',
+      'Terintegrasi: Pembelian Tidak Ada yang Terlewat (Dari PO ke penerimaan barang semua terdokumentasi. Hutang supplier selalu akurat. Tidak ada pembelian yang terlewat atau tidak tercatat)',
+      'Otomatis: Piutang Terpantau, Tidak Ada yang Lupa Ditagih (Dari penawaran ke invoice ke pelunasan dalam satu alur. Piutang customer terpantau otomatis. Tidak ada invoice yang lupa ditagih atau terlewat)',
+      '20+ Laporan: Laporan yang Dulu 3 Hari Sekarang Tersedia Setiap Saat (20+ laporan siap pakai: neraca, laba rugi, arus kas, omzet per produk. Export ke Excel atau PDF kapanpun dengan satu klik)'
     ],
-    stack: ['General Ledger', 'Inventory Engine', 'Sales & POS', 'Purchasing Flow', 'PostgreSQL', 'RBAC Security'],
+    stack: [
+      'Laporan Biaya Otomatis',
+      'Deteksi Selisih',
+      'Alert Stok Menipis',
+      'Jurnal Otomatis',
+      'SAK ETAP',
+      'Multi-Gudang',
+      '20+ Laporan'
+    ],
     highlights: [
-      'Pengelolaan 157+ Chart of Accounts (COA) standar PSAK',
-      'Pelacakan batch & transfer stok multi-gudang real-time',
-      'Laporan Laba/Rugi, Neraca & Arus Kas instan'
+      'Clarate ERP: Satu Sistem, Semua Terhubung (Kasir → stok → akuntansi ,semuanya terintegrasi)',
+      'Serba Otomatis: Laporan Biaya Otomatis, Deteksi Selisih, Alert Stok Menipis, Jurnal Otomatis',
+      'Keputusan Lebih Cepat: Dashboard Real-Time (Pendapatan Rp48.5M, Pengeluaran Rp21.2M, Laba Bersih Rp27.3M)',
+      'Laporan Otomatis: Standar SAK ETAP sesuai regulasi UMKM Indonesia (Export Excel & PDF)',
+      'Trial gratis 14 hari • Tanpa kartu kredit • Data 100% milikmu • Support tersedia'
     ],
-    challenges: 'Menjaga integritas data transaksi ACID saat menangani ribuan pencatatan jurnal keuangan dan mutasi stok harian.',
-    role: 'Lead ERP Architect',
-    demoUrl: 'https://wa.me/6285141220521?text=Halo%20Rendy%2C%20saya%20tertarik%20konsultasi%20Sistem%20ERP',
+    challenges: 'Terlalu banyak pengusaha kerja keras, tapi tidak tahu bisnisnya untung atau rugi karena data bisnis mereka tersebar di buku kas, Excel, dan aplikasi yang tidak terhubung satu sama lain (stok habis tak terpantau, food cost membengkak, dan invoice lewat tempo).',
+    role: 'Clarate ERP Ecosystem',
+    demoUrl: 'https://clarate.id/id/register?service_id=1',
     imageUrl: '',
     imageFit: 'cover',
     featured: true,
     metrics: [
-      { label: 'Akuntansi', value: '157+ COA GL' },
-      { label: 'Gudang', value: 'Multi-Warehouse' },
-      { label: 'Arsitektur', value: 'Custom ERP' }
+      { label: 'Trial', value: '14 Hari Gratis' },
+      { label: 'Laporan', value: '20+ Siap Pakai' },
+      { label: 'Standar', value: 'SAK ETAP' }
     ]
-  }
+}
 ];
 
 export const experienceData: ExperienceItem[] = [
