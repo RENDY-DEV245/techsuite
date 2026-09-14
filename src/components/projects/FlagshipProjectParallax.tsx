@@ -971,8 +971,7 @@ export const FlagshipSlideCard: React.FC<FlagshipSlideCardProps> = ({
               </div>
 
               {/* Footer CTA Modal 02 HRIS */}
-              <div className="pt-4 border-t-2 border-[#0f172a]/15 flex flex-col sm:flex-row items-center justify-between gap-3">
-              <div className="pt-4 border-t-2 border-[#0f172a]/15 flex flex-col sm:flex-row items-center justify-between gap-3">
+          <div className="pt-4 border-t-2 border-[#0f172a]/15 flex flex-col sm:flex-row items-center justify-between gap-3">
                 <div className="text-xs font-mono font-bold text-[#64748b] text-center sm:text-left">
                   Sistem HRIS aktif seketika • Bebas coba 14 hari penuh
                 </div>
