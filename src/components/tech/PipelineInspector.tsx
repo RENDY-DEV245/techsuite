@@ -117,6 +117,18 @@ const layerDetailsMap: Record<
       'Automasi terminal Unix'
     ],
     role: 'DevOps & Tools'
+  },
+  cad: {
+    title: 'CAD & 3D Engineering',
+    subtitle: 'Drafting & Modeling',
+    description:
+      'Perancangan gambar teknik 2D/3D dan pemodelan parametrik menggunakan AutoCAD dan SolidWorks untuk kebutuhan fabrikasi dan mekanikal.',
+    guarantees: [
+      'Gambar kerja presisi fabrikasi',
+      'Assembly & simulasi gerak mekanik',
+      'Generate Bill of Materials (BOM)'
+    ],
+    role: 'CAD & Mechanical Design'
   }
 };
 
