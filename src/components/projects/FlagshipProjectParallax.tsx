@@ -5,17 +5,13 @@ import {
   CheckCircle2,
   X,
   Sparkles,
-  Layers,
-  BarChart3,
-  TrendingUp,
-  ShieldCheck,
-  Zap,
-  ArrowRight,
   ShoppingBag,
   Bell,
   RefreshCw,
+  BarChart3,
   Sliders,
-  DollarSign
+  DollarSign,
+  ArrowRight
 } from 'lucide-react';
 import type { Project } from '../../types/portfolio';
 import { AnimatedOceanSlideBackground } from './AnimatedOceanSlideBackground';
@@ -43,7 +39,6 @@ export const FlagshipSlideCard: React.FC<FlagshipSlideCardProps> = ({
     {
       name: 'Maqdis Group',
       subtitle: 'Travel Haji & Umroh',
-      type: 'Website Custom',
       desc: 'Platform resmi agensi travel Haji & Umroh dengan jadwal keberangkatan, rincian paket ibadah, dan panduan perjalanan lengkap.',
       categoryTag: 'Travel · Haji · Umroh',
       url: 'https://maqdisgroup.com/'
@@ -51,7 +46,6 @@ export const FlagshipSlideCard: React.FC<FlagshipSlideCardProps> = ({
     {
       name: 'AFC Life Science Indonesia',
       subtitle: 'Distributor Suplemen Kesehatan Jepang',
-      type: 'Website Custom & E-Commerce',
       desc: 'Website distributor produk kesehatan dengan katalog produk & harga, sistem keranjang belanja, dan checkout langsung via WhatsApp & masih akan dikembangkan full sistem, payment gateway, ERP dll.',
       categoryTag: 'Kesehatan · Suplemen · E-Commerce',
       url: 'https://raliecare.my.id'
@@ -59,7 +53,6 @@ export const FlagshipSlideCard: React.FC<FlagshipSlideCardProps> = ({
     {
       name: 'Nafita Makeup',
       subtitle: 'Kosmetik & Kecantikan',
-      type: 'Toko Online',
       desc: 'Toko online kecantikan modern dengan display katalog produk terstruktur, varian makeup lengkap, dan pemesanan instan.',
       categoryTag: 'Kecantikan · Kosmetik · Toko Online',
       url: 'https://nafita-store.clarate.id/'
@@ -67,7 +60,6 @@ export const FlagshipSlideCard: React.FC<FlagshipSlideCardProps> = ({
     {
       name: 'Baby Store',
       subtitle: 'Perlengkapan Bayi',
-      type: 'Toko Online',
       desc: 'Toko online khusus perlengkapan ibu dan anak dengan pengelompokan usia, katalog produk lengkap, dan alur belanja praktis.',
       categoryTag: 'Perlengkapan Bayi · Ibu & Anak · Toko Online',
       url: 'https://baby-store.clarate.id/'
@@ -75,7 +67,6 @@ export const FlagshipSlideCard: React.FC<FlagshipSlideCardProps> = ({
     {
       name: 'UrbanWear',
       subtitle: 'Fashion Store',
-      type: 'Populer',
       desc: 'Website toko fashion dengan foto besar, katalog produk, dan halaman brand. Untuk toko yang menjual lewat tampilan.',
       categoryTag: 'Toko · Fashion · Katalog Produk',
       url: 'https://clarate.id/templates/urbanwear',
@@ -84,7 +75,6 @@ export const FlagshipSlideCard: React.FC<FlagshipSlideCardProps> = ({
     {
       name: 'Kopi Senja',
       subtitle: 'Coffee Shop & Roastery',
-      type: 'Populer',
       desc: 'Website coffee shop dengan menu berharga, cerita brand, galeri, jam buka, dan lokasi. Semua yang dicari calon pelanggan.',
       categoryTag: 'F&B · Coffee Shop · Cafe',
       url: 'https://clarate.id/templates/kopi-senja',
@@ -93,7 +83,6 @@ export const FlagshipSlideCard: React.FC<FlagshipSlideCardProps> = ({
     {
       name: 'Kayu Ruang',
       subtitle: 'Furniture & Interior',
-      type: 'Showcase Store',
       desc: 'Website furniture dengan katalog produk, koleksi, dan portofolio ruang. Untuk bisnis yang menjual barang besar dan bernilai.',
       categoryTag: 'Toko · Furniture · Interior',
       url: 'https://clarate.id/templates/kayu-ruang'
@@ -101,7 +90,6 @@ export const FlagshipSlideCard: React.FC<FlagshipSlideCardProps> = ({
     {
       name: 'Garasi Prima',
       subtitle: 'Bengkel Mobil & Servis Berkala',
-      type: 'Bengkel Resmi',
       desc: 'Website bengkel dengan daftar servis berharga, estimasi waktu, dan alur pengerjaan. Untuk usaha yang dipilih karena dipercaya.',
       categoryTag: 'Otomotif · Bengkel · Servis',
       url: 'https://clarate.id/templates/garasi-prima'
@@ -109,7 +97,6 @@ export const FlagshipSlideCard: React.FC<FlagshipSlideCardProps> = ({
     {
       name: 'Forte Gym',
       subtitle: 'Gym & Pusat Kebugaran',
-      type: 'Membership Gym',
       desc: 'Website gym dengan area latihan, membership tanpa kontrak, dan profil pelatih. Untuk tempat yang dipilih karena alat dan keleluasaannya.',
       categoryTag: 'Kesehatan · Gym · Tanpa Kontrak',
       url: 'https://clarate.id/templates/forte-gym'
@@ -117,7 +104,6 @@ export const FlagshipSlideCard: React.FC<FlagshipSlideCardProps> = ({
     {
       name: 'Panen Langsung',
       subtitle: 'Agribisnis & Supplier Pangan',
-      type: 'B2B Supplier',
       desc: 'Website supplier pangan B2B dengan daftar komoditas berharga per kilo, alur langganan, dan profil petani mitra.',
       categoryTag: 'Agrikultur · Supplier Pangan · B2B',
       url: 'https://clarate.id/templates/panen-langsung'
@@ -125,7 +111,6 @@ export const FlagshipSlideCard: React.FC<FlagshipSlideCardProps> = ({
     {
       name: 'Kucek Laundry',
       subtitle: 'Laundry Kiloan & Satuan',
-      type: 'Jasa Laundry',
       desc: 'Website laundry dengan harga per kilo, lama pengerjaan, dan area jemput-antar. Untuk usaha yang dipilih karena praktis.',
       categoryTag: 'Jasa · Laundry · Jemput-Antar',
       url: 'https://clarate.id/templates/kucek-laundry'
@@ -133,7 +118,6 @@ export const FlagshipSlideCard: React.FC<FlagshipSlideCardProps> = ({
     {
       name: 'Sahabat Satwa',
       subtitle: 'Klinik Hewan & Pet Care',
-      type: 'Klinik 24 Jam',
       desc: 'Website klinik hewan dengan tarif tindakan, jadwal praktik dokter, dan nomor darurat yang selalu terlihat.',
       categoryTag: 'Kesehatan · Klinik Hewan · Jadwal Dokter',
       url: 'https://clarate.id/templates/sahabat-satwa'
@@ -221,7 +205,7 @@ export const FlagshipSlideCard: React.FC<FlagshipSlideCardProps> = ({
                     </a>
                   </>
                 ) : (
-                  /* Slide Lainnya (Slide 01: Maqdis Group, Slide 03+: Konsultasi WA) */
+                  /* Slide Lainnya */
                   project.demoUrl && (
                     <a
                       href={project.demoUrl}
@@ -235,11 +219,12 @@ export const FlagshipSlideCard: React.FC<FlagshipSlideCardProps> = ({
                   )
                 )}
               </div>
+            </div>
 
             {/* Right Showcase Box */}
             <div className="lg:col-span-7 p-3.5 sm:p-6 rounded-2xl sm:rounded-[32px] bg-[#fffdf5]/95 border-2 border-[#0f172a] shadow-[4px_4px_0px_#0f172a] sm:shadow-[6px_6px_0px_#0f172a] flex flex-col justify-between">
               {index === 0 ? (
-                /* Slide 01: Daftar 12 Web Klien Lengkap Dengan Deskripsi */
+                /* Slide 01: Katalog 12 Website Klien */
                 <div className="space-y-2">
                   <div className="flex items-center justify-between text-[11px] sm:text-xs font-mono font-black text-[#0f172a] border-b pb-1.5 border-[#0f172a]/15">
                     <span>KATALOG 12 WEBSITE &amp; DESKRIPSI</span>
@@ -294,7 +279,7 @@ export const FlagshipSlideCard: React.FC<FlagshipSlideCardProps> = ({
                   </div>
                 </div>
               ) : index === 1 ? (
-                /* Khusus Slide 02 E-Commerce: Showcase Toko & Callout Modal */
+                /* Slide 02 E-Commerce: Showcase Toko Clarate */
                 <div className="h-full flex flex-col justify-between space-y-3">
                   <div className="space-y-2">
                     <div className="flex items-center justify-between">
@@ -360,7 +345,6 @@ export const FlagshipSlideCard: React.FC<FlagshipSlideCardProps> = ({
                     </div>
                   </div>
 
-                  {/* Banner CTA Buka Modal */}
                   <div
                     onClick={() => setShowEcommerceModal(true)}
                     className="p-3 rounded-2xl bg-gradient-to-r from-[#0284c7] to-[#0369a1] text-white border-2 border-[#0f172a] shadow-[3px_3px_0px_#0f172a] cursor-pointer hover:scale-[1.01] transition-transform flex items-center justify-between gap-2"
@@ -416,9 +400,7 @@ export const FlagshipSlideCard: React.FC<FlagshipSlideCardProps> = ({
         <div className="relative z-10 h-3 w-full" />
       </motion.div>
 
-      {/* =========================================================================
-          MODAL DETAIL LENGKAP: CLARATE E-COMMERCE (SESUAI REQUEST USER)
-          ========================================================================= */}
+      {/* MODAL CLARATE E-COMMERCE */}
       <AnimatePresence>
         {showEcommerceModal && (
           <motion.div
@@ -496,11 +478,9 @@ export const FlagshipSlideCard: React.FC<FlagshipSlideCardProps> = ({
 
                 {/* Section Masalah Penjual */}
                 <div className="space-y-3">
-                  <div className="flex items-center gap-2">
-                    <h3 className="text-base sm:text-lg font-black text-[#0f172a]">
-                      Kenapa Harus Punya Toko Online Sendiri?
-                    </h3>
-                  </div>
+                  <h3 className="text-base sm:text-lg font-black text-[#0f172a]">
+                    Kenapa Harus Punya Toko Online Sendiri?
+                  </h3>
                   <p className="font-medium text-[#64748b]">
                     Terlalu banyak penjual online kerja keras, tapi hasilnya masuk kantong platform orang lain. Marketplace memang mempermudah jual beli, tapi di balik itu kamu kehilangan margin, kehilangan data customer, dan kehilangan kontrol atas brandmu sendiri.
                   </p>
