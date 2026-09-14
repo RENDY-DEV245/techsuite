@@ -14,6 +14,7 @@ import {
   Heart
 } from 'lucide-react';
 import { useClipboard } from '../../hooks/useClipboard';
+import { StoryModal } from './StoryModal';
 import { profileData } from '../../data/portfolioData';
 import { ContactOceanCanvas } from './ContactOceanCanvas';
 
@@ -30,6 +31,7 @@ export const ContactSection: React.FC = () => {
   const { copied, copy } = useClipboard();
   const [selectedTopic, setSelectedTopic] = useState(inquiryTopics[0]);
   const [currentTime, setCurrentTime] = useState<string>('');
+  const [showStoryModal, setShowStoryModal] = useState<boolean>(false);
   const [isFlipped, setIsFlipped] = useState<boolean>(false);
   const [submarineClicks, setSubmarineClicks] = useState<number>(0);
   const [showHeart, setShowHeart] = useState<boolean>(false);
@@ -147,7 +149,39 @@ export const ContactSection: React.FC = () => {
                 STATUS: TERSEDIA
               </div>
             </div>
+{/* ========================================================
+              BANNER SESI STORY (KLIK UNTUK MODAL CERITA LENGKAP)
+             ======================================================== */}
+          <div
+            onClick={() => setShowStoryModal(true)}
+            className="group/story relative p-4 sm:p-5 rounded-2xl sm:rounded-3xl bg-gradient-to-r from-[#071b2f] via-[#0d2844] to-[#02587a] border-2 sm:border-3 border-[#0f172a] shadow-[4px_4px_0px_#0f172a] sm:shadow-[6px_6px_0px_#0f172a] cursor-pointer hover:-translate-y-1 transition-all select-none overflow-hidden"
+          >
+            <div className="relative z-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-3 sm:gap-4">
+              <div className="space-y-1 max-w-2xl text-left">
+                <div className="flex items-center gap-2">
+                  <span className="px-2.5 py-0.5 rounded-md bg-[#fde047] text-[#0f172a] text-[10px] font-mono font-black border border-[#0f172a]">
+                    RAHASIA DIGITAL TRINITAS
+                  </span>
+                  <span className="text-xs font-mono font-bold text-[#38bdf8] flex items-center gap-1">
+                    <Sparkles className="w-3.5 h-3.5 text-[#fde047] animate-pulse" />
+                    BACA KISAH LENGKAP
+                  </span>
+                </div>
+                <h3 className="text-sm sm:text-lg font-black text-white leading-snug group-hover/story:text-[#38bdf8] transition-colors">
+                  “Saya telah menemukan senjata pamungkas dalam merebut kekayaan pasar yang akan mengubah nasib finansial Anda selamanya...”
+                </h3>
+                <p className="text-[11px] sm:text-xs text-[#cbd5e1] font-medium leading-relaxed line-clamp-1">
+                  Kisah bagaimana sistem 3-in-1 (Compro + E-Commerce + ERP) mendongkrak penjualan 300% dan menekan selisih stok hingga 0%.
+                </p>
+              </div>
 
+              <div className="flex items-center gap-2 px-4 py-2 rounded-xl bg-[#fde047] group-hover/story:bg-[#facc15] text-[#0f172a] font-mono font-black text-xs border-2 border-[#0f172a] shadow-[2px_2px_0px_#0f172a] shrink-0">
+                <span>Buka Cerita</span>
+                <ArrowUp className="w-3.5 h-3.5 rotate-45 group-hover/story:translate-x-0.5 transition-transform" />
+              </div>
+            </div>
+          </div>
+            
             <div className="space-y-1 sm:space-y-2">
               <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black text-[#0f172a] tracking-tight leading-[1.08]">
                 Mari Berdiskusi &amp; Berkolaborasi
@@ -350,6 +384,10 @@ export const ContactSection: React.FC = () => {
           </div>
         </motion.div>
       </div>
+      <StoryModal
+        isOpen={showStoryModal}
+        onClose={() => setShowStoryModal(false)}
+      />
     </section>
   );
 };
