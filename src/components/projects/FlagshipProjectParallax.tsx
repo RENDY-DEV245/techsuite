@@ -11,7 +11,14 @@ import {
   BarChart3,
   Sliders,
   DollarSign,
-  ArrowRight
+  ArrowRight,
+  Users,
+  MapPin,
+  FileText,
+  Calendar,
+  Receipt,
+  UserCheck,
+  Star
 } from 'lucide-react';
 import type { Project } from '../../types/portfolio';
 import { AnimatedOceanSlideBackground } from './AnimatedOceanSlideBackground';
@@ -32,6 +39,7 @@ export const FlagshipSlideCard: React.FC<FlagshipSlideCardProps> = ({
   depthLevel = 1
 }) => {
   const [showEcommerceModal, setShowEcommerceModal] = useState(false);
+  const [showHrisModal, setShowHrisModal] = useState(false);
   const zIndex = (index + 1) * 10;
 
   // 12 Katalog Web Klien Lengkap untuk Slide 01
@@ -53,6 +61,7 @@ export const FlagshipSlideCard: React.FC<FlagshipSlideCardProps> = ({
     {
       name: 'Nafita Makeup',
       subtitle: 'Kosmetik & Kecantikan',
+      type: 'Toko Online',
       desc: 'Toko online kecantikan modern dengan display katalog produk terstruktur, varian makeup lengkap, dan pemesanan instan.',
       categoryTag: 'Kecantikan · Kosmetik · Toko Online',
       url: 'https://nafita-store.clarate.id/'
@@ -60,6 +69,7 @@ export const FlagshipSlideCard: React.FC<FlagshipSlideCardProps> = ({
     {
       name: 'Baby Store',
       subtitle: 'Perlengkapan Bayi',
+      type: 'Toko Online',
       desc: 'Toko online khusus perlengkapan ibu dan anak dengan pengelompokan usia, katalog produk lengkap, dan alur belanja praktis.',
       categoryTag: 'Perlengkapan Bayi · Ibu & Anak · Toko Online',
       url: 'https://baby-store.clarate.id/'
@@ -183,7 +193,7 @@ export const FlagshipSlideCard: React.FC<FlagshipSlideCardProps> = ({
               {/* Action Buttons */}
               <div className="pt-1.5 sm:pt-2 border-t border-[#e2d3b3] flex flex-wrap gap-2 items-center">
                 {index === 1 ? (
-                  /* Khusus Slide 02 E-Commerce: Tahu Lebih Lanjut & Coba Gratis */
+                  /* Slide 02 E-Commerce: Tahu Lebih Lanjut & Coba Gratis */
                   <>
                     <button
                       type="button"
@@ -196,6 +206,28 @@ export const FlagshipSlideCard: React.FC<FlagshipSlideCardProps> = ({
 
                     <a
                       href="https://clarate.id/id/register?service_id=2"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center justify-center gap-1.5 px-3.5 py-2 sm:px-4 sm:py-2.5 rounded-xl bg-[#0284c7] hover:bg-[#0369a1] text-white font-mono font-bold text-xs sm:text-sm border-2 border-[#0f172a] shadow-[2.5px_2.5px_0px_#0f172a] hover:translate-x-0.5 hover:translate-y-0.5 transition-all cursor-pointer"
+                    >
+                      <span>Coba Gratis</span>
+                      <ExternalLink className="w-3.5 h-3.5" />
+                    </a>
+                  </>
+                ) : index === 2 ? (
+                  /* Slide 03 HRIS: Tahu Lebih Lanjut & Coba Gratis */
+                  <>
+                    <button
+                      type="button"
+                      onClick={() => setShowHrisModal(true)}
+                      className="inline-flex items-center justify-center gap-1.5 px-4 py-2 sm:px-5 sm:py-2.5 rounded-xl bg-[#fde047] hover:bg-[#facc15] text-[#0f172a] font-mono font-black text-xs sm:text-sm border-2 border-[#0f172a] shadow-[2.5px_2.5px_0px_#0f172a] hover:translate-x-0.5 hover:translate-y-0.5 transition-all cursor-pointer flex-1"
+                    >
+                      <Sparkles className="w-3.5 h-3.5 text-[#0f172a]" />
+                      <span>Tahu Lebih Lanjut</span>
+                    </button>
+
+                    <a
+                      href="https://clarate.id/id/register?service_id=3"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-flex items-center justify-center gap-1.5 px-3.5 py-2 sm:px-4 sm:py-2.5 rounded-xl bg-[#0284c7] hover:bg-[#0369a1] text-white font-mono font-bold text-xs sm:text-sm border-2 border-[#0f172a] shadow-[2.5px_2.5px_0px_#0f172a] hover:translate-x-0.5 hover:translate-y-0.5 transition-all cursor-pointer"
@@ -360,8 +392,52 @@ export const FlagshipSlideCard: React.FC<FlagshipSlideCardProps> = ({
                     <ArrowRight className="w-4 h-4 shrink-0 text-[#fde047]" />
                   </div>
                 </div>
+              ) : index === 2 ? (
+                /* Slide 03 HRIS: Showcase Fitur & Callout Modal */
+                <div className="h-full flex flex-col justify-between space-y-3">
+                  <div className="space-y-2">
+                    <div className="flex items-center justify-between">
+                      <span className="text-[11px] font-mono font-black uppercase tracking-wider text-[#0284c7] block">
+                        FITUR UTAMA CLARATE HRIS:
+                      </span>
+                      <span className="text-[10px] font-mono font-bold text-[#15803d] bg-[#dcfce7] px-2 py-0.5 rounded border border-[#16a34a]">
+                        PPh 21 TER Otomatis
+                      </span>
+                    </div>
+
+                    <div className="space-y-1.5">
+                      <div className="p-2.5 rounded-xl bg-[#fff9d4] border-2 border-[#0f172a] flex items-center gap-2.5 text-xs font-bold text-[#0f172a]">
+                        <CheckCircle2 className="w-4 h-4 text-[#16a34a] shrink-0" />
+                        <span>Payroll 2 Hari Selesai dalam 2 Jam (Tanpa Salah Formula)</span>
+                      </div>
+                      <div className="p-2.5 rounded-xl bg-[#fff9d4] border-2 border-[#0f172a] flex items-center gap-2.5 text-xs font-bold text-[#0f172a]">
+                        <CheckCircle2 className="w-4 h-4 text-[#16a34a] shrink-0" />
+                        <span>Absensi GPS Anti Fake-GPS &amp; Shift Multi-Cabang</span>
+                      </div>
+                      <div className="p-2.5 rounded-xl bg-[#fff9d4] border-2 border-[#0f172a] flex items-center gap-2.5 text-xs font-bold text-[#0f172a]">
+                        <CheckCircle2 className="w-4 h-4 text-[#16a34a] shrink-0" />
+                        <span>Portal Karyawan Mandiri: Cuti, Slip Gaji &amp; Reimburse</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div
+                    onClick={() => setShowHrisModal(true)}
+                    className="p-3 rounded-2xl bg-gradient-to-r from-[#0284c7] to-[#0369a1] text-white border-2 border-[#0f172a] shadow-[3px_3px_0px_#0f172a] cursor-pointer hover:scale-[1.01] transition-transform flex items-center justify-between gap-2"
+                  >
+                    <div>
+                      <div className="text-xs font-black">
+                        Pelajari Sistem Clarate HRIS &amp; Payroll
+                      </div>
+                      <div className="text-[10px] text-white/80">
+                        Otomasi PPh 21 TER · Slip Gaji Digital · Presensi GPS
+                      </div>
+                    </div>
+                    <ArrowRight className="w-4 h-4 shrink-0 text-[#fde047]" />
+                  </div>
+                </div>
               ) : (
-                /* Slide 03 (HRIS), 04 (CAD), 05 (ERP) */
+                /* Slide 04 (CAD), 05 (ERP) */
                 <div className="h-full flex flex-col justify-between space-y-2 sm:space-y-3">
                   <div className="space-y-1.5 sm:space-y-2">
                     <span className="text-[10px] sm:text-[11px] font-mono font-black uppercase tracking-wider text-[#0284c7] block">
@@ -400,7 +476,7 @@ export const FlagshipSlideCard: React.FC<FlagshipSlideCardProps> = ({
         <div className="relative z-10 h-3 w-full" />
       </motion.div>
 
-      {/* MODAL CLARATE E-COMMERCE */}
+      {/* MODAL 01: CLARATE E-COMMERCE */}
       <AnimatePresence>
         {showEcommerceModal && (
           <motion.div
@@ -418,7 +494,6 @@ export const FlagshipSlideCard: React.FC<FlagshipSlideCardProps> = ({
               data-lenis-prevent="true"
               style={{ touchAction: 'pan-y' }}
             >
-              {/* Header Modal */}
               <div className="flex items-start justify-between gap-4 pb-4 border-b-2 border-[#0f172a]/15">
                 <div>
                   <div className="flex items-center gap-2 mb-1.5">
@@ -446,16 +521,12 @@ export const FlagshipSlideCard: React.FC<FlagshipSlideCardProps> = ({
                 </button>
               </div>
 
-              {/* Body Content */}
               <div className="space-y-6 text-xs sm:text-sm text-[#334155] leading-relaxed">
-                
-                {/* Hero Callout */}
                 <div className="p-4 sm:p-5 rounded-2xl bg-[#fff9d4] border-2 border-[#0f172a] space-y-3">
                   <p className="font-medium text-[#0f172a]">
                     Setiap hari jutaan transaksi di marketplace menghasilkan komisi untuk platform, bukan untuk kamu. <strong>Clarate E-Commerce</strong> hadir agar setiap penjualan masuk 100% ke bisnismu, dengan data customer yang sepenuhnya menjadi milikmu.
                   </p>
                   
-                  {/* Keuntungan Ringkas */}
                   <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 pt-2 border-t border-[#0f172a]/10">
                     <div className="flex items-center gap-1.5 font-bold text-[11px] text-[#0f172a]">
                       <CheckCircle2 className="w-3.5 h-3.5 text-[#16a34a] shrink-0" />
@@ -481,64 +552,50 @@ export const FlagshipSlideCard: React.FC<FlagshipSlideCardProps> = ({
                   <h3 className="text-base sm:text-lg font-black text-[#0f172a]">
                     Kenapa Harus Punya Toko Online Sendiri?
                   </h3>
-                  <p className="font-medium text-[#64748b]">
-                    Terlalu banyak penjual online kerja keras, tapi hasilnya masuk kantong platform orang lain. Marketplace memang mempermudah jual beli, tapi di balik itu kamu kehilangan margin, kehilangan data customer, dan kehilangan kontrol atas brandmu sendiri.
-                  </p>
-
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-3 pt-2">
-                    {/* Penjual Marketplace */}
-                    <div className="p-4 rounded-2xl bg-[#fffdf5] border-2 border-[#0f172a] shadow-[3px_3px_0px_#0f172a] space-y-2 flex flex-col justify-between">
-                      <div>
-                        <span className="text-[10px] font-mono font-black uppercase text-[#ef4444] bg-[#fee2e2] px-2 py-0.5 rounded border border-[#ef4444]/30">
-                          Penjual Marketplace
-                        </span>
-                        <p className="text-xs italic text-[#475569] mt-2">
-                          “Omzet bulan ini Rp 45 juta. Tapi setelah dikurangi komisi 12%, biaya iklan dalam platform, dan biaya layanan, margin bersihnya tinggal 8-10%. Harga ditekan terus oleh kompetitor di halaman yang sama.”
-                        </p>
-                      </div>
+                    <div className="p-4 rounded-2xl bg-[#fffdf5] border-2 border-[#0f172a] shadow-[3px_3px_0px_#0f172a] space-y-2">
+                      <span className="text-[10px] font-mono font-black uppercase text-[#ef4444] bg-[#fee2e2] px-2 py-0.5 rounded border border-[#ef4444]/30">
+                        Penjual Marketplace
+                      </span>
+                      <p className="text-xs italic text-[#475569]">
+                        “Omzet bulan ini Rp 45 juta. Tapi setelah dikurangi komisi 12%, biaya iklan dalam platform, dan biaya layanan, margin bersihnya tinggal 8-10%.”
+                      </p>
                       <div className="p-2 rounded-xl bg-[#fef2f2] border border-[#ef4444]/20 text-[11px] text-[#991b1b] font-bold">
                         💡 Komisi dan iklan marketplace menghabiskan marginmu.
                       </div>
                     </div>
 
-                    {/* Brand Lokal */}
-                    <div className="p-4 rounded-2xl bg-[#fffdf5] border-2 border-[#0f172a] shadow-[3px_3px_0px_#0f172a] space-y-2 flex flex-col justify-between">
-                      <div>
-                        <span className="text-[10px] font-mono font-black uppercase text-[#f59e0b] bg-[#fef3c7] px-2 py-0.5 rounded border border-[#f59e0b]/30">
-                          Brand Lokal
-                        </span>
-                        <p className="text-xs italic text-[#475569] mt-2">
-                          “Sudah bangun brand selama 3 tahun. Tapi customer yang beli hari ini, besok lihat iklan kompetitor tepat di bawah produkmu. Tidak bisa follow up, tidak bisa retarget, data customer milik marketplace.”
-                        </p>
-                      </div>
+                    <div className="p-4 rounded-2xl bg-[#fffdf5] border-2 border-[#0f172a] shadow-[3px_3px_0px_#0f172a] space-y-2">
+                      <span className="text-[10px] font-mono font-black uppercase text-[#f59e0b] bg-[#fef3c7] px-2 py-0.5 rounded border border-[#f59e0b]/30">
+                        Brand Lokal
+                      </span>
+                      <p className="text-xs italic text-[#475569]">
+                        “Sudah bangun brand selama 3 tahun. Tapi customer yang beli hari ini, besok lihat iklan kompetitor tepat di bawah produkmu. Data milik marketplace.”
+                      </p>
                       <div className="p-2 rounded-xl bg-[#fffbeb] border border-[#f59e0b]/20 text-[11px] text-[#92400e] font-bold">
-                        💡 Brand yang kamu bangun bertahun-tahun justru menguntungkan marketplace.
+                        💡 Brand yang kamu bangun menguntungkan marketplace.
                       </div>
                     </div>
 
-                    {/* UMKM & Reseller */}
-                    <div className="p-4 rounded-2xl bg-[#fffdf5] border-2 border-[#0f172a] shadow-[3px_3px_0px_#0f172a] space-y-2 flex flex-col justify-between">
-                      <div>
-                        <span className="text-[10px] font-mono font-black uppercase text-[#0284c7] bg-[#e0f2fe] px-2 py-0.5 rounded border border-[#0284c7]/30">
-                          UMKM &amp; Reseller Online
-                        </span>
-                        <p className="text-xs italic text-[#475569] mt-2">
-                          “Jualan via WhatsApp dan IG sudah ramai, tapi kewalahan manage order manual. Salah kirim, double order, bayar sudah tapi stok habis, semua karena tidak ada sistem.”
-                        </p>
-                      </div>
+                    <div className="p-4 rounded-2xl bg-[#fffdf5] border-2 border-[#0f172a] shadow-[3px_3px_0px_#0f172a] space-y-2">
+                      <span className="text-[10px] font-mono font-black uppercase text-[#0284c7] bg-[#e0f2fe] px-2 py-0.5 rounded border border-[#0284c7]/30">
+                        UMKM &amp; Reseller
+                      </span>
+                      <p className="text-xs italic text-[#475569]">
+                        “Jualan via WhatsApp dan IG sudah ramai, tapi kewalahan manage order manual. Salah kirim, double order, bayar sudah tapi stok habis.”
+                      </p>
                       <div className="p-2 rounded-xl bg-[#f0f9ff] border border-[#0284c7]/20 text-[11px] text-[#0369a1] font-bold">
-                        💡 Jualan manual bisa jalan di awal, tapi tidak bisa scale tanpa sistem.
+                        💡 Jualan manual tidak bisa scale tanpa sistem.
                       </div>
                     </div>
                   </div>
                 </div>
 
-                {/* Section Fitur Clarate */}
+                {/* Fitur Clarate E-Commerce */}
                 <div className="space-y-4 pt-2">
                   <h3 className="text-base sm:text-lg font-black text-[#0f172a]">
                     Clarate E-Commerce: Toko Online Lengkap, Terhubung ke ERP
                   </h3>
-
                   <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
                     <div className="p-3.5 rounded-2xl bg-[#fff9d4] border-2 border-[#0f172a] space-y-1">
                       <div className="flex items-center gap-1.5 text-xs font-black text-[#0f172a]">
@@ -569,67 +626,9 @@ export const FlagshipSlideCard: React.FC<FlagshipSlideCardProps> = ({
                         Checkout 30 detik. Konfirmasi bayar otomatis via QRIS, transfer bank, e-wallet tanpa cek manual.
                       </p>
                     </div>
-
-                    <div className="p-3.5 rounded-2xl bg-[#fff9d4] border-2 border-[#0f172a] space-y-1">
-                      <div className="flex items-center gap-1.5 text-xs font-black text-[#0f172a]">
-                        <RefreshCw className="w-4 h-4 text-[#0284c7]" />
-                        <span>Stok Selalu Sinkron ERP</span>
-                      </div>
-                      <p className="text-[11px] text-[#475569]">
-                        Terjual di kasir, stok online ikut berkurang seketika. Mencegah terjadinya overselling produk habis.
-                      </p>
-                    </div>
-
-                    <div className="p-3.5 rounded-2xl bg-[#fff9d4] border-2 border-[#0f172a] space-y-1">
-                      <div className="flex items-center gap-1.5 text-xs font-black text-[#0f172a]">
-                        <BarChart3 className="w-4 h-4 text-[#7c3aed]" />
-                        <span>Laporan Keuangan Otomatis</span>
-                      </div>
-                      <p className="text-[11px] text-[#475569]">
-                        Begitu pesanan dibayar, Sales Order di ERP terbentuk sendiri, omzet dan margin langsung masuk akuntansi.
-                      </p>
-                    </div>
-
-                    <div className="p-3.5 rounded-2xl bg-[#fff9d4] border-2 border-[#0f172a] space-y-1">
-                      <div className="flex items-center gap-1.5 text-xs font-black text-[#0f172a]">
-                        <Sliders className="w-4 h-4 text-[#ea580c]" />
-                        <span>Tampilan Toko Sesuai Brand</span>
-                      </div>
-                      <p className="text-[11px] text-[#475569]">
-                        Domain nama-tokomu.clarate.id, logo, warna, dan banner diatur sendiri tanpa perlu coding.
-                      </p>
-                    </div>
                   </div>
                 </div>
 
-                {/* Perbandingan Clarate vs Toko Online Biasa */}
-                <div className="p-4 sm:p-5 rounded-2xl bg-[#e0f2fe] border-2 border-[#0f172a] space-y-3">
-                  <h4 className="text-sm sm:text-base font-black text-[#0f172a]">
-                    Clarate vs Toko Online Biasa
-                  </h4>
-                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
-                    <div className="p-3 rounded-xl bg-white border border-[#0f172a]/20 space-y-1">
-                      <div className="font-black text-[#0f172a]">1. Sinkronisasi Stok</div>
-                      <p className="text-[11px] text-[#475569]">
-                        Satu stok terpusat tersinkron ke toko online dan kasir fisik secara otomatis tanpa rekap manual.
-                      </p>
-                    </div>
-                    <div className="p-3 rounded-xl bg-white border border-[#0f172a]/20 space-y-1">
-                      <div className="font-black text-[#0f172a]">2. Laporan Keuangan</div>
-                      <p className="text-[11px] text-[#475569]">
-                        Setiap transaksi otomatis tercatat ke pembukuan laba-rugi &amp; arus kas ERP real-time.
-                      </p>
-                    </div>
-                    <div className="p-3 rounded-xl bg-white border border-[#0f172a]/20 space-y-1">
-                      <div className="font-black text-[#0f172a]">3. Data Customer Penuh</div>
-                      <p className="text-[11px] text-[#475569]">
-                        Database pelanggan 100% milikmu, bebas di-retarget dan di-broadcast kapan saja tanpa potongan.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Testimoni Singkat */}
                 <div className="p-4 rounded-2xl bg-[#fffdf5] border-2 border-[#0f172a] shadow-[2px_2px_0px_#0f172a]">
                   <p className="text-xs italic text-[#334155]">
                     “Checkout cepat dan konfirmasi QRIS otomatis. Saya tidak perlu lagi cek transfer manual satu per satu, dan tidak ada pesanan yang terlewat.”
@@ -638,15 +637,12 @@ export const FlagshipSlideCard: React.FC<FlagshipSlideCardProps> = ({
                     Mega Lestari — Owner · Batik Nusantara (batik-nusantara.clarate.id)
                   </div>
                 </div>
-
               </div>
 
-              {/* Footer CTA Modal */}
               <div className="pt-4 border-t-2 border-[#0f172a]/15 flex flex-col sm:flex-row items-center justify-between gap-3">
                 <div className="text-xs font-mono font-bold text-[#64748b] text-center sm:text-left">
                   Toko online aktif dalam hitungan menit • Tanpa kartu kredit
                 </div>
-
                 <div className="flex items-center gap-2.5 w-full sm:w-auto">
                   <button
                     type="button"
@@ -655,7 +651,6 @@ export const FlagshipSlideCard: React.FC<FlagshipSlideCardProps> = ({
                   >
                     Tutup
                   </button>
-
                   <a
                     href="https://clarate.id/id/register?service_id=2"
                     target="_blank"
@@ -667,7 +662,304 @@ export const FlagshipSlideCard: React.FC<FlagshipSlideCardProps> = ({
                   </a>
                 </div>
               </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
+      {/* =========================================================================
+          MODAL 02: CLARATE HRIS & PAYROLL (SESUAI REQUEST USER)
+          ========================================================================= */}
+      <AnimatePresence>
+        {showHrisModal && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[110] flex items-center justify-center p-3 sm:p-6 bg-[#071b2f]/80 backdrop-blur-md select-none"
+          >
+            <motion.div
+              initial={{ scale: 0.92, y: 20 }}
+              animate={{ scale: 1, y: 0 }}
+              exit={{ scale: 0.92, y: 20 }}
+              transition={{ type: 'spring', damping: 25, stiffness: 280 }}
+              className="relative w-full max-w-4xl bg-[#fffdf5] rounded-3xl border-3 sm:border-4 border-[#0f172a] shadow-[8px_8px_0px_#0f172a] sm:shadow-[12px_12px_0px_#0f172a] p-5 sm:p-8 max-h-[90vh] overflow-y-auto overscroll-contain flex flex-col justify-between space-y-6"
+              data-lenis-prevent="true"
+              style={{ touchAction: 'pan-y' }}
+            >
+              {/* Header Modal */}
+              <div className="flex items-start justify-between gap-4 pb-4 border-b-2 border-[#0f172a]/15">
+                <div>
+                  <div className="flex items-center gap-2 mb-1.5">
+                    <span className="px-2.5 py-0.5 rounded-lg bg-[#fde047] text-[#0f172a] text-[10px] sm:text-xs font-mono font-black border-2 border-[#0f172a]">
+                      CLARATE HRIS &amp; PAYROLL
+                    </span>
+                    <span className="text-[11px] font-mono font-bold text-[#15803d]">
+                      • PPh 21 TER DJP • Absensi GPS
+                    </span>
+                  </div>
+                  <h2 className="text-xl sm:text-3xl font-black text-[#0f172a] tracking-tight leading-tight">
+                    Payroll &amp; HR Otomatis untuk Bisnis Indonesia
+                  </h2>
+                  <p className="text-xs sm:text-sm font-bold text-[#0284c7] mt-1">
+                    Payroll 2 Hari Selesai dalam 2 Jam. Tanpa Salah Hitung. Tanpa Rekap Manual.
+                  </p>
+                </div>
+
+                <button
+                  type="button"
+                  onClick={() => setShowHrisModal(false)}
+                  className="p-2 rounded-xl bg-[#fff9d4] hover:bg-[#fee2e2] text-[#0f172a] hover:text-[#dc2626] border-2 border-[#0f172a] shadow-[2px_2px_0px_#0f172a] transition-all cursor-pointer shrink-0"
+                >
+                  <X className="w-5 h-5" />
+                </button>
+              </div>
+
+              {/* Body Content */}
+              <div className="space-y-6 text-xs sm:text-sm text-[#334155] leading-relaxed">
+                
+                {/* Hero Callout */}
+                <div className="p-4 sm:p-5 rounded-2xl bg-[#fff9d4] border-2 border-[#0f172a] space-y-3">
+                  <p className="font-medium text-[#0f172a]">
+                    <strong>Clarate HRIS</strong> menghitung gaji, PPh 21 metode TER, lembur, dan tunjangan secara otomatis setiap bulan. Absensi GPS yang tidak bisa diakali, dan slip gaji terkirim langsung ke HP karyawan tanpa perlu diprint satu per satu.
+                  </p>
+                  
+                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 pt-2 border-t border-[#0f172a]/10">
+                    <div className="flex items-center gap-1.5 font-bold text-[11px] text-[#0f172a]">
+                      <CheckCircle2 className="w-3.5 h-3.5 text-[#16a34a] shrink-0" />
+                      <span>PPh 21 TER Otomatis</span>
+                    </div>
+                    <div className="flex items-center gap-1.5 font-bold text-[11px] text-[#0f172a]">
+                      <CheckCircle2 className="w-3.5 h-3.5 text-[#16a34a] shrink-0" />
+                      <span>Presensi Anti Fake-GPS</span>
+                    </div>
+                    <div className="flex items-center gap-1.5 font-bold text-[11px] text-[#0f172a]">
+                      <CheckCircle2 className="w-3.5 h-3.5 text-[#16a34a] shrink-0" />
+                      <span>Slip Gaji Digital HP</span>
+                    </div>
+                    <div className="flex items-center gap-1.5 font-bold text-[11px] text-[#0f172a]">
+                      <CheckCircle2 className="w-3.5 h-3.5 text-[#16a34a] shrink-0" />
+                      <span>Trial Gratis 14 Hari</span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Section Kenapa Clarate HRIS? */}
+                <div className="space-y-3">
+                  <h3 className="text-base sm:text-lg font-black text-[#0f172a]">
+                    Kenapa Clarate HRIS?
+                  </h3>
+                  <p className="font-medium text-[#64748b]">
+                    Terlalu banyak HR Manager menghabiskan waktu untuk pekerjaan yang seharusnya berjalan otomatis. Rekap absensi manual, hitung PPh 21 satu per satu, dan approve cuti via WhatsApp menghabiskan waktu tim HR yang seharusnya fokus ke hal strategis.
+                  </p>
+
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-3 pt-2">
+                    {/* Pemilik UMKM */}
+                    <div className="p-4 rounded-2xl bg-[#fffdf5] border-2 border-[#0f172a] shadow-[3px_3px_0px_#0f172a] space-y-2 flex flex-col justify-between">
+                      <div>
+                        <span className="text-[10px] font-mono font-black uppercase text-[#ef4444] bg-[#fee2e2] px-2 py-0.5 rounded border border-[#ef4444]/30">
+                          Pemilik UMKM
+                        </span>
+                        <p className="text-xs italic text-[#475569] mt-2">
+                          “20 karyawan, payroll masih manual di Excel. PPh 21 dihitung satu per satu. Setiap awal bulan, owner ikut bantu HR sampai jam 10 malam. Satu formula Excel salah, semua slip gaji harus diulang.”
+                        </p>
+                      </div>
+                      <div className="p-2 rounded-xl bg-[#fef2f2] border border-[#ef4444]/20 text-[11px] text-[#991b1b] font-bold">
+                        💡 Satu kesalahan formula Excel cukup untuk mengulang payroll dari awal.
+                      </div>
+                    </div>
+
+                    {/* HR Manager */}
+                    <div className="p-4 rounded-2xl bg-[#fffdf5] border-2 border-[#0f172a] shadow-[3px_3px_0px_#0f172a] space-y-2 flex flex-col justify-between">
+                      <div>
+                        <span className="text-[10px] font-mono font-black uppercase text-[#f59e0b] bg-[#fef3c7] px-2 py-0.5 rounded border border-[#f59e0b]/30">
+                          HR Manager
+                        </span>
+                        <p className="text-xs italic text-[#475569] mt-2">
+                          “Absensi dari fingerprint harus di-export manual lalu di-paste ke Excel payroll. Karyawan minta slip gaji harus cetak manual. Cuti diajukan via WhatsApp sering lupa di-approve.”
+                        </p>
+                      </div>
+                      <div className="p-2 rounded-xl bg-[#fffbeb] border border-[#f59e0b]/20 text-[11px] text-[#92400e] font-bold">
+                        💡 Sistem terpisah memaksa HR jadi operator data entry, bukan strategic partner.
+                      </div>
+                    </div>
+
+                    {/* Perusahaan Multi-Cabang */}
+                    <div className="p-4 rounded-2xl bg-[#fffdf5] border-2 border-[#0f172a] shadow-[3px_3px_0px_#0f172a] space-y-2 flex flex-col justify-between">
+                      <div>
+                        <span className="text-[10px] font-mono font-black uppercase text-[#0284c7] bg-[#e0f2fe] px-2 py-0.5 rounded border border-[#0284c7]/30">
+                          Multi-Cabang
+                        </span>
+                        <p className="text-xs italic text-[#475569] mt-2">
+                          “Karyawan di 3 cabang berbeda kota. Tidak ada cara audit absensi real-time. Laporan kehadiran baru masuk di akhir bulan, sudah terlambat untuk tindakan.”
+                        </p>
+                      </div>
+                      <div className="p-2 rounded-xl bg-[#f0f9ff] border border-[#0284c7]/20 text-[11px] text-[#0369a1] font-bold">
+                        💡 Tanpa visibilitas real-time, masalah SDM baru diketahui setelah berdampak.
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* 3 Pilar Utama HRIS */}
+                <div className="space-y-4 pt-2">
+                  <h3 className="text-base sm:text-lg font-black text-[#0f172a]">
+                    Clarate HRM: Semua yang Dibutuhkan HR dalam Satu Sistem
+                  </h3>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
+                    <div className="p-3.5 rounded-2xl bg-[#fff9d4] border-2 border-[#0f172a] space-y-1">
+                      <div className="flex items-center gap-1.5 text-xs font-black text-[#0f172a]">
+                        <DollarSign className="w-4 h-4 text-[#16a34a]" />
+                        <span>Payroll &amp; PPh 21 TER</span>
+                      </div>
+                      <p className="text-[11px] text-[#475569]">
+                        Gaji, tunjangan, lembur, dan PPh 21 metode TER DJP terbaru terhitung otomatis. Transfer massal ke semua bank satu klik.
+                      </p>
+                    </div>
+
+                    <div className="p-3.5 rounded-2xl bg-[#fff9d4] border-2 border-[#0f172a] space-y-1">
+                      <div className="flex items-center gap-1.5 text-xs font-black text-[#0f172a]">
+                        <MapPin className="w-4 h-4 text-[#ef4444]" />
+                        <span>Absensi GPS Anti Titip</span>
+                      </div>
+                      <p className="text-[11px] text-[#475569]">
+                        Check-in GPS dengan radius akurat. Tidak bisa absen dari luar lokasi kantor atau shift yang ditentukan. Data langsung masuk payroll.
+                      </p>
+                    </div>
+
+                    <div className="p-3.5 rounded-2xl bg-[#fff9d4] border-2 border-[#0f172a] space-y-1">
+                      <div className="flex items-center gap-1.5 text-xs font-black text-[#0f172a]">
+                        <UserCheck className="w-4 h-4 text-[#0284c7]" />
+                        <span>Portal Mandiri Karyawan</span>
+                      </div>
+                      <p className="text-[11px] text-[#475569]">
+                        Karyawan cek slip gaji, ajukan cuti, dan klaim reimburse langsung dari HP tanpa chat HR. Approval digital berjenjang.
+                      </p>
+                    </div>
+
+                    <div className="p-3.5 rounded-2xl bg-[#fff9d4] border-2 border-[#0f172a] space-y-1">
+                      <div className="flex items-center gap-1.5 text-xs font-black text-[#0f172a]">
+                        <Calendar className="w-4 h-4 text-[#ea580c]" />
+                        <span>Cuti &amp; Izin Otomatis</span>
+                      </div>
+                      <p className="text-[11px] text-[#475569]">
+                        Saldo cuti otomatis berkurang setelah disetujui manager. Tidak ada lagi riwayat pengajuan cuti yang hilang di WhatsApp.
+                      </p>
+                    </div>
+
+                    <div className="p-3.5 rounded-2xl bg-[#fff9d4] border-2 border-[#0f172a] space-y-1">
+                      <div className="flex items-center gap-1.5 text-xs font-black text-[#0f172a]">
+                        <Receipt className="w-4 h-4 text-[#7c3aed]" />
+                        <span>Reimburse &amp; Pinjaman</span>
+                      </div>
+                      <p className="text-[11px] text-[#475569]">
+                        Upload bukti struk digital dari HP. Alur approval multi-level transparan langsung terkoneksi ke rekap keuangan.
+                      </p>
+                    </div>
+
+                    <div className="p-3.5 rounded-2xl bg-[#fff9d4] border-2 border-[#0f172a] space-y-1">
+                      <div className="flex items-center gap-1.5 text-xs font-black text-[#0f172a]">
+                        <Users className="w-4 h-4 text-[#0284c7]" />
+                        <span>Database Karyawan Lengkap</span>
+                      </div>
+                      <p className="text-[11px] text-[#475569]">
+                        Dokumen kontrak, riwayat jabatan, dan struktur organisasi tersimpan rapi dalam satu tempat terpusat.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Section Ulasan Bintang 5 */}
+                <div className="space-y-3 pt-2">
+                  <h3 className="text-base sm:text-lg font-black text-[#0f172a]">
+                    Sebelum dan Sesudah Punya Sistem yang Terhubung
+                  </h3>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <div className="p-3.5 rounded-2xl bg-[#fffdf5] border-2 border-[#0f172a] shadow-[2px_2px_0px_#0f172a] space-y-1.5">
+                      <div className="flex items-center gap-1 text-[#f59e0b]">
+                        {[...Array(5)].map((_, i) => (
+                          <Star key={i} className="w-3.5 h-3.5 fill-[#f59e0b]" />
+                        ))}
+                      </div>
+                      <p className="text-xs italic text-[#334155]">
+                        “Payroll 20 karyawan yang biasanya butuh 2 hari, sekarang selesai dalam 2 jam. PPh 21-nya sudah dihitung otomatis.”
+                      </p>
+                      <div className="text-[11px] font-black text-[#0f172a]">
+                        Sari Dewi — HR Manager · PT Kreasi Digital Nusantara
+                      </div>
+                    </div>
+
+                    <div className="p-3.5 rounded-2xl bg-[#fffdf5] border-2 border-[#0f172a] shadow-[2px_2px_0px_#0f172a] space-y-1.5">
+                      <div className="flex items-center gap-1 text-[#f59e0b]">
+                        {[...Array(5)].map((_, i) => (
+                          <Star key={i} className="w-3.5 h-3.5 fill-[#f59e0b]" />
+                        ))}
+                      </div>
+                      <p className="text-xs italic text-[#334155]">
+                        “Akhirnya bisa tahu cabang mana yang paling untung, tanpa harus tanya satu per satu ke kasir. Dashboard-nya langsung kelihatan dari HP.”
+                      </p>
+                      <div className="text-[11px] font-black text-[#0f172a]">
+                        Andi Kurniawan — Founder · Warung Makan Bu Sri (6 Cabang)
+                      </div>
+                    </div>
+
+                    <div className="p-3.5 rounded-2xl bg-[#fffdf5] border-2 border-[#0f172a] shadow-[2px_2px_0px_#0f172a] space-y-1.5">
+                      <div className="flex items-center gap-1 text-[#f59e0b]">
+                        {[...Array(5)].map((_, i) => (
+                          <Star key={i} className="w-3.5 h-3.5 fill-[#f59e0b]" />
+                        ))}
+                      </div>
+                      <p className="text-xs italic text-[#334155]">
+                        “Dulu orderan dari WhatsApp dan IG sering double, dan saya harus cek stok manual. Sekarang semua masuk satu dashboard, stok berkurang otomatis.”
+                      </p>
+                      <div className="text-[11px] font-black text-[#0f172a]">
+                        Nafita — Owner · Jasa Makeup &amp; Attire
+                      </div>
+                    </div>
+
+                    <div className="p-3.5 rounded-2xl bg-[#fffdf5] border-2 border-[#0f172a] shadow-[2px_2px_0px_#0f172a] space-y-1.5">
+                      <div className="flex items-center gap-1 text-[#f59e0b]">
+                        {[...Array(5)].map((_, i) => (
+                          <Star key={i} className="w-3.5 h-3.5 fill-[#f59e0b]" />
+                        ))}
+                      </div>
+                      <p className="text-xs italic text-[#334155]">
+                        “Dulu rekap penjualan sampai jam 10 malem setiap hari. Sekarang tutup toko, laporan sudah ada. Saya nggak nyangka bisa secepat ini.”
+                      </p>
+                      <div className="text-[11px] font-black text-[#0f172a]">
+                        Budi Santoso — Owner · Toko Elektronik Maju Jaya
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+              {/* Footer CTA Modal */}
+              <div className="pt-4 border-t-2 border-[#0f172a]/15 flex flex-col sm:flex-row items-center justify-between gap-3">
+                <div className="text-xs font-mono font-bold text-[#64748b] text-center sm:text-left">
+                  Sistem HRIS aktif seketika • Bebas coba 14 hari penuh
+                </div>
+                <div className="flex items-center gap-2.5 w-full sm:w-auto">
+                  <button
+                    type="button"
+                    onClick={() => setShowHrisModal(false)}
+                    className="px-4 py-2.5 rounded-xl bg-[#fff9d4] hover:bg-[#faeed1] text-[#0f172a] text-xs font-mono font-black border-2 border-[#0f172a] shadow-[2px_2px_0px_#0f172a] transition-all cursor-pointer flex-1 sm:flex-none"
+                  >
+                    Tutup
+                  </button>
+                  <a
+                    href="https://clarate.id/id/register?service_id=3"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-xl bg-[#0284c7] hover:bg-[#0369a1] text-white text-xs sm:text-sm font-mono font-black border-2 border-[#0f172a] shadow-[3px_3px_0px_#0f172a] hover:translate-x-0.5 hover:translate-y-0.5 transition-all cursor-pointer flex-1 sm:flex-none"
+                  >
+                    <span>Coba Gratis 14 Hari</span>
+                    <ArrowRight className="w-4 h-4" />
+                  </a>
+                </div>
+              </div>
             </motion.div>
           </motion.div>
         )}
