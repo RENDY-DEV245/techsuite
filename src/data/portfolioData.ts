@@ -227,8 +227,8 @@ export const techStackData: TechItem[] = [
     roleTag: 'General Ledger & POS',
     usageContext: 'Arsitektur sistem ERP modular yang menghubungkan Kasir POS, Multi-Gudang, Hutang/Piutang, dan SAK ETAP',
     projectLinks: ['erp-system', 'hris-system']
-  };
-
+  }
+];
 export const projectsData: Project[] = [
   {
     id: 'web-solutions',
