@@ -50,17 +50,6 @@ export const ProfilePhotoCard: React.FC<ProfilePhotoCardProps> = ({ isFlooded })
               target.src = 'https://i.ibb.co.com/tMN6mPt9/IMG-20260914-140952.png';
             }}
           />
-
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0f172a]/75 via-transparent to-transparent opacity-65 pointer-events-none" />
-
-          <div className="absolute bottom-4 left-4 right-4 p-3 rounded-xl bg-[#fffdf5]/90 border border-[#e8dbc0] backdrop-blur-md shadow-sm">
-            <div className="text-sm font-bold text-[#0f172a]">
-              {profileData.name}
-            </div>
-            <div className="text-xs text-[#8c6239] font-mono mt-0.5">
-              
-            </div>
-          </div>
         </div>
 
         <div className="mt-3 px-2 flex items-center justify-between text-[11px] font-mono text-[#8c6239]">
