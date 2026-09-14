@@ -7,7 +7,6 @@ import { WelcomeAnimation } from './components/hero/WelcomeAnimation';
 import { EditorialProfile } from './components/profile/EditorialProfile';
 import { ProjectShowcase } from './components/projects/ProjectShowcase';
 import { TechGrid } from './components/tech/TechGrid';
-import { GithubActivitySection } from './components/activity/GithubActivitySection';
 import { JourneyTimeline } from './components/journey/JourneyTimeline';
 import { ContactSection } from './components/contact/ContactSection';
 import { ProjectCaseStudyModal } from './components/projects/ProjectCaseStudyModal';
