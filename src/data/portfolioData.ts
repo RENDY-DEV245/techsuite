@@ -291,43 +291,7 @@ export const projectsData: Project[] = [
     subtitle: 'Fashion Store — Toko · Fashion · Katalog Produk',
     category: 'fullstack',
     summary: 'Website toko fashion dengan foto besar, katalog produk, dan halaman brand. Khusus untuk toko pakaian yang menjual lewat daya tarik visual.',
-    description: 'Template & platform toko pakaian modern yang menonjolkan visual brand, lookbook, dan katalog busana streetwear terkini.',
-    architecture: ['High-Impact Visual Lookbook', 'Product Grid', 'Brand Storytelling'],
-    stack: ['Toko', 'Fashion', 'Katalog Produk'],
-    highlights: ['Visual Foto Besar & Bersih', 'Katalog Streetwear', 'Halaman Cerita Brand'],
-    challenges: 'Optimasi gambar busana beresolusi tinggi agar tetap tampil estetik tanpa memperlambat waktu muat website.',
-    role: 'Frontend & UI Engineer',
-    demoUrl: 'https://clarate.id/templates/urbanwear',
-    imageUrl: '',
-    imageFit: 'cover',
-    featured: false,
-    metrics: [
-      { label: 'Kategori', value: 'Fashion' },
-      { label: 'Fokus', value: 'Visual & Brand' },
-      { label: 'Status', value: 'Populer' }
-    ]
-  },
-  {
-    id: 'kopi-senja',
-    title: 'Kopi Senja',
-    subtitle: 'Coffee Shop & Roastery — F&B · Cafe',
-    category: 'fullstack',
-    summary: 'Website coffee shop dengan menu berharga, cerita brand, galeri suasana, jam buka, dan lokasi. Menyediakan semua yang dicari calon pelanggan.',
-    description: 'Website coffee shop & roastery yang menyajikan menu kopi pilihan, cerita racikan biji kopi, suasana tempat, serta peta lokasi yang mudah ditemukan.',
-    architecture: ['Digital Menu Engine', 'Location & Hours Integration', 'Atmosphere Gallery'],
-    stack: ['F&B', 'Coffee Shop', 'Cafe'],
-    highlights: ['Daftar Menu Berharga Jelas', 'Galeri Estetik Cafe', 'Lokasi & Jam Buka Akurat'],
-    challenges: 'Menyusun hierarki informasi menu dan lokasi yang langsung terbaca dalam hitungan detik saat dibuka pelanggan cafe.',
-    role: 'Web Developer',
-    demoUrl: 'https://clarate.id/templates/kopi-senja',
-    imageUrl: '',
-    imageFit: 'cover',
-    featured: false,
-    metrics: [
-      { label: 'Kategori', value: 'F&B Cafe' },
-      { label: 'Fitur', value: 'Digital Menu' },
-      { label: 'Status', value: 'Populer' }
-    ]
+
   },
   {
     id: 'kayu-ruang',
@@ -398,67 +362,141 @@ export const projectsData: Project[] = [
   {
     id: 'panen-langsung',
     title: 'Panen Langsung',
-    subtitle: 'Agribisnis & Supplier Pangan — B2B · Pertanian',
+export const projectsData: Project[] = [
+  {
+    id: 'web-solutions',
+    title: 'Website Kustom & Platform Bisnis',
+    subtitle: '12+ Proyek Website Klien & Bisnis Nyata',
     category: 'fullstack',
-    summary: 'Website supplier pangan B2B dengan daftar komoditas berharga per kilo, alur langganan restoran/hotel, dan profil petani mitra.',
-    description: 'Platform digital agribisnis yang menghubungkan rantai pasok hasil panen segar langsung ke pelaku usaha kuliner, hotel, dan katering.',
-    architecture: ['B2B Commodity Pricing', 'Subscription Order Flow', 'Farmer Network Profile'],
-    stack: ['Agrikultur', 'Supplier Pangan', 'B2B'],
-    highlights: ['Harga Komoditas per Kilo', 'Alur Pasokan Rutin', 'Profil Petani Mitra'],
-    challenges: 'Menyusun alur pemesanan B2B dalam volume besar dengan skema pengiriman terjadwal yang teratur.',
-    role: 'Web Developer',
-    demoUrl: 'https://clarate.id/templates/panen-langsung',
+    summary: 'Kumpulan website berkecepatan tinggi, SEO-friendly, dan berorientasi konversi untuk travel umroh, F&B, hospitality, agribisnis, klinik, dan jasa profesional.',
+    description: 'Solusi website responsif yang dirancang khusus untuk membangun kredibilitas brand dan meningkatkan konversi penjualan.',
+    architecture: ['Responsive Design', 'Fast CDN Asset Delivery', 'Direct WhatsApp & Lead Form Integration'],
+    stack: ['Travel Haji', 'F&B Cafe', 'Otomotif', 'Klinik Hewan', 'Agribisnis B2B', 'Laundry'],
+    highlights: [
+      'Maqdis Group (Travel Haji & Umroh)',
+      'UrbanWear (Fashion Store & Lookbook)',
+      'Kopi Senja (Coffee Shop & Roastery)',
+      'Kayu Ruang (Furniture & Interior)',
+      'Garasi Prima (Bengkel & Servis Mobil)',
+      'Forte Gym (Pusat Kebugaran & Trainer)',
+      'Panen Langsung (Supplier Pangan B2B)',
+      'Kucek Laundry (Laundry Jemput-Antar)',
+      'Sahabat Satwa (Klinik Hewan 24 Jam)'
+    ],
+    challenges: 'Menghadirkan performa loading instan untuk berbagai industri bisnis dengan kebutuhan visual dan interaksi yang berbeda-beda.',
+    role: 'Full Stack & Web Architect',
+    demoUrl: 'https://maqdisgroup.com/',
     imageUrl: '',
     imageFit: 'cover',
-    featured: false,
+    featured: true,
     metrics: [
-      { label: 'Kategori', value: 'Agrikultur B2B' },
-      { label: 'Model', value: 'Supplier Pangan' },
-      { label: 'Fitur', value: 'Harga per Kilo' }
+      { label: 'Klien Web', value: '12+ Proyek' },
+      { label: 'Performa', value: 'Fast Loading' },
+      { label: 'Fokus', value: 'Konversi & Brand' }
     ]
   },
   {
-    id: 'kucek-laundry',
-    title: 'Kucek Laundry',
-    subtitle: 'Laundry Kiloan & Satuan — Jasa · Jemput-Antar',
+    id: 'ecommerce-solutions',
+    title: 'E-Commerce & Smart Store',
+    subtitle: 'Toko Online, Keranjang Belanja & Order Automation',
     category: 'fullstack',
-    summary: 'Website laundry dengan tarif harga per kilo, lama pengerjaan, dan area jemput-antar. Didesain untuk usaha jasa yang dipilih karena praktis.',
-    description: 'Website layanan laundry higienis dengan sistem order jemput-antar pakaian kotor langsung ke rumah pelanggan.',
-    architecture: ['Price Calculator', 'Coverage Area Map', 'Pickup Request Flow'],
-    stack: ['Jasa', 'Laundry', 'Jemput-Antar'],
-    highlights: ['Tarif Jelas Kiloan & Satuan', 'Cakupan Area Jemput-Antar', 'Pemesanan Sekali Klik'],
-    challenges: 'Menyederhanakan formulir order jemput-antar agar pelanggan bisa memesan dalam kurang dari 1 menit.',
-    role: 'Web Developer',
-    demoUrl: 'https://clarate.id/templates/kucek-laundry',
+    summary: 'Ekosistem toko online modern dengan katalog produk dinamis, kalkulator harga, manajemen keranjang, serta checkout otomatis via WhatsApp & Payment Gateway.',
+    description: 'Solusi e-commerce mandiri untuk berbagai sektor: suplemen internasional (AFC Life Science / Ralie Care), kosmetik kecantikan (Nafita Store), dan perlengkapan bayi (Baby Store).',
+    architecture: ['Direct Checkout WhatsApp Engine', 'Dynamic Product Catalog', 'Integrated Payment Gateway Architecture'],
+    stack: ['AFC Life Science', 'Nafita Makeup', 'Baby Store', 'Payment Gateway', 'Cloud Database'],
+    highlights: [
+      'AFC Life Science (Distributor Suplemen Jepang - raliecare.my.id)',
+      'Nafita Makeup (Toko Kosmetik - nafita-store.clarate.id)',
+      'Baby Store (Perlengkapan Bayi - baby-store.clarate.id)'
+    ],
+    challenges: 'Memastikan integrasi alur order instan tanpa hambatan dan sinkronisasi stok real-time antar channel penjualan.',
+    role: 'Lead E-Commerce Developer',
+    demoUrl: 'https://raliecare.my.id',
     imageUrl: '',
     imageFit: 'cover',
-    featured: false,
+    featured: true,
     metrics: [
-      { label: 'Kategori', value: 'Jasa Laundry' },
-      { label: 'Layanan', value: 'Jemput-Antar' },
-      { label: 'Fokus', value: 'Praktis & Cepat' }
+      { label: 'Integrasi', value: 'Direct WA & Gateway' },
+      { label: 'Platform', value: 'Multi-Store' },
+      { label: 'Status', value: 'Production' }
     ]
   },
   {
-    id: 'sahabat-satwa',
-    title: 'Sahabat Satwa',
-    subtitle: 'Klinik Hewan & Pet Care — Kesehatan · Jadwal Dokter',
+    id: 'hris-system',
+    title: 'HRIS & Workforce Management',
+    subtitle: 'Human Resource Information System',
     category: 'fullstack',
-    summary: 'Website klinik hewan dengan tarif tindakan, jadwal praktik dokter hewan, dan tombol panggilan darurat 24 jam yang selalu terlihat.',
-    description: 'Platform klinik pet care terpercaya untuk konsultasi kesehatan hewan peliharaan, vaksinasi, grooming, dan rawat inap.',
-    architecture: ['Doctor Schedule Table', 'Emergency Call Action', 'Service Rate List'],
-    stack: ['Kesehatan', 'Klinik Hewan', 'Jadwal Dokter'],
-    highlights: ['Nomor Darurat Selalu Terlihat', 'Jadwal Praktik Dokter', 'Tarif Tindakan Jelas'],
-    challenges: 'Menempatkan tombol darurat dan jadwal dokter di posisi yang paling mudah diakses saat situasi darurat hewan.',
-    role: 'Web Developer',
-    demoUrl: 'https://clarate.id/templates/sahabat-satwa',
+    summary: 'Sistem manajemen sumber daya manusia terpadu: absensi berbasis geolocation/shift, otomasi payroll & slip gaji, alur persetujuan cuti berjenjang, dan KPI evaluasi staf.',
+    description: 'Platform HRIS modern yang mengeliminasi kalkulasi absensi dan penggajian manual, memberikan visibilitas produktivitas tim secara transparan dan akurat.',
+    architecture: ['Role-Based Access Control (RBAC)', 'Automated Payroll Engine', 'Geolocation Shift Attendance', 'Document Vault'],
+    stack: ['Payroll Engine', 'Shift Scheduling', 'Cuti & Lembur', 'RBAC Security', 'Audit Trail'],
+    highlights: [
+      'Perhitungan PPh 21, BPJS & Payroll otomatis',
+      'Pencatatan presensi GPS & proteksi fake GPS',
+      'Manajemen lembur dan persetujuan bertingkat'
+    ],
+    challenges: 'Menghubungkan data presensi real-time dengan formula lembur dan potongan gaji yang kompleks sesuai regulasi ketenagakerjaan.',
+    role: 'HRIS System Architect',
+    demoUrl: 'https://wa.me/6285141220521?text=Halo%20Rendy%2C%20saya%20tertarik%20demo%20Sistem%20HRIS',
     imageUrl: '',
     imageFit: 'cover',
-    featured: false,
+    featured: true,
     metrics: [
-      { label: 'Kategori', value: 'Pet Clinic' },
-      { label: 'Fitur', value: 'Jadwal Dokter' },
-      { label: 'Layanan', value: 'Emergency Call' }
+      { label: 'Otomasi', value: 'Payroll & Cuti' },
+      { label: 'Keamanan', value: 'RBAC Multi-Level' },
+      { label: 'Presensi', value: 'GPS & Shift' }
+    ]
+  },
+  {
+    id: 'cad-engineering',
+    title: 'CAD Modeling & Engineering Systems',
+    subtitle: '2D/3D Technical Drafting & Mechanical Design',
+    category: 'fullstack',
+    summary: 'Perancangan gambar teknik 2D dan permodelan 3D mekanikal/arsitektur dengan standar presisi industri, spesifikasi fabrikasi terukur, dan visualisasi aset aset siap produksi.',
+    description: 'Layanan drafting dan pemodelan CAD presisi tinggi untuk kebutuhan manufaktur mesin, desain produk, tata letak pabrik, dan visualisasi rendering 3D.',
+    architecture: ['Parametric 3D Modeling', 'Geometric Dimensioning & Tolerancing (GD&T)', 'Fabrication Blueprints', 'Rendering'],
+    stack: ['AutoCAD', 'SolidWorks', '3D Modeling', 'Technical Drawing', 'BOM Generator'],
+    highlights: [
+      'Drafting gambar kerja 2D & spesifikasi toleransi',
+      'Pemodelan assembly 3D & visualisasi motion',
+      'Penyusunan Bill of Materials (BOM) otomatis'
+    ],
+    challenges: 'Memastikan toleransi geometrik dan dimensi presisi 100% akurat sebelum masuk ke tahap pemotongan dan fabrikasi nyata.',
+    role: 'CAD Design Engineer',
+    demoUrl: 'https://wa.me/6285141220521?text=Halo%20Rendy%2C%20saya%20tertarik%20layanan%20CAD%20Engineering',
+    imageUrl: '',
+    imageFit: 'cover',
+    featured: true,
+    metrics: [
+      { label: 'Standar', value: 'Presisi Industri' },
+      { label: 'Output', value: '2D/3D CAD' },
+      { label: 'Integrasi', value: 'BOM & Fabrikasi' }
+    ]
+  },
+  {
+    id: 'erp-system',
+    title: 'Custom ERP Enterprise Ecosystem',
+    subtitle: 'Finance (GL/COA), Multi-Warehouse, Purchasing & Sales',
+    category: 'fullstack',
+    summary: 'Sistem ERP kustom terpusat yang menyatukan seluruh mata rantai operasional: akuntansi double-entry (157+ COA), stok antar gudang, order pembelian, POS kasir, dan laporan eksekutif.',
+    description: 'Satu sumber kebenaran data perusahaan yang dirancang khusus menyesuaikan proses bisnis unik, menggantikan spreadsheet manual dan aplikasi terpisah yang sering menimbulkan selisih data.',
+    architecture: ['General Ledger Double-Entry', 'Real-Time Multi-Warehouse Inventory', 'Executive BI Dashboard', 'Purchasing & AP/AR'],
+    stack: ['General Ledger', 'Inventory Engine', 'Sales & POS', 'Purchasing Flow', 'PostgreSQL', 'RBAC Security'],
+    highlights: [
+      'Pengelolaan 157+ Chart of Accounts (COA) standar PSAK',
+      'Pelacakan batch & transfer stok multi-gudang real-time',
+      'Laporan Laba/Rugi, Neraca & Arus Kas instan'
+    ],
+    challenges: 'Menjaga integritas data transaksi ACID saat menangani ribuan pencatatan jurnal keuangan dan mutasi stok harian.',
+    role: 'Lead ERP Architect',
+    demoUrl: 'https://wa.me/6285141220521?text=Halo%20Rendy%2C%20saya%20tertarik%20konsultasi%20Sistem%20ERP',
+    imageUrl: '',
+    imageFit: 'cover',
+    featured: true,
+    metrics: [
+      { label: 'Akuntansi', value: '157+ COA GL' },
+      { label: 'Gudang', value: 'Multi-Warehouse' },
+      { label: 'Arsitektur', value: 'Custom ERP' }
     ]
   }
 ];
