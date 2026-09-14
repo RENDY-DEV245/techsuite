@@ -36,7 +36,7 @@ export function App() {
       <main className="relative">
         <HeroSection />
         <EditorialProfile />
-        <ProjectShowcase onOpenProject={setActiveModalProject} />
+        <ProjectShowcase />
         <TechGrid onOpenProject={setActiveModalProject} />
         <JourneyTimeline />
         <ContactSection />
