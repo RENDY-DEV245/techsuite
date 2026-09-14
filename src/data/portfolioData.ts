@@ -1,25 +1,20 @@
 import type { ProfileData, Project, TechItem, ExperienceItem } from '../types/portfolio';
 
 export const profileData: ProfileData = {
-  name: 'Reyhand Astra',
+  name: 'RENDY',
   tagline: 'Full-Stack & Mobile Developer',
-  education: 'Teknik Informatika (S1) • Universitas Widyatama',
-  status: 'Available for Engineering Roles & Projects',
-  bio: 'Informatics engineering undergraduate focused on building end-to-end web platforms and mobile applications with resilient architecture, clean code, and Linux-driven workflows.',
+  status: 'Semarang, Jawa Tengah • Available for New Projects',
+  bio: 'Merancang dan membangun website, aplikasi, CAD, hingga sistem ERP dari nol untuk startup, dan enterprise.',
   experienceStart: 'Active Developer',
-  avatarUrl: '/avatar.svg',
+  avatarUrl: 'https://i.ibb.co.com/qFFk1kpC/file-00000000a8f482118dd0819622ba9c28.png',
   interests: [
     'Web Architecture',
     'Mobile Systems',
-    'Linux Ecosystem',
-    'Software Reliability',
-    'Reactive Interfaces'
+    
   ],
   contact: {
-    email: 'ryhndastra@gmail.com',
-    github: 'https://github.com/ryhndastra',
-    linkedin: 'https://linkedin.com/in/reyhand-astra',
-    location: 'Indonesia'
+    email: 'renryajahh245@gmail.com',
+    
   }
 };
 
@@ -338,53 +333,53 @@ export const projectsData: Project[] = [
 
 export const experienceData: ExperienceItem[] = [
   {
-    id: 'edu-widyatama',
-    period: '2023 - Sekarang',
-    role: 'S1 Teknik Informatika',
-    organization: 'Universitas Widyatama (Angkatan 2023)',
-    badge: 'Pendidikan Formal',
-    category: 'education',
-    description:
-      'Menempuh studi sarjana Teknik Informatika dengan pendalaman fundamental ilmu komputer, struktur data, algoritma, rekayasa perangkat lunak, dan mengambil penjurusan spesialisasi Database / Data Analyst.',
-    highlights: [
-      'Penjurusan Database & Data Analyst',
-      'Pemodelan Data Relasional & Optimasi Query SQL',
-      'Fundamental Rekayasa Perangkat Lunak & Algoritma'
-    ],
-    tech: ['Database Systems', 'Data Analysis', 'SQL', 'Algorithms', 'Software Engineering', 'System Design']
-  },
-  {
-    id: 'exp-dicoding-dbs',
-    period: 'Feb 2026 - Jul 2026',
-    role: 'Fullstack Developer (Learning Path)',
-    organization: 'Dicoding CodingCamp 2026 Powered by DBS Foundation',
-    badge: 'Intensive Bootcamp',
-    category: 'bootcamp',
-    description:
-      'Program beasiswa pelatihan intensif Fullstack Developer dari Dicoding dan DBS Foundation. Membangun arsitektur frontend web modern (React & Vite), integrasi API backend type-safe, otentikasi data, dan berkolaborasi dalam Capstone Project kalorinAI.',
-    highlights: [
-      'Lulusan Jalur Fullstack Developer',
-      'Integrasi REST API, State Management & Cloud DB',
-      'Kolaborasi Tim Capstone Project kalorinAI'
-    ],
-    tech: ['React', 'TypeScript', 'Node.js', 'Supabase', 'Prisma ORM', 'Tailwind CSS', 'REST API']
-  },
-  {
-    id: 'exp-cimart-mbkm',
-    period: 'Jul 2026 - Sekarang',
-    role: 'Full-Stack Developer',
-    organization: 'Inisiatif MBKM / KKN Tematik & Capstone Kampus Desa Cibenda',
-    badge: 'MBKM / Capstone Kampus',
+    id: 'exp-ats',
+    period: 'Jun 2026 · 2 bln',
+    role: 'Full Stack Engineer',
+    organization: 'Asian Technology Solutions',
+    badge: 'Enterprise Systems',
     category: 'project',
     description:
-      'Inisiatif MBKM / KKN Tematik resmi dari kampus yang menjadi Capstone Project untuk digitalisasi komoditas ekonomi warga Desa Cibenda, Pangandaran. Dikerjakan secara mandiri dari perancangan arsitektur sistem, integrasi payment gateway Midtrans, notifikasi FCM, hingga deployment produksi.',
+      'Mengembangkan sistem berskala enterprise dengan fokus pada performa tinggi, skalabilitas arsitektur, dan integrasi API yang aman.',
     highlights: [
-      'Mandat Resmi Pimpinan Kampus & Perangkat Desa',
-      'Development Arsitektur End-to-End',
-      'Integrasi Payment Gateway Midtrans & WebSockets'
+      'Pengembangan sistem enterprise performa tinggi',
+      'Integrasi API & gateway berkeamanan ketat',
+      'Arsitektur backend tangguh dan terukur'
     ],
-    tech: ['Laravel', 'Inertia.js', 'React', 'MySQL', 'Docker', 'WebSockets', 'Midtrans', 'Leaflet']
+    tech: ['Full Stack', 'API Security', 'Enterprise Architecture', 'High Performance']
   },
+  {
+    id: 'exp-spasi',
+    period: 'Mei 2024 · 2 thn 3 bln',
+    role: 'Full Stack Engineer',
+    organization: 'Spasi Indonesia',
+    badge: 'Backend & Data Pipelines',
+    category: 'project',
+    description:
+      'Membangun backend service yang tangguh dan data-processing pipelines otomatis untuk mendukung efisiensi operasional bisnis internal.',
+    highlights: [
+      'Membangun backend service yang resilient',
+      'Otomasi pipeline pemrosesan data',
+      'Optimasi alur kerja operasional internal'
+    ],
+    tech: ['Backend Services', 'Data Pipelines', 'Automation', 'System Integration']
+  },
+  {
+    id: 'exp-indoteknik',
+    period: 'Jan 2022 – Apr 2024 · 2 thn 4 bln',
+    role: 'Full Stack Engineer',
+    organization: 'Indoteknik.com',
+    badge: 'Platform Architecture & Migration',
+    category: 'project',
+    description:
+      'Memimpin arsitektur dan migrasi platform indoteknik.com dari legacy stack ke arsitektur web modern yang terukur dan berkecepatan tinggi.',
+    highlights: [
+      'Memimpin migrasi platform dari legacy stack',
+      'Perancangan arsitektur web modern',
+      'Peningkatan skalabilitas dan performa platform'
+    ],
+    tech: ['Legacy Migration', 'Web Architecture', 'Full Stack', 'Scalability']
+  }, 
   {
     id: 'exp-rework-cybersecurity',
     period: 'Agu 2026 - Des 2026',
