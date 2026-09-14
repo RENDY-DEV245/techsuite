@@ -102,7 +102,7 @@ membuka sebuah website...`
   },
   {
     num: '04',
-    title: 'FOTO 3 - Kegagalan Cara Konvensional',
+    title: 'FOTO 3',
     content: `FOTO 3
 
 Kami pernah mencoba menggunakan cara konvensional.
@@ -121,7 +121,7 @@ Ketika ketiga pilar ini disatukan dalam satu database terpusat... lonjakan efisi
   },
   {
     num: '05',
-    title: 'FOTO 4 - Lonjakan Penjualan 300%',
+    title: 'FOTO 4',
     content: `FOTO 4
 
 Penjualan online melonjak 300% dalam 30 hari pertama
@@ -144,7 +144,7 @@ memiliki Infrastruktur Terintegrasi Tanpa Celah.`
   },
   {
     num: '06',
-    title: 'FOTO 5 - Implementasi 18 Bulan',
+    title: 'FOTO 5',
     content: `FOTO 5
 
 Selama 18 bulan terakhir, arsitektur ini telah diimplementasikan di puluhan lini bisnis:
@@ -165,7 +165,7 @@ Semua data tersimpan aman dalam server terdedikasi milik perusahaan Anda sendiri
   },
   {
     num: '07',
-    title: 'FOTO 6 - Alasan Website Biasa Gagal',
+    title: 'FOTO 6',
     content: `FOTO 6
 
 Mengapa sebagian besar website bisnis gagal
@@ -182,7 +182,7 @@ Dan di era persaingan ketat saat ini, ketidaksiapan sistem operasional saat mene
   },
   {
     num: '08',
-    title: 'FOTO 7 - Kepercayaan & Transaksi Kilat',
+    title: 'FOTO 7',
     content: `FOTO 7
 
 Pelanggan masa kini menginginkan dua hal: Kepercayaan
@@ -199,7 +199,7 @@ Ketika ketiga elemen ini bekerja serempak, bisnis Anda memiliki daya saing yang 
   },
   {
     num: '09',
-    title: 'FOTO 8 - User-Friendly Tanpa IT',
+    title: 'FOTO 8',
     content: `FOTO 8
 
 Sistem ini dirancang khusus agar mudah digunakan (user-friendly), bahkan jika Anda atau tim Anda tidak memiliki latar belakang IT sekalipun.
@@ -210,7 +210,7 @@ Anda tidak perlu mempekerjakan tim programmer bergaji mahal untuk mengelola oper
   },
   {
     num: '10',
-    title: 'FOTO 9 - Enterprise Omni-Scale Engine™',
+    title: 'FOTO 9',
     content: `FOTO 9
 
 Memperkenalkan: Enterprise Omni-Scale Engine™
@@ -221,7 +221,7 @@ Sistem terintegrasi pertama yang dirancang untuk mempercepat skala bisnis Anda d
   },
   {
     num: '11',
-    title: 'FOTO 10 - Isi Paket 3-in-1',
+    title: 'FOTO 10',
     content: `FOTO 10
 
 Apa yang Anda dapatkan di dalam paket Enterprise Omni-Scale Engine™:
@@ -234,7 +234,7 @@ Apa yang Anda dapatkan di dalam paket Enterprise Omni-Scale Engine™:
   },
   {
     num: '12',
-    title: 'FOTO 11 - Skema Harga & Nilai Investasi',
+    title: 'FOTO 11',
     content: `FOTO 11
 
 Fitur Tambahan & Keamanan:
@@ -277,7 +277,7 @@ Rp15.000.000 Sahaja!`
   },
   {
     num: '13',
-    title: 'Penghematan Rp85jt & Garansi',
+    title: 'Penghematan & Garansi Purna-Jual',
     content: `Anda menghemat Rp85.000.000 dari total nilai investasi asli tanpa ada biaya royalti bulanan yang menjerat leher Anda!
 
 Kesempatan emas ini hanya dibuka untuk pemilik bisnis yang tidak mau lagi melihat uang mereka dirampas oleh kompetitor.
@@ -316,50 +316,56 @@ export const StorySection: React.FC = () => {
   };
 
   return (
-    <section id="story" className="relative z-20 -mt-1 w-full bg-[#02587a] select-none py-14 sm:py-20 overflow-hidden text-[#0f172a]">
-      <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-12">
-        
-        {/* CARD RINGKAS 1 HALAMAN */}
+    <section
+      id="story"
+      className="relative z-20 -mt-1 w-full bg-[#02587a] select-none py-16 sm:py-24 lg:py-28 text-[#0f172a]"
+    >
+      {/* Kontainer menyamai TechGrid & Profile (max-w-7xl) agar serasi di desktop */}
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-8 lg:px-12">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5, type: 'spring', stiffness: 220, damping: 24 }}
-          className="p-6 sm:p-10 rounded-[28px] sm:rounded-[36px] bg-[#fffdf5] border-3 sm:border-4 border-[#0f172a] shadow-[8px_8px_0px_#0f172a] space-y-6"
+          transition={{ duration: 0.55, type: 'spring', stiffness: 220, damping: 24 }}
+          className="p-6 sm:p-10 lg:p-14 rounded-[28px] sm:rounded-[40px] bg-[#fffdf5] border-3 sm:border-4 border-[#0f172a] shadow-[8px_8px_0px_#0f172a] sm:shadow-[12px_12px_0px_#0f172a] space-y-6 lg:space-y-8"
         >
-          {/* Header Card */}
-          <div className="flex flex-wrap items-center justify-between gap-3">
-            <div className="flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-[#fde047] text-[#0f172a] text-xs font-mono font-black border-2 border-[#0f172a] shadow-[2.5px_2.5px_0px_#0f172a]">
-              <Sparkles className="w-3.5 h-3.5 text-[#0284c7]" />
-              <span>STUDI KASUS // RAHASIA DIGITAL TRINITAS</span>
+          {/* Header Bar */}
+          <div className="flex flex-wrap items-center justify-between gap-3 pb-2 border-b-2 border-[#0f172a]/10">
+            <div className="flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-[#fde047] text-[#0f172a] text-xs sm:text-sm font-mono font-black border-2 border-[#0f172a] shadow-[2.5px_2.5px_0px_#0f172a]">
+              <Sparkles className="w-4 h-4 text-[#0284c7]" />
+              <span>STUDI KASUS BISNIS // RAHASIA DIGITAL TRINITAS</span>
             </div>
-            <div className="px-3 py-1 rounded-xl bg-[#dcfce7] text-[#15803d] border-2 border-[#0f172a] text-[11px] font-mono font-black shadow-[2px_2px_0px_#0f172a]">
-              13 BAGIAN LENGKAP
+            <div className="px-3 py-1 rounded-xl bg-[#dcfce7] text-[#15803d] border-2 border-[#0f172a] text-xs font-mono font-black shadow-[2px_2px_0px_#0f172a]">
+              13 BAB LENGKAP TERSEDIA
             </div>
           </div>
 
-          <div className="space-y-2">
-            <h2 className="text-xl sm:text-3xl lg:text-4xl font-black text-[#0f172a] tracking-tight leading-snug">
+          {/* Judul & Deskripsi Luas untuk Desktop */}
+          <div className="space-y-3 max-w-5xl">
+            <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black text-[#0f172a] tracking-tight leading-[1.14]">
               “Saya Telah Menemukan Senjata Pamungkas dalam Merebut Pasar yang Mengubah Nasib Finansial Anda Selamanya...”
             </h2>
-            <p className="text-xs sm:text-sm text-[#475569] font-medium leading-relaxed">
-              Kisah lengkap bagaimana arsitektur 3-in-1 (Compro + E-Commerce + ERP) mendongkrak penjualan 300% dan menekan selisih stok hingga 0%. Klik menu di bawah untuk memilih bab cerita.
+            <p className="text-xs sm:text-base lg:text-lg text-[#475569] font-medium leading-relaxed">
+              Kisah lengkap bagaimana arsitektur 3-in-1 (Compro + E-Commerce + ERP) mendongkrak penjualan 300% dan menekan selisih stok hingga 0%. Pilih bab di bawah untuk membaca isi lengkapnya.
             </p>
           </div>
 
-          {/* Action Bar (Menu Dropdown & Tombol Baca) */}
-          <div className="pt-2 border-t-2 border-[#0f172a]/15 flex flex-wrap items-center gap-3">
-            
-            {/* DROPDOWN PILIH BAB CERITA */}
-            <div className="relative inline-block" ref={dropdownRef}>
+          {/* Action Row */}
+          <div className="pt-4 border-t-2 border-[#0f172a]/15 flex flex-wrap items-center gap-3.5">
+            {/* DROPDOWN MENU BAB CERITA */}
+            <div className="relative" ref={dropdownRef}>
               <button
                 type="button"
                 onClick={() => setShowDropdown((prev: boolean) => !prev)}
-                className="inline-flex items-center justify-center gap-2 px-4 py-2.5 sm:px-5 sm:py-3 rounded-xl bg-[#0d2844] hover:bg-[#123559] text-white border-2 border-[#0f172a] shadow-[3px_3px_0px_#0f172a] text-xs sm:text-sm font-mono font-black transition-all cursor-pointer hover:-translate-y-0.5"
+                className="inline-flex items-center justify-center gap-2 px-4 py-2.5 sm:px-6 sm:py-3.5 rounded-xl sm:rounded-2xl bg-[#0d2844] hover:bg-[#123559] text-white border-2 border-[#0f172a] shadow-[3px_3px_0px_#0f172a] sm:shadow-[4px_4px_0px_#0f172a] text-xs sm:text-sm font-mono font-black transition-all cursor-pointer hover:-translate-y-0.5"
               >
                 <BookOpen className="w-4 h-4 text-[#38bdf8]" />
                 <span>Pilih Bab Cerita (1 - 13)</span>
-                <ChevronDown className={`w-4 h-4 text-[#38bdf8] transition-transform duration-200 ${showDropdown ? 'rotate-180' : ''}`} />
+                <ChevronDown
+                  className={`w-4 h-4 text-[#38bdf8] transition-transform duration-200 ${
+                    showDropdown ? 'rotate-180' : ''
+                  }`}
+                />
               </button>
 
               <AnimatePresence>
@@ -378,10 +384,10 @@ export const StorySection: React.FC = () => {
                       animate={{ opacity: 1, y: 0, scale: 1 }}
                       exit={{ opacity: 0, y: 10, scale: 0.95 }}
                       transition={{ duration: 0.15 }}
-                      className="fixed sm:absolute left-4 right-4 top-1/2 -translate-y-1/2 sm:top-full sm:translate-y-0 sm:left-0 sm:right-auto mt-0 sm:mt-2 w-auto sm:w-80 max-h-[70vh] overflow-y-auto p-2.5 rounded-2xl bg-[#071b2f] border-2 border-[#38bdf8]/60 shadow-[0_10px_35px_rgba(0,0,0,0.8)] z-[100] flex flex-col gap-1.5"
+                      className="fixed sm:absolute left-4 right-4 top-1/2 -translate-y-1/2 sm:top-full sm:translate-y-0 sm:left-0 sm:right-auto mt-0 sm:mt-2 w-auto sm:w-96 max-h-[65vh] overflow-y-auto p-3 rounded-2xl sm:rounded-3xl bg-[#071b2f] border-2 sm:border-3 border-[#38bdf8]/60 shadow-[0_15px_45px_rgba(0,0,0,0.85)] z-[100] flex flex-col gap-1.5"
                     >
                       <div className="flex items-center justify-between px-3 py-1.5 border-b border-[#224c75]/70">
-                        <span className="text-[11px] font-mono font-bold text-[#38bdf8] uppercase tracking-wider">
+                        <span className="text-xs font-mono font-bold text-[#38bdf8] uppercase tracking-wider">
                           Daftar 13 Bab Cerita:
                         </span>
                         <button
@@ -398,15 +404,15 @@ export const StorySection: React.FC = () => {
                           key={idx}
                           type="button"
                           onClick={() => openChapter(idx)}
-                          className="w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-xs font-semibold text-[#f8fafc] bg-[#0c233c]/60 hover:bg-[#123559] hover:text-[#38bdf8] border border-transparent hover:border-[#38bdf8]/30 transition-all text-left cursor-pointer"
+                          className="w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs font-semibold text-[#f8fafc] bg-[#0c233c]/60 hover:bg-[#123559] hover:text-[#38bdf8] border border-transparent hover:border-[#38bdf8]/30 transition-all text-left cursor-pointer"
                         >
                           <div className="flex items-center gap-2.5 truncate">
-                            <span className="text-[10px] font-mono font-black text-[#38bdf8] px-1.5 py-0.5 rounded bg-[#0d2844] border border-[#224c75] shrink-0">
+                            <span className="text-[10px] font-mono font-black text-[#38bdf8] px-2 py-0.5 rounded bg-[#0d2844] border border-[#224c75] shrink-0">
                               {item.num}
                             </span>
                             <span className="truncate">{item.title}</span>
                           </div>
-                          <ChevronRight className="w-3.5 h-3.5 text-[#64748b] shrink-0" />
+                          <ChevronRight className="w-4 h-4 text-[#64748b] shrink-0" />
                         </button>
                       ))}
                     </motion.div>
@@ -415,11 +421,11 @@ export const StorySection: React.FC = () => {
               </AnimatePresence>
             </div>
 
-            {/* Tombol Mulai Baca dari Bab 1 */}
+            {/* Tombol Mulai Baca */}
             <button
               type="button"
               onClick={() => openChapter(0)}
-              className="inline-flex items-center justify-center gap-2 px-4 py-2.5 sm:px-5 sm:py-3 rounded-xl bg-[#fde047] hover:bg-[#facc15] text-[#0f172a] border-2 border-[#0f172a] shadow-[3px_3px_0px_#0f172a] text-xs sm:text-sm font-mono font-black transition-all cursor-pointer hover:-translate-y-0.5"
+              className="inline-flex items-center justify-center gap-2 px-4 py-2.5 sm:px-6 sm:py-3.5 rounded-xl sm:rounded-2xl bg-[#fde047] hover:bg-[#facc15] text-[#0f172a] border-2 border-[#0f172a] shadow-[3px_3px_0px_#0f172a] sm:shadow-[4px_4px_0px_#0f172a] text-xs sm:text-sm font-mono font-black transition-all cursor-pointer hover:-translate-y-0.5"
             >
               <span>Mulai Baca Bab 01</span>
               <ArrowRight className="w-4 h-4" />
@@ -428,18 +434,16 @@ export const StorySection: React.FC = () => {
         </motion.div>
       </div>
 
-      {/* ========================================================
-          MODAL READER: MENAMPILKAN TEKS CERITA 100% PERSIS
-         ======================================================== */}
+      {/* MODAL BACA BESAR, LEGA & RESPONSIF DI DESKTOP */}
       <AnimatePresence>
         {activeModalChapter !== null && (
-          <div className="fixed inset-0 z-[120] flex items-center justify-center p-4 sm:p-6 overflow-y-auto">
+          <div className="fixed inset-0 z-[120] flex items-center justify-center p-4 sm:p-8 lg:p-12 overflow-y-auto">
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setActiveModalChapter(null)}
-              className="fixed inset-0 bg-[#0f172a]/80 backdrop-blur-sm"
+              className="fixed inset-0 bg-[#071b2f]/85 backdrop-blur-md"
             />
 
             <motion.div
@@ -447,15 +451,15 @@ export const StorySection: React.FC = () => {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
               transition={{ type: 'spring', damping: 25, stiffness: 280 }}
-              className="relative z-10 w-full max-w-3xl bg-[#fffdf5] border-3 sm:border-4 border-[#0f172a] rounded-[24px] sm:rounded-[32px] shadow-[8px_8px_0px_#0f172a] overflow-hidden my-6 flex flex-col max-h-[85vh]"
+              className="relative z-10 w-full max-w-4xl lg:max-w-5xl bg-[#fffdf5] border-3 sm:border-4 border-[#0f172a] rounded-[24px] sm:rounded-[36px] shadow-[8px_8px_0px_#0f172a] sm:shadow-[14px_14px_0px_#0f172a] overflow-hidden my-auto flex flex-col max-h-[88vh]"
             >
-              {/* Modal Header */}
-              <div className="flex items-center justify-between p-4 sm:p-5 bg-[#071b2f] text-white border-b-3 border-[#0f172a] shrink-0">
-                <div className="flex items-center gap-2.5">
-                  <span className="px-2.5 py-1 rounded-lg bg-[#fde047] text-[#0f172a] text-xs font-mono font-black border border-[#0f172a]">
-                    BAGIAN {STORY_CHAPTERS[activeModalChapter].num} / 13
+              {/* Header Modal */}
+              <div className="flex items-center justify-between p-4 sm:p-6 bg-[#071b2f] text-white border-b-3 sm:border-b-4 border-[#0f172a] shrink-0">
+                <div className="flex items-center gap-3 truncate">
+                  <span className="px-3 py-1 rounded-lg bg-[#fde047] text-[#0f172a] text-xs font-mono font-black border border-[#0f172a] shrink-0">
+                    BAB {STORY_CHAPTERS[activeModalChapter].num} / 13
                   </span>
-                  <h3 className="text-sm sm:text-base font-black text-white truncate max-w-[200px] sm:max-w-md">
+                  <h3 className="text-sm sm:text-lg lg:text-xl font-black text-white truncate">
                     {STORY_CHAPTERS[activeModalChapter].title}
                   </h3>
                 </div>
@@ -463,49 +467,57 @@ export const StorySection: React.FC = () => {
                 <button
                   type="button"
                   onClick={() => setActiveModalChapter(null)}
-                  className="p-1.5 rounded-xl bg-[#fffdf5] hover:bg-[#fee2e2] text-[#0f172a] hover:text-[#dc2626] border-2 border-[#0f172a] shadow-[2px_2px_0px_#0f172a] transition-all cursor-pointer"
+                  className="p-2 rounded-xl bg-[#fffdf5] hover:bg-[#fee2e2] text-[#0f172a] hover:text-[#dc2626] border-2 border-[#0f172a] shadow-[2px_2px_0px_#0f172a] transition-all cursor-pointer shrink-0"
                 >
-                  <X className="w-4 h-4 sm:w-5 sm:h-5" />
+                  <X className="w-5 h-5" />
                 </button>
               </div>
 
-              {/* Modal Body (Isi Teks Cerita) */}
-              <div className="p-5 sm:p-8 overflow-y-auto space-y-4 text-xs sm:text-sm text-[#1e293b] leading-relaxed font-sans whitespace-pre-line">
+              {/* Teks Cerita (Legible, Spasi Nyaman di Desktop) */}
+              <div className="p-6 sm:p-10 lg:p-12 overflow-y-auto space-y-4 text-xs sm:text-base lg:text-lg text-[#1e293b] leading-relaxed font-sans whitespace-pre-line">
                 {STORY_CHAPTERS[activeModalChapter].content}
               </div>
 
-              {/* Modal Footer Navigasi (Prev / Next Chapter) */}
-              <div className="p-3 sm:p-4 bg-[#fff9d4] border-t-2 border-[#0f172a]/20 flex items-center justify-between gap-2 shrink-0">
+              {/* Footer Navigasi Antar Bab */}
+              <div className="p-4 sm:p-6 bg-[#fff9d4] border-t-3 border-[#0f172a]/20 flex items-center justify-between gap-3 shrink-0">
                 <button
                   type="button"
                   disabled={activeModalChapter === 0}
-                  onClick={() => setActiveModalChapter((prev: number | null) => (prev !== null && prev > 0 ? prev - 1 : prev))}
-                  className={`inline-flex items-center gap-1 px-3 py-1.5 sm:px-4 sm:py-2 rounded-xl border-2 border-[#0f172a] text-xs font-mono font-bold transition-all ${
+                  onClick={() =>
+                    setActiveModalChapter((prev: number | null) =>
+                      prev !== null && prev > 0 ? prev - 1 : prev
+                    )
+                  }
+                  className={`inline-flex items-center gap-1.5 px-3.5 py-2 sm:px-5 sm:py-2.5 rounded-xl border-2 border-[#0f172a] text-xs sm:text-sm font-mono font-bold transition-all ${
                     activeModalChapter === 0
                       ? 'bg-gray-200 text-gray-400 border-gray-300 cursor-not-allowed shadow-none'
                       : 'bg-[#fffdf5] hover:bg-[#fde047] text-[#0f172a] shadow-[2px_2px_0px_#0f172a] cursor-pointer'
                   }`}
                 >
-                  <ArrowLeft className="w-3.5 h-3.5" />
+                  <ArrowLeft className="w-4 h-4" />
                   <span>Sebelumnya</span>
                 </button>
 
-                <span className="text-[11px] font-mono font-black text-[#0f172a]">
+                <span className="text-xs sm:text-sm font-mono font-black text-[#0f172a]">
                   Bab {activeModalChapter + 1} dari 13
                 </span>
 
                 <button
                   type="button"
                   disabled={activeModalChapter === STORY_CHAPTERS.length - 1}
-                  onClick={() => setActiveModalChapter((prev: number | null) => (prev !== null && prev < STORY_CHAPTERS.length - 1 ? prev + 1 : prev))}
-                  className={`inline-flex items-center gap-1 px-3 py-1.5 sm:px-4 sm:py-2 rounded-xl border-2 border-[#0f172a] text-xs font-mono font-bold transition-all ${
+                  onClick={() =>
+                    setActiveModalChapter((prev: number | null) =>
+                      prev !== null && prev < STORY_CHAPTERS.length - 1 ? prev + 1 : prev
+                    )
+                  }
+                  className={`inline-flex items-center gap-1.5 px-3.5 py-2 sm:px-5 sm:py-2.5 rounded-xl border-2 border-[#0f172a] text-xs sm:text-sm font-mono font-bold transition-all ${
                     activeModalChapter === STORY_CHAPTERS.length - 1
                       ? 'bg-gray-200 text-gray-400 border-gray-300 cursor-not-allowed shadow-none'
                       : 'bg-[#fde047] hover:bg-[#facc15] text-[#0f172a] shadow-[2px_2px_0px_#0f172a] cursor-pointer'
                   }`}
                 >
                   <span>Selanjutnya</span>
-                  <ArrowRight className="w-3.5 h-3.5" />
+                  <ArrowRight className="w-4 h-4" />
                 </button>
               </div>
             </motion.div>
