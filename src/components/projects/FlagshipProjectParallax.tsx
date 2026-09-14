@@ -14,8 +14,8 @@ import {
   Calendar,
   Receipt,
   UserCheck,
-  Star
-  Play 
+  Star, 
+  Play, 
 } from 'lucide-react';
 import type { Project } from '../../types/portfolio';
 import { AnimatedOceanSlideBackground } from './AnimatedOceanSlideBackground';
@@ -308,8 +308,6 @@ export const FlagshipSlideCard: React.FC<FlagshipSlideCardProps> = ({
                       <span>Konsultasi Sistem</span>
                     </a>
                   )
-                )}
-                )}
                 )}
               </div>
             </div>
