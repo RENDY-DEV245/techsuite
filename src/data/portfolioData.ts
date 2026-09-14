@@ -332,38 +332,7 @@ export const projectsData: Project[] = [
 ];
 
 export const experienceData: ExperienceItem[] = [
-  {
-    id: 'exp-ats',
-    period: 'Jun 2026 · 2 bln',
-    role: 'Full Stack Engineer',
-    organization: 'Asian Technology Solutions',
-    badge: 'Enterprise Systems',
-    category: 'project',
-    description:
-      'Mengembangkan sistem berskala enterprise dengan fokus pada performa tinggi, skalabilitas arsitektur, dan integrasi API yang aman.',
-    highlights: [
-      'Pengembangan sistem enterprise performa tinggi',
-      'Integrasi API & gateway berkeamanan ketat',
-      'Arsitektur backend tangguh dan terukur'
-    ],
-    tech: ['Full Stack', 'API Security', 'Enterprise Architecture', 'High Performance']
-  },
-  {
-    id: 'exp-spasi',
-    period: 'Mei 2024 · 2 thn 3 bln',
-    role: 'Full Stack Engineer',
-    organization: 'Spasi Indonesia',
-    badge: 'Backend & Data Pipelines',
-    category: 'project',
-    description:
-      'Membangun backend service yang tangguh dan data-processing pipelines otomatis untuk mendukung efisiensi operasional bisnis internal.',
-    highlights: [
-      'Membangun backend service yang resilient',
-      'Otomasi pipeline pemrosesan data',
-      'Optimasi alur kerja operasional internal'
-    ],
-    tech: ['Backend Services', 'Data Pipelines', 'Automation', 'System Integration']
-  },
+
   {
     id: 'exp-indoteknik',
     period: 'Jan 2022 – Apr 2024 · 2 thn 4 bln',
@@ -380,6 +349,38 @@ export const experienceData: ExperienceItem[] = [
     ],
     tech: ['Legacy Migration', 'Web Architecture', 'Full Stack', 'Scalability']
   }, 
+    {
+    id: 'exp-spasi',
+    period: 'Mei 2024 · 2 thn 3 bln',
+    role: 'Full Stack Engineer',
+    organization: 'Spasi Indonesia',
+    badge: 'Backend & Data Pipelines',
+    category: 'project',
+    description:
+      'Membangun backend service yang tangguh dan data-processing pipelines otomatis untuk mendukung efisiensi operasional bisnis internal.',
+    highlights: [
+      'Membangun backend service yang resilient',
+      'Otomasi pipeline pemrosesan data',
+      'Optimasi alur kerja operasional internal'
+    ],
+    tech: ['Backend Services', 'Data Pipelines', 'Automation', 'System Integration']
+  },
+  {
+    id: 'exp-ats',
+    period: 'Jun 2026 · 2 bln',
+    role: 'Full Stack Engineer',
+    organization: 'Asian Technology Solutions',
+    badge: 'Enterprise Systems',
+    category: 'project',
+    description:
+      'Mengembangkan sistem berskala enterprise dengan fokus pada performa tinggi, skalabilitas arsitektur, dan integrasi API yang aman.',
+    highlights: [
+      'Pengembangan sistem enterprise performa tinggi',
+      'Integrasi API & gateway berkeamanan ketat',
+      'Arsitektur backend tangguh dan terukur'
+    ],
+    tech: ['Full Stack', 'API Security', 'Enterprise Architecture', 'High Performance']
+  },
   {
     id: 'exp-rework-cybersecurity',
     period: 'Agu 2026 - Des 2026',
