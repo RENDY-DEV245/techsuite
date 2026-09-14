@@ -16,25 +16,27 @@ export const TechGrid: React.FC<TechGridProps> = ({ onOpenProject }) => {
   const [selectedLayer, setSelectedLayer] = useState<TechLayer>('client');
   const [selectedTech, setSelectedTech] = useState<TechItem | null>(null);
 
-  // partition technologies by architectural layer
-  const clientTech = techStackData.filter((t) => t.layer === 'client');
-  const backendTech = techStackData.filter((t) => t.layer === 'backend');
-  const databaseTech = techStackData.filter((t) => t.layer === 'database');
-  const devopsTech = techStackData.filter((t) => t.layer === 'devops');
-
+// tambah partition baru di bawah devopsTech:
+const clientTech = techStackData.filter((t) => t.layer === 'client');
+const backendTech = techStackData.filter((t) => t.layer === 'backend');
+const databaseTech = techStackData.filter((t) => t.layer === 'database');
+const devopsTech = techStackData.filter((t) => t.layer === 'devops');
+const cadTech = techStackData.filter((t) => t.layer === 'cad');   // ← baris baru
+  
   const handleSelectDomain = (domain: FlowDomainId) => {
-    setActiveDomain(domain);
-    setSelectedTech(null);
+  setActiveDomain(domain);
+  setSelectedTech(null);
 
-    // automatically shift inspection layer to the primary active layer for that domain
-    if (domain === 'web' || domain === 'mobile' || domain === 'cad') {
-      setSelectedLayer('client');
-    } else if (domain === 'backend' || domain === 'erp') {
-      setSelectedLayer('backend');
-    } else if (domain === 'devops') {
-      setSelectedLayer('devops');
-    }
-  };
+  if (domain === 'web' || domain === 'mobile') {
+    setSelectedLayer('client');
+  } else if (domain === 'cad') {
+    setSelectedLayer('cad');           // ← baris baru, pisah dari client
+  } else if (domain === 'backend' || domain === 'erp') {
+    setSelectedLayer('backend');
+  } else if (domain === 'devops') {
+    setSelectedLayer('devops');
+  }
+};
   
   const handleSelectTech = (tech: TechItem) => {
     setSelectedTech(tech);
@@ -149,22 +151,35 @@ export const TechGrid: React.FC<TechGridProps> = ({ onOpenProject }) => {
               isLayerSelected={selectedLayer === 'database'}
             />
 
-            {/* devops layer */}
-            <PipelineNodeLayer
-              layerId="devops"
-              stepNumber="04"
-              title="DevOps & Tools"
-              subtitle="Environment"
-              roleDescription="Sistem operasi Linux, kontainer Docker, dan deployment."
-              techItems={devopsTech}
-              activeDomain={activeDomain}
-              selectedTech={selectedTech}
-              onSelectTech={handleSelectTech}
-              onSelectLayer={handleSelectLayer}
-              isLayerSelected={selectedLayer === 'devops'}
-            />
-          </div>
-        </div>
+       {/* devops layer */}
+<PipelineNodeLayer
+  layerId="devops"
+  stepNumber="04"
+  title="DevOps & Tools"
+  subtitle="Environment"
+  roleDescription="Sistem operasi Linux, kontainer Docker, dan deployment."
+  techItems={devopsTech}
+  activeDomain={activeDomain}
+  selectedTech={selectedTech}
+  onSelectTech={handleSelectTech}
+  onSelectLayer={handleSelectLayer}
+  isLayerSelected={selectedLayer === 'devops'}
+/>
+
+{/* cad layer */}
+<PipelineNodeLayer
+  layerId="cad"
+  stepNumber="05"
+  title="CAD & 3D Engineering"
+  subtitle="Drafting & Modeling"
+  roleDescription="Perancangan gambar teknik 2D/3D dan pemodelan parametrik mekanikal."
+  techItems={cadTech}
+  activeDomain={activeDomain}
+  selectedTech={selectedTech}
+  onSelectTech={handleSelectTech}
+  onSelectLayer={handleSelectLayer}
+  isLayerSelected={selectedLayer === 'cad'}
+/>
 
         {/* inspector deep dive panel */}
         <div className="mt-10">
