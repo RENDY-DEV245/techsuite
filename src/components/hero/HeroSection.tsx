@@ -1,5 +1,5 @@
 import React, { useRef, useState, useEffect } from 'react';
-import { ArrowDown, Download, ExternalLink, ChevronDown, Globe, Smartphone, Users, Box, Database } from 'lucide-react';
+import { ArrowDown, Download, ExternalLink, ChevronDown, Globe, Smartphone, Users, Box, Database, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { OceanHeroCanvas } from './OceanHeroCanvas';
 import type { OceanHeroHandle } from './OceanHeroCanvas';
@@ -21,11 +21,10 @@ export const HeroSection: React.FC = () => {
 
   const collisionCooldownRef = useRef<boolean>(false);
 
-  // State untuk menu pilihan proposal
+  // State menu proposal
   const [showProposalMenu, setShowProposalMenu] = useState<boolean>(false);
   const proposalDropdownRef = useRef<HTMLDivElement | null>(null);
 
-  // Deteksi klik di luar menu untuk menutup popup
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (proposalDropdownRef.current && !proposalDropdownRef.current.contains(event.target as Node)) {
@@ -36,7 +35,6 @@ export const HeroSection: React.FC = () => {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
-  // Data 5 Pilihan Proposal dengan Direct Download Link
   const proposalList = [
     {
       label: 'Proposal Web Development',
@@ -65,7 +63,6 @@ export const HeroSection: React.FC = () => {
     },
   ];
 
-  // Fungsi trigger download langsung tanpa menutup/mengalihkan web
   const handleDirectDownload = (url: string) => {
     const link = document.createElement('a');
     link.href = url;
@@ -163,7 +160,7 @@ export const HeroSection: React.FC = () => {
 
       <BeachDecorations />
 
-      <div className="relative z-10 max-w-6xl mx-auto px-6 w-full flex-1 flex flex-col items-center justify-center -translate-y-16 sm:-translate-y-24">
+      <div className="relative z-30 max-w-6xl mx-auto px-6 w-full flex-1 flex flex-col items-center justify-center -translate-y-16 sm:-translate-y-24">
         <div className="w-full flex flex-col items-center text-center">
           <HeroPhysicsStage
             ref={stageRef}
@@ -185,7 +182,7 @@ export const HeroSection: React.FC = () => {
               Lihat Proyek
             </TactileButton>
 
-            {/* Tombol Pilihan Download Proposal */}
+            {/* Dropdown Download Proposal */}
             <div className="relative inline-block" ref={proposalDropdownRef}>
               <button
                 type="button"
@@ -197,39 +194,60 @@ export const HeroSection: React.FC = () => {
                 <ChevronDown className={`w-3.5 h-3.5 text-[#38bdf8] transition-transform duration-200 ${showProposalMenu ? 'rotate-180' : ''}`} />
               </button>
 
-              {/* Menu Pilihan Popup */}
+              {/* Menu Pilihan Popup dengan Z-Index Tinggi & Posisi Aman */}
               <AnimatePresence>
                 {showProposalMenu && (
-                  <motion.div
-                    initial={{ opacity: 0, y: 8, scale: 0.95 }}
-                    animate={{ opacity: 1, y: 0, scale: 1 }}
-                    exit={{ opacity: 0, y: 6, scale: 0.95 }}
-                    transition={{ duration: 0.15 }}
-                    className="absolute left-1/2 -translate-x-1/2 sm:left-0 sm:translate-x-0 mt-2 w-64 p-1.5 rounded-2xl bg-[#071b2f] border-2 border-[#224c75] shadow-2xl z-50 flex flex-col gap-1 backdrop-blur-xl"
-                  >
-                    <div className="px-3 py-1.5 text-[10px] font-mono font-bold text-[#94a3b8] uppercase tracking-wider border-b border-[#224c75]/50">
-                      Pilih Jenis Proposal:
-                    </div>
-                    {proposalList.map((item, idx) => {
-                      const Icon = item.icon;
-                      return (
+                  <>
+                    {/* Backdrop khusus mobile agar fokus dan mudah ditutup */}
+                    <motion.div
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      onClick={() => setShowProposalMenu(false)}
+                      className="fixed inset-0 bg-black/50 backdrop-blur-xs z-[90] sm:hidden"
+                    />
+
+                    <motion.div
+                      initial={{ opacity: 0, y: 10, scale: 0.95 }}
+                      animate={{ opacity: 1, y: 0, scale: 1 }}
+                      exit={{ opacity: 0, y: 10, scale: 0.95 }}
+                      transition={{ duration: 0.15 }}
+                      className="fixed sm:absolute left-4 right-4 top-1/2 -translate-y-1/2 sm:top-full sm:translate-y-0 sm:left-1/2 sm:-translate-x-1/2 sm:right-auto mt-0 sm:mt-2 sm:w-72 p-2.5 rounded-2xl bg-[#071b2f] border-2 border-[#38bdf8]/60 shadow-[0_10px_35px_rgba(0,0,0,0.8)] z-[100] flex flex-col gap-1.5"
+                    >
+                      <div className="flex items-center justify-between px-3 py-1.5 border-b border-[#224c75]/70">
+                        <span className="text-[11px] font-mono font-bold text-[#38bdf8] uppercase tracking-wider">
+                          Pilih Jenis Proposal:
+                        </span>
                         <button
-                          key={idx}
                           type="button"
-                          onClick={() => handleDirectDownload(item.url)}
-                          className="w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-xs font-semibold text-[#f8fafc] hover:bg-[#123559] hover:text-[#38bdf8] transition-colors group/item text-left cursor-pointer"
+                          onClick={() => setShowProposalMenu(false)}
+                          className="sm:hidden text-gray-400 hover:text-white p-1"
                         >
-                          <div className="flex items-center gap-2.5">
-                            <div className="p-1.5 rounded-lg bg-[#0d2844] border border-[#224c75] group-hover/item:border-[#38bdf8]">
-                              <Icon className="w-3.5 h-3.5 text-[#38bdf8]" />
-                            </div>
-                            <span>{item.label}</span>
-                          </div>
-                          <Download className="w-3.5 h-3.5 text-[#64748b] group-hover/item:text-[#38bdf8] group-hover/item:translate-y-0.5 transition-transform" />
+                          <X className="w-4 h-4" />
                         </button>
-                      );
-                    })}
-                  </motion.div>
+                      </div>
+
+                      {proposalList.map((item, idx) => {
+                        const Icon = item.icon;
+                        return (
+                          <button
+                            key={idx}
+                            type="button"
+                            onClick={() => handleDirectDownload(item.url)}
+                            className="w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-xs font-semibold text-[#f8fafc] bg-[#0c233c]/60 hover:bg-[#123559] hover:text-[#38bdf8] border border-transparent hover:border-[#38bdf8]/30 transition-all group/item text-left cursor-pointer"
+                          >
+                            <div className="flex items-center gap-2.5">
+                              <div className="p-1.5 rounded-lg bg-[#0d2844] border border-[#224c75] group-hover/item:border-[#38bdf8]">
+                                <Icon className="w-3.5 h-3.5 text-[#38bdf8]" />
+                              </div>
+                              <span>{item.label}</span>
+                            </div>
+                            <Download className="w-3.5 h-3.5 text-[#64748b] group-hover/item:text-[#38bdf8] group-hover/item:translate-y-0.5 transition-transform" />
+                          </button>
+                        );
+                      })}
+                    </motion.div>
+                  </>
                 )}
               </AnimatePresence>
             </div>
