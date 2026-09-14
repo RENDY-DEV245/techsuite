@@ -20,6 +20,12 @@ export function App() {
 
   return (
     <div className="min-h-screen bg-[#fff9d4] text-[#0f172a] selection:bg-[#0284c7] selection:text-white">
+      {/* 1. Gate Verifikasi muncul pertama kali */}
+      {!isVerified && (
+        <VerificationGate onVerified={() => setIsVerified(true)} />
+      )}
+      
+    <div className="min-h-screen bg-[#fff9d4] text-[#0f172a] selection:bg-[#0284c7] selection:text-white">
       {showWelcome && (
         <WelcomeAnimation onComplete={() => setShowWelcome(false)} />
       )}
