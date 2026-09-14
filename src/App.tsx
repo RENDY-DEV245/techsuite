@@ -9,7 +9,8 @@ import { EditorialProfile } from './components/profile/EditorialProfile';
 import { ProjectShowcase } from './components/projects/ProjectShowcase';
 import { TechGrid } from './components/tech/TechGrid';
 import { JourneyTimeline } from './components/journey/JourneyTimeline';
-import { StorySection } from './components/story/StorySection'; // ← 1. IMPORT INI
+import { StorySection } from './components/story/StorySection';
+import { BatchCardSection } from './components/pricing/BatchCardSection'; // ← 1. IMPORT INI
 import { ContactSection } from './components/contact/ContactSection';
 import { ProjectCaseStudyModal } from './components/projects/ProjectCaseStudyModal';
 
@@ -38,7 +39,8 @@ export function App() {
         <ProjectShowcase />
         <TechGrid onOpenProject={setActiveModalProject} />
         <JourneyTimeline />
-        <StorySection /> {/* ← 2. PASANG DI SINI (ANTARA MILESTONE & KONTAK) */}
+        <StorySection />
+        <BatchCardSection /> {/* ← 2. PASANG DI TENGAH SINI */}
         <ContactSection />
       </main>
 
