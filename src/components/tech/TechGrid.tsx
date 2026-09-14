@@ -27,15 +27,15 @@ export const TechGrid: React.FC<TechGridProps> = ({ onOpenProject }) => {
     setSelectedTech(null);
 
     // automatically shift inspection layer to the primary active layer for that domain
-    if (domain === 'web' || domain === 'mobile') {
+    if (domain === 'web' || domain === 'mobile' || domain === 'cad') {
       setSelectedLayer('client');
-    } else if (domain === 'backend') {
+    } else if (domain === 'backend' || domain === 'erp') {
       setSelectedLayer('backend');
     } else if (domain === 'devops') {
       setSelectedLayer('devops');
     }
   };
-
+  
   const handleSelectTech = (tech: TechItem) => {
     setSelectedTech(tech);
     setSelectedLayer(tech.layer);
