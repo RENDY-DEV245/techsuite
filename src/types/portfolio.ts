@@ -61,5 +61,5 @@ export interface ProfileData {
   interests: string[];
   contact: {
   email: string;
-  }:
+  };
 }
