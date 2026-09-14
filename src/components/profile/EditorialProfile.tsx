@@ -149,18 +149,21 @@ export const EditorialProfile: React.FC = () => {
         className="relative z-10 max-w-7xl mx-auto px-6 sm:px-8"
         style={{ transformStyle: 'preserve-3d' }}
       >
-        {/* Editorial Section Header & Flood Action Controls */}
+{/* Editorial Section Header & Flood Action Controls */}
         <motion.div
           variants={headerRevealVariants}
           className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-10 sm:pb-14 border-b border-[#e2d3b3]"
         >
           <div className="max-w-2xl">
             <span className="text-xs font-mono font-bold uppercase tracking-[0.25em] text-[#8c6239] block mb-2">
-              Profil &amp; Keahlian
+              PROFIL &amp; SOLUSI
             </span>
             <h2 className="text-3xl sm:text-5xl font-black text-[#0f172a] tracking-tight leading-[1.08]">
-              Fullstack &amp; Mobile Developer
+              Techsuite
             </h2>
+            <div className="mt-2 text-xs sm:text-sm font-mono font-bold text-[#0284c7] tracking-wider leading-relaxed">
+              WEB • MOBILE • ERP<br className="sm:hidden" /> HRIS • E-COMMERCE • CAD
+            </div>
           </div>
 
           <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
@@ -172,11 +175,11 @@ export const EditorialProfile: React.FC = () => {
             />
 
             <p className="max-w-xs text-xs text-[#475569] leading-relaxed">
-              Berpengalaman mengembangkan aplikasi web skala penuh, aplikasi mobile, arsitektur database, serta manajemen infrastruktur Linux.
+              Menyediakan solusi teknologi end-to-end untuk membantu bisnis membangun sistem digital yang terintegrasi, efisien, dan sesuai kebutuhan operasional, mulai dari website, aplikasi mobile, hingga sistem ERP, HRIS, E-Commerce, dan CAD.
             </p>
           </div>
         </motion.div>
-
+        
         {/* Interactive Stage Grid */}
         <div className="mt-12 sm:mt-16 grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
           <motion.div
