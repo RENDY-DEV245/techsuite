@@ -11,7 +11,6 @@ import { BeachCrab } from './BeachCrab';
 import type { BeachCrabHandle } from './BeachCrab';
 import { BeachDecorations } from './BeachDecorations';
 import { TactileButton } from '../ui/TactileButton';
-import { profileData } from '../../data/portfolioData';
 
 export const HeroSection: React.FC = () => {
   const oceanRef = useRef<OceanHeroHandle | null>(null);
