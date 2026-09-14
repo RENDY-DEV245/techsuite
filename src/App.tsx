@@ -9,6 +9,7 @@ import { EditorialProfile } from './components/profile/EditorialProfile';
 import { ProjectShowcase } from './components/projects/ProjectShowcase';
 import { TechGrid } from './components/tech/TechGrid';
 import { JourneyTimeline } from './components/journey/JourneyTimeline';
+import { StorySection } from './components/story/StorySection'; // ← 1. IMPORT INI
 import { ContactSection } from './components/contact/ContactSection';
 import { ProjectCaseStudyModal } from './components/projects/ProjectCaseStudyModal';
 
@@ -21,12 +22,10 @@ export function App() {
 
   return (
     <div className="min-h-screen bg-[#fff9d4] text-[#0f172a] selection:bg-[#0284c7] selection:text-white">
-      {/* 1. Gate Verifikasi muncul pertama kali */}
       {!isVerified && (
         <VerificationGate onVerified={() => setIsVerified(true)} />
       )}
 
-      {/* 2. Welcome Animation ombak baru berjalan setelah lolos verifikasi */}
       {isVerified && showWelcome && (
         <WelcomeAnimation onComplete={() => setShowWelcome(false)} />
       )}
@@ -39,6 +38,7 @@ export function App() {
         <ProjectShowcase />
         <TechGrid onOpenProject={setActiveModalProject} />
         <JourneyTimeline />
+        <StorySection /> {/* ← 2. PASANG DI SINI (ANTARA MILESTONE & KONTAK) */}
         <ContactSection />
       </main>
 
