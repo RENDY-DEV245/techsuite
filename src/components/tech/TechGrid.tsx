@@ -180,6 +180,8 @@ const cadTech = techStackData.filter((t) => t.layer === 'cad');   // ← baris b
   onSelectLayer={handleSelectLayer}
   isLayerSelected={selectedLayer === 'cad'}
 />
+          </div>
+        </div>
 
         {/* inspector deep dive panel */}
         <div className="mt-10">
