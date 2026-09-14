@@ -193,8 +193,41 @@ export const techStackData: TechItem[] = [
     roleTag: 'Edge Deployment',
     usageContext: 'Edge deployment, continuous integration, and global CDN delivery for web apps',
     projectLinks: ['web-solutions', 'ecommerce-solutions']
-  }
-];
+  }, 
+
+    // CAD & 3D Engineering layer
+  {
+    name: 'AutoCAD',
+    category: 'tools',
+    layer: 'client',
+    iconKey: 'autocad',
+    color: '#E51027',
+    roleTag: '2D/3D Drafting',
+    usageContext: 'Perancangan gambar teknik 2D, layout arsitektur/mekanikal, dan gambar kerja presisi fabrikasi',
+    projectLinks: ['cad-engineering']
+  },
+  {
+    name: 'SolidWorks',
+    category: 'tools',
+    layer: 'client',
+    iconKey: 'solidworks',
+    color: '#D42027',
+    roleTag: '3D CAD & Assembly',
+    usageContext: 'Pemodelan parametrik 3D, assembly parts, simulasi gerak mekanik, dan generate Bill of Materials (BOM)',
+    projectLinks: ['cad-engineering']
+  },
+
+  // ERP & Enterprise Architecture layer
+  {
+    name: 'ERP Architecture',
+    category: 'backend',
+    layer: 'backend',
+    iconKey: 'erp',
+    color: '#059669',
+    roleTag: 'General Ledger & POS',
+    usageContext: 'Arsitektur sistem ERP modular yang menghubungkan Kasir POS, Multi-Gudang, Hutang/Piutang, dan SAK ETAP',
+    projectLinks: ['erp-system', 'hris-system']
+  };
 
 export const projectsData: Project[] = [
   {
