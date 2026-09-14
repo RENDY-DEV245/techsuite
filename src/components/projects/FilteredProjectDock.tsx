@@ -1,13 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import {
-  ArrowUpRight,
-  Lock,
-  ExternalLink,
-  ChevronRight,
-  BookOpen
-} from 'lucide-react';
-import type { Project, ProjectCategory } from '../../types/portfolio';
+import { ExternalLink, ChevronRight } from 'lucide-react';import type { Project, ProjectCategory } from '../../types/portfolio';
 import { ProjectPreviewPlaceholder } from './ProjectPreviewPlaceholder';
 import { AnimatedOceanSlideBackground } from './AnimatedOceanSlideBackground';
 
@@ -24,8 +17,7 @@ export const FilteredProjectDock: React.FC<FilteredProjectDockProps> = ({
   onSelectCategory,
   onSelectProject
 }) => {
-  const [activeProjectId, setActiveProjectId] = useState<string>(projects[0]?.id || 'cimart');
-
+  const [activeProjectId, setActiveProjectId] = useState<string>(projects[0]?.id || 'maqdis-group');
   const categories: { id: ProjectCategory; label: string; count: number }[] = [
     { id: 'all', label: 'Semua Proyek', count: projects.length },
     {
@@ -256,28 +248,19 @@ export const FilteredProjectDock: React.FC<FilteredProjectDockProps> = ({
                 ))}
               </div>
 
-              {/* case study modal button */}
-              <div className="pt-1.5 sm:pt-2 border-t border-[#e2d3b3] flex items-center justify-between gap-2 sm:gap-3">
-                <div className="hidden sm:flex items-center gap-1.5 flex-wrap">
-                  {activeProject.stack.slice(0, 4).map((tech) => (
-                    <span
-                      key={tech}
-                      className="px-2 py-0.5 rounded-md bg-[#fffdf5] text-[10px] font-mono font-bold text-[#0f172a] border border-[#0f172a]/40"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-
-                <button
-                  type="button"
-                  onClick={() => onSelectProject(activeProject)}
-                  className="w-full sm:w-auto flex items-center justify-center gap-1.5 px-3.5 py-2 sm:py-1.5 rounded-xl bg-[#0284c7] hover:bg-[#0369a1] text-white text-[11px] sm:text-xs font-mono font-black border-2 border-[#0f172a] shadow-[2.5px_2.5px_0px_#0f172a] sm:shadow-[3px_3px_0px_#0f172a] cursor-pointer transition-all hover:-translate-y-0.5 active:translate-y-0"
-                >
-                  <BookOpen className="w-3.5 h-3.5" />
-                  <span>Buka Studi Kasus</span>
-                  <ArrowUpRight className="w-3.5 h-3.5" />
-                </button>
+              {/* direct link action */}
+              <div className="pt-2 border-t border-[#e2d3b3] flex items-center justify-end">
+                {activeProject.demoUrl && (
+                  <a
+                    href={activeProject.demoUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full sm:w-auto flex items-center justify-center gap-1.5 px-5 py-2.5 rounded-xl bg-[#fde047] hover:bg-[#facc15] text-[#0f172a] text-xs font-mono font-black border-2 border-[#0f172a] shadow-[2.5px_2.5px_0px_#0f172a] sm:shadow-[3px_3px_0px_#0f172a] cursor-pointer transition-all hover:-translate-y-0.5"
+                  >
+                    <ExternalLink className="w-3.5 h-3.5" />
+                    <span>Kunjungi Web</span>
+                  </a>
+                )}
               </div>
             </motion.div>
           </AnimatePresence>
