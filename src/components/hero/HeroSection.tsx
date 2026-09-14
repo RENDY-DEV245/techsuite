@@ -1,5 +1,6 @@
-import React, { useRef, useState } from 'react';
-import { ArrowDown, Download, ExternalLink } from 'lucide-react';
+import React, { useRef, useState, useEffect } from 'react';
+import { ArrowDown, Download, ExternalLink, ChevronDown, Globe, Smartphone, Users, Box, Database } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { OceanHeroCanvas } from './OceanHeroCanvas';
 import type { OceanHeroHandle } from './OceanHeroCanvas';
 import { HeroPhysicsStage } from './HeroPhysicsStage';
@@ -19,6 +20,61 @@ export const HeroSection: React.FC = () => {
   const [duckExpression, setDuckExpression] = useState<DuckExpression>('normal');
 
   const collisionCooldownRef = useRef<boolean>(false);
+
+  // State untuk menu pilihan proposal
+  const [showProposalMenu, setShowProposalMenu] = useState<boolean>(false);
+  const proposalDropdownRef = useRef<HTMLDivElement | null>(null);
+
+  // Deteksi klik di luar menu untuk menutup popup
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (proposalDropdownRef.current && !proposalDropdownRef.current.contains(event.target as Node)) {
+        setShowProposalMenu(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+
+  // Data 5 Pilihan Proposal dengan Direct Download Link
+  const proposalList = [
+    {
+      label: 'Proposal Web Development',
+      url: 'https://drive.google.com/uc?export=download&id=10ou8F8gUu363hdm7gq0WWuKb9M29ls-n',
+      icon: Globe
+    },
+    {
+      label: 'Proposal APK / Mobile App',
+      url: 'https://drive.google.com/uc?export=download&id=1urmpbgH0kmDEI4EbiyEaQiP0U8ojFOX7',
+      icon: Smartphone
+    },
+    {
+      label: 'Proposal HRIS System',
+      url: 'https://drive.google.com/uc?export=download&id=10qtP0XZY_UEiMIH2Bg55LJ3sjkf03VZb',
+      icon: Users
+    },
+    {
+      label: 'Proposal CAD & 3D Design',
+      url: 'https://drive.google.com/uc?export=download&id=1MY1qHHpT5BBKSN6Nv8a083PhXZQx8iWg',
+      icon: Box
+    },
+    {
+      label: 'Proposal ERP System',
+      url: 'https://drive.google.com/uc?export=download&id=1YdiiYZFK8wL2XCjLQzUmB1x4BppcD3iP',
+      icon: Database
+    },
+  ];
+
+  // Fungsi trigger download langsung tanpa menutup/mengalihkan web
+  const handleDirectDownload = (url: string) => {
+    const link = document.createElement('a');
+    link.href = url;
+    link.setAttribute('download', '');
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    setShowProposalMenu(false);
+  };
 
   const handleSplash = (clientX: number, clientY: number, intensity: number) => {
     if (oceanRef.current) {
@@ -117,7 +173,8 @@ export const HeroSection: React.FC = () => {
           />
 
           <p className="mt-3 sm:mt-4 max-w-xl text-center text-xs sm:text-base text-[#f8fafc] font-medium leading-relaxed drop-shadow-md px-2">
-            Full Stack Software Engineer. Merancang dan membangun website, aplikasi,CAD hingga sistem ERP dari nol untuk startup, dan enterprise          </p>
+            Full Stack Software Engineer. Merancang dan membangun website, aplikasi, CAD hingga sistem ERP dari nol untuk startup, dan enterprise.
+          </p>
 
           <div className="mt-4 sm:mt-6 flex flex-wrap items-center justify-center gap-2 sm:gap-3.5 px-2">
             <TactileButton
@@ -128,19 +185,56 @@ export const HeroSection: React.FC = () => {
               Lihat Proyek
             </TactileButton>
 
-            <a
-              href="/cv.pdf"
-              download="cv.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-1.5 sm:gap-2 px-3.5 py-2 sm:px-5 sm:py-2.5 rounded-xl bg-[#0d2844] hover:bg-[#123559] text-[#f8fafc] border border-[#224c75] hover:border-[#dfcca8]/60 font-medium text-xs sm:text-sm transition-all select-none cursor-pointer hover:-translate-y-0.5"
-            >
-              <Download className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#38bdf8]" />
-              <span>Download CV</span>
-            </a>
+            {/* Tombol Pilihan Download Proposal */}
+            <div className="relative inline-block" ref={proposalDropdownRef}>
+              <button
+                type="button"
+                onClick={() => setShowProposalMenu((prev) => !prev)}
+                className="inline-flex items-center justify-center gap-1.5 sm:gap-2 px-3.5 py-2 sm:px-5 sm:py-2.5 rounded-xl bg-[#0d2844] hover:bg-[#123559] text-[#f8fafc] border border-[#224c75] hover:border-[#dfcca8]/60 font-medium text-xs sm:text-sm transition-all select-none cursor-pointer hover:-translate-y-0.5 shadow-md"
+              >
+                <Download className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#38bdf8]" />
+                <span>Download Proposal</span>
+                <ChevronDown className={`w-3.5 h-3.5 text-[#38bdf8] transition-transform duration-200 ${showProposalMenu ? 'rotate-180' : ''}`} />
+              </button>
+
+              {/* Menu Pilihan Popup */}
+              <AnimatePresence>
+                {showProposalMenu && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 8, scale: 0.95 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    exit={{ opacity: 0, y: 6, scale: 0.95 }}
+                    transition={{ duration: 0.15 }}
+                    className="absolute left-1/2 -translate-x-1/2 sm:left-0 sm:translate-x-0 mt-2 w-64 p-1.5 rounded-2xl bg-[#071b2f] border-2 border-[#224c75] shadow-2xl z-50 flex flex-col gap-1 backdrop-blur-xl"
+                  >
+                    <div className="px-3 py-1.5 text-[10px] font-mono font-bold text-[#94a3b8] uppercase tracking-wider border-b border-[#224c75]/50">
+                      Pilih Jenis Proposal:
+                    </div>
+                    {proposalList.map((item, idx) => {
+                      const Icon = item.icon;
+                      return (
+                        <button
+                          key={idx}
+                          type="button"
+                          onClick={() => handleDirectDownload(item.url)}
+                          className="w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-xs font-semibold text-[#f8fafc] hover:bg-[#123559] hover:text-[#38bdf8] transition-colors group/item text-left cursor-pointer"
+                        >
+                          <div className="flex items-center gap-2.5">
+                            <div className="p-1.5 rounded-lg bg-[#0d2844] border border-[#224c75] group-hover/item:border-[#38bdf8]">
+                              <Icon className="w-3.5 h-3.5 text-[#38bdf8]" />
+                            </div>
+                            <span>{item.label}</span>
+                          </div>
+                          <Download className="w-3.5 h-3.5 text-[#64748b] group-hover/item:text-[#38bdf8] group-hover/item:translate-y-0.5 transition-transform" />
+                        </button>
+                      );
+                    })}
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
 
             <a
-           
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center gap-1.5 sm:gap-2 px-3.5 py-2 sm:px-5 sm:py-2.5 rounded-xl bg-[#0d2844] hover:bg-[#123559] text-[#f8fafc] border border-[#224c75] hover:border-[#dfcca8]/60 font-medium text-xs sm:text-sm transition-all select-none cursor-pointer hover:-translate-y-0.5"
