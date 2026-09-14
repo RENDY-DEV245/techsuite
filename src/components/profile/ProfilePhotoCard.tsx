@@ -38,13 +38,13 @@ export const ProfilePhotoCard: React.FC<ProfilePhotoCardProps> = ({ isFlooded })
         {...tiltProps}
         className="relative w-full max-w-sm rounded-[32px] p-3.5 bg-[#fffdf5] border border-[#e8dbc0] shadow-2xl shadow-[#8c6239]/8 group cursor-pointer"
       >
-        <div className="relative aspect-[3/4] w-full rounded-[24px] overflow-hidden bg-[#faeed1] border border-[#e2d3b3] flex items-center justify-center">
+        <div className="relative aspect-[4/3] w-full rounded-[24px] overflow-hidden bg-[#faeed1] border border-[#e2d3b3] flex items-center justify-center p-1">
           <img
             src={profileData.avatarUrl || 'https://i.ibb.co.com/tMN6mPt9/IMG-20260914-140952.png'}
             alt={profileData.name}
             referrerPolicy="no-referrer"
             crossOrigin="anonymous"
-            className="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
+            className="w-full h-full object-contain object-center rounded-[20px] transition-transform duration-500 group-hover:scale-105"
             onError={(e) => {
               const target = e.target as HTMLImageElement;
               target.src = 'https://i.ibb.co.com/tMN6mPt9/IMG-20260914-140952.png';
