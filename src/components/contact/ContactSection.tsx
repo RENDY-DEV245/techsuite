@@ -14,7 +14,6 @@ import {
   Heart
 } from 'lucide-react';
 import { useClipboard } from '../../hooks/useClipboard';
-import { StoryModal } from './StoryModal';
 import { profileData } from '../../data/portfolioData';
 import { ContactOceanCanvas } from './ContactOceanCanvas';
 
@@ -31,7 +30,6 @@ export const ContactSection: React.FC = () => {
   const { copied, copy } = useClipboard();
   const [selectedTopic, setSelectedTopic] = useState(inquiryTopics[0]);
   const [currentTime, setCurrentTime] = useState<string>('');
-  const [showStoryModal, setShowStoryModal] = useState<boolean>(false);
   const [isFlipped, setIsFlipped] = useState<boolean>(false);
   const [submarineClicks, setSubmarineClicks] = useState<number>(0);
   const [showHeart, setShowHeart] = useState<boolean>(false);
@@ -67,7 +65,7 @@ export const ContactSection: React.FC = () => {
   const mailtoLink = `mailto:${profileData.contact.email}?subject=${encodeURIComponent(
     selectedTopic.subject
   )}&body=${encodeURIComponent(
-    `Halo Rendy.,\n\nSaya ingin berdiskusi mengenai topik: ${selectedTopic.label}.\n\n[Tulis pesan Anda di sini]\n\nSalam,\n`
+    `Halo Rendy,\n\nSaya ingin berdiskusi mengenai topik: ${selectedTopic.label}.\n\n[Tulis pesan Anda di sini]\n\nSalam,\n`
   )}`;
 
   return (
@@ -77,6 +75,7 @@ export const ContactSection: React.FC = () => {
     >
       <ContactOceanCanvas />
 
+      {/* Kapal Selam Interaktif */}
       <motion.div
         initial={{ opacity: 0, scale: 0.7, y: 20 }}
         whileInView={{ opacity: 1, scale: 1, y: 0 }}
@@ -137,7 +136,7 @@ export const ContactSection: React.FC = () => {
           }}
           className="p-5 sm:p-12 rounded-[24px] sm:rounded-[36px] bg-[#fffdf5] border-2 sm:border-3 border-[#0f172a] shadow-[6px_6px_0px_#0f172a] sm:shadow-[10px_10px_0px_#0f172a] space-y-5 sm:space-y-8"
         >
-          {/* header */}
+          {/* Header Kontak */}
           <div className="space-y-3 sm:space-y-4">
             <div className="flex flex-wrap items-center justify-between gap-2.5 sm:gap-3">
               <div className="flex items-center gap-2 px-3 sm:px-3.5 py-1 sm:py-1.5 rounded-lg sm:rounded-xl bg-[#fde047] text-[#0f172a] text-xs font-mono font-black border-2 border-[#0f172a] shadow-[2px_2px_0px_#0f172a] sm:shadow-[3px_3px_0px_#0f172a] w-fit">
@@ -149,39 +148,7 @@ export const ContactSection: React.FC = () => {
                 STATUS: TERSEDIA
               </div>
             </div>
-{/* ========================================================
-              BANNER SESI STORY (KLIK UNTUK MODAL CERITA LENGKAP)
-             ======================================================== */}
-          <div
-            onClick={() => setShowStoryModal(true)}
-            className="group/story relative p-4 sm:p-5 rounded-2xl sm:rounded-3xl bg-gradient-to-r from-[#071b2f] via-[#0d2844] to-[#02587a] border-2 sm:border-3 border-[#0f172a] shadow-[4px_4px_0px_#0f172a] sm:shadow-[6px_6px_0px_#0f172a] cursor-pointer hover:-translate-y-1 transition-all select-none overflow-hidden"
-          >
-            <div className="relative z-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-3 sm:gap-4">
-              <div className="space-y-1 max-w-2xl text-left">
-                <div className="flex items-center gap-2">
-                  <span className="px-2.5 py-0.5 rounded-md bg-[#fde047] text-[#0f172a] text-[10px] font-mono font-black border border-[#0f172a]">
-                    RAHASIA DIGITAL TRINITAS
-                  </span>
-                  <span className="text-xs font-mono font-bold text-[#38bdf8] flex items-center gap-1">
-                    <Sparkles className="w-3.5 h-3.5 text-[#fde047] animate-pulse" />
-                    BACA KISAH LENGKAP
-                  </span>
-                </div>
-                <h3 className="text-sm sm:text-lg font-black text-white leading-snug group-hover/story:text-[#38bdf8] transition-colors">
-                  “Saya telah menemukan senjata pamungkas dalam merebut kekayaan pasar yang akan mengubah nasib finansial Anda selamanya...”
-                </h3>
-                <p className="text-[11px] sm:text-xs text-[#cbd5e1] font-medium leading-relaxed line-clamp-1">
-                  Kisah bagaimana sistem 3-in-1 (Compro + E-Commerce + ERP) mendongkrak penjualan 300% dan menekan selisih stok hingga 0%.
-                </p>
-              </div>
 
-              <div className="flex items-center gap-2 px-4 py-2 rounded-xl bg-[#fde047] group-hover/story:bg-[#facc15] text-[#0f172a] font-mono font-black text-xs border-2 border-[#0f172a] shadow-[2px_2px_0px_#0f172a] shrink-0">
-                <span>Buka Cerita</span>
-                <ArrowUp className="w-3.5 h-3.5 rotate-45 group-hover/story:translate-x-0.5 transition-transform" />
-              </div>
-            </div>
-          </div>
-            
             <div className="space-y-1 sm:space-y-2">
               <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black text-[#0f172a] tracking-tight leading-[1.08]">
                 Mari Berdiskusi &amp; Berkolaborasi
@@ -192,9 +159,9 @@ export const ContactSection: React.FC = () => {
             </div>
           </div>
 
-          {/* bento grid */}
+          {/* Bento Grid */}
           <div className="grid grid-cols-1 md:grid-cols-12 gap-4 sm:gap-5 items-stretch">
-            {/* email and topic station */}
+            {/* Email & Topic Station */}
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -207,7 +174,6 @@ export const ContactSection: React.FC = () => {
                   Pilih Topik Diskusi
                 </div>
 
-                {/* topic buttons */}
                 <div className="flex flex-wrap gap-1.5 sm:gap-2">
                   {inquiryTopics.map((topic) => {
                     const isSelected = selectedTopic.id === topic.id;
@@ -229,12 +195,12 @@ export const ContactSection: React.FC = () => {
                 </div>
               </div>
 
-              {/* send email and copy button group */}
+              {/* Kirim Email & Copy */}
               <div className="space-y-2 pt-2 border-t-2 border-[#0f172a]/10">
                 <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 sm:gap-2.5 w-full">
                   <a
                     href={mailtoLink}
-                    className="inline-flex items-center justify-center gap-2 px-4 py-2.5 sm:px-5 sm:py-3 rounded-xl sm:rounded-2xl bg-[#fde047] hover:bg-[#facc15] text-[#0f172a] font-mono font-black text-xs sm:text-sm transition-all cursor-pointer border-2 border-[#0f172a] shadow-[2.5px_2.5px_0px_#0f172a] sm:shadow-[3px_3px_0px_#0f172a] hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-[1px_1px_0px_#0f172a] w-full sm:w-auto shrink-0 whitespace-nowrap"
+                    className="inline-flex items-center justify-center gap-2 px-4 py-2.5 sm:px-5 sm:py-3 rounded-xl sm:rounded-2xl bg-[#fde047] hover:bg-[#facc15] text-[#0f172a] font-mono font-black text-xs sm:text-sm transition-all cursor-pointer border-2 border-[#0f172a] shadow-[2.5px_2.5px_0px_#0f172a] sm:shadow-[3px_3px_0px_#0f172a] hover:translate-x-0.5 hover:translate-y-0.5 w-full sm:w-auto shrink-0 whitespace-nowrap"
                   >
                     <Send className="w-4 h-4 shrink-0" />
                     <span>Kirim Email</span>
@@ -265,7 +231,7 @@ export const ContactSection: React.FC = () => {
               </div>
             </motion.div>
 
-            {/* flip card tile for status and secret note */}
+            {/* Flip Card Tile: Jam WIB & Pesan Rahasia */}
             <motion.div
               initial={{ opacity: 0, x: 20 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -280,7 +246,7 @@ export const ContactSection: React.FC = () => {
                 transition={{ duration: 0.6, type: 'spring', stiffness: 180, damping: 20 }}
                 className="relative w-full h-full"
               >
-                {/* status, clock and socials */}
+                {/* Status & Clock */}
                 <div
                   style={{ backfaceVisibility: 'hidden' }}
                   className="w-full h-full p-4 sm:p-6 rounded-2xl sm:rounded-3xl bg-[#fff9d4] border-2 border-[#0f172a] shadow-[3px_3px_0px_#0f172a] sm:shadow-[4px_4px_0px_#0f172a] flex flex-col justify-between space-y-3.5 sm:space-y-4"
@@ -298,10 +264,7 @@ export const ContactSection: React.FC = () => {
 
                     <div className="flex items-center gap-2 text-xs font-mono text-[#475569] px-1">
                       <MapPin className="w-4 h-4 text-[#ef4444] shrink-0" />
-                      <span>Indonesia • Remote & Hybrid Ready 
-→
-→
- Semarang, Jawa Tengah • Available for New Projects</span>
+                      <span>Semarang, Jawa Tengah • Available for New Projects</span>
                     </div>
                   </div>
 
@@ -317,9 +280,8 @@ export const ContactSection: React.FC = () => {
                   </div>
                 </div>
 
-                {/* secret developer note */}
+                {/* Pesan Rahasia Pengembang */}
                 <div
-                  
                   style={{
                     backfaceVisibility: 'hidden',
                     transform: 'rotateY(180deg)'
@@ -352,7 +314,7 @@ export const ContactSection: React.FC = () => {
           </div>
         </motion.div>
 
-        {/* footer dock */}
+        {/* Footer Dock */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -384,12 +346,6 @@ export const ContactSection: React.FC = () => {
           </div>
         </motion.div>
       </div>
-{/* Modal Cerita */}
-      <StoryModal
-        isOpen={showStoryModal}
-        onClose={() => setShowStoryModal(false)}
-      />
     </section>
   );
 };
-    
