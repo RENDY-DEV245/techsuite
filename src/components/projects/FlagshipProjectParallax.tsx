@@ -966,30 +966,36 @@ export const FlagshipSlideCard: React.FC<FlagshipSlideCardProps> = ({
                         Nafita — Owner · Jasa Makeup &amp; Attire
                       </div>
                     </div>
-
-                    <div className="p-3.5 rounded-2xl bg-[#fffdf5] border-2 border-[#0f172a] shadow-[2px_2px_0px_#0f172a] space-y-1.5">
-                      <div className="flex items-center gap-1 text-[#f59e0b]">
-                        {[...Array(5)].map((_, i) => (
-                          <Star key={i} className="w-3.5 h-3.5 fill-[#f59e0b]" />
-                        ))}
-                      </div>
-                      <p className="text-xs italic text-[#334155]">
-                        “Dulu rekap penjualan sampai jam 10 malem setiap hari. Sekarang tutup toko, laporan sudah ada. Saya nggak nyangka bisa secepat ini.”
-                      </p>
-                      <div className="text-[11px] font-black text-[#0f172a]">
-                        Budi Santoso — Owner · Toko Elektronik Maju Jaya
-                      </div>
-                    </div>
-                  </div>
+{/* Footer CTA Modal 02 HRIS */}
+              <div className="pt-4 border-t-2 border-[#0f172a]/15 flex flex-col sm:flex-row items-center justify-between gap-3">
+                <div className="text-xs font-mono font-bold text-[#64748b] text-center sm:text-left">
+                  Sistem HRIS aktif seketika • Bebas coba 14 hari penuh
                 </div>
-
+                <div className="flex items-center gap-2.5 w-full sm:w-auto">
+                  <button
+                    type="button"
+                    onClick={() => setShowHrisModal(false)}
+                    className="px-4 py-2.5 rounded-xl bg-[#fff9d4] hover:bg-[#faeed1] text-[#0f172a] text-xs font-mono font-black border-2 border-[#0f172a] shadow-[2px_2px_0px_#0f172a] transition-all cursor-pointer flex-1 sm:flex-none"
+                  >
+                    Tutup
+                  </button>
+                  <a
+                    href="https://clarate.id/id/register?service_id=3"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-xl bg-[#0284c7] hover:bg-[#0369a1] text-white text-xs sm:text-sm font-mono font-black border-2 border-[#0f172a] shadow-[3px_3px_0px_#0f172a] hover:translate-x-0.5 hover:translate-y-0.5 transition-all cursor-pointer flex-1 sm:flex-none"
+                  >
+                    <span>Coba Gratis 14 Hari</span>
+                    <ArrowRight className="w-4 h-4" />
+                  </a>
+                </div>
               </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
-              
-
-
-
-            {/* MODAL 03: CLARATE ERP (100% TEKS LENGKAP) */}
+      {/* MODAL 03: CLARATE ERP (100% TEKS LENGKAP) */}
       <AnimatePresence>
         {showErpModal && (
           <motion.div
