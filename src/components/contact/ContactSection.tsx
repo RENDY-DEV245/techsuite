@@ -384,6 +384,7 @@ export const ContactSection: React.FC = () => {
           </div>
         </motion.div>
       </div>
+{/* Modal Cerita */}
       <StoryModal
         isOpen={showStoryModal}
         onClose={() => setShowStoryModal(false)}
@@ -391,3 +392,4 @@ export const ContactSection: React.FC = () => {
     </section>
   );
 };
+    
