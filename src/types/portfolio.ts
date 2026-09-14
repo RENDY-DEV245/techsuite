@@ -13,7 +13,7 @@ export interface Project {
   challenges: string;
   role: string;
   demoUrl?: string;
-  githubUrl?: string;
+
   isPrivateRepo?: boolean;
   privateRepoReason?: string;
   isMobileApp?: boolean;
@@ -53,13 +53,11 @@ export interface ExperienceItem {
 export interface ProfileData {
   name: string;
   tagline: string;
-  education: string;
   status: string;
-  bio: string;
   experienceStart: string;
   avatarUrl: string;
   interests: string[];
   contact: {
-  email: string;
+    email: string;
   };
 }
