@@ -63,7 +63,7 @@ export const ContactSection: React.FC = () => {
   const mailtoLink = `mailto:${profileData.contact.email}?subject=${encodeURIComponent(
     selectedTopic.subject
   )}&body=${encodeURIComponent(
-    `Halo Reyhand,\n\nSaya ingin berdiskusi mengenai topik: ${selectedTopic.label}.\n\n[Tulis pesan Anda di sini]\n\nSalam,\n`
+    `Halo Rendy.,\n\nSaya ingin berdiskusi mengenai topik: ${selectedTopic.label}.\n\n[Tulis pesan Anda di sini]\n\nSalam,\n`
   )}`;
 
   return (
@@ -262,7 +262,10 @@ export const ContactSection: React.FC = () => {
 
                     <div className="flex items-center gap-2 text-xs font-mono text-[#475569] px-1">
                       <MapPin className="w-4 h-4 text-[#ef4444] shrink-0" />
-                      <span>Indonesia • Remote &amp; Hybrid Ready</span>
+                      <span>Indonesia • Remote & Hybrid Ready 
+→
+→
+ Semarang, Jawa Tengah • Available for New Projects</span>
                     </div>
                   </div>
 
