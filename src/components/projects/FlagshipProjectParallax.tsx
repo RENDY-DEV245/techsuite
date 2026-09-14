@@ -15,6 +15,7 @@ import {
   Receipt,
   UserCheck,
   Star
+  Play 
 } from 'lucide-react';
 import type { Project } from '../../types/portfolio';
 import { AnimatedOceanSlideBackground } from './AnimatedOceanSlideBackground';
@@ -234,8 +235,68 @@ export const FlagshipSlideCard: React.FC<FlagshipSlideCardProps> = ({
                       <ExternalLink className="w-3.5 h-3.5" />
                     </a>
                   </>
+                ) : index === 3 ? (
+                  /* Slide 04 CAD: 5 Link Prototype YouTube */
+                  <div className="flex flex-col gap-2 w-full">
+                    <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-[#fde047] text-[#0f172a] font-mono font-black text-xs border-2 border-[#0f172a] shadow-[2px_2px_0px_#0f172a] w-fit">
+                      <Play className="w-3.5 h-3.5 fill-[#0f172a]" />
+                      <span>Lihat Prototype (5 Video)</span>
+                    </div>
+
+                    <div
+                      data-lenis-prevent="true"
+                      style={{ touchAction: 'pan-y' }}
+                      className="grid grid-cols-1 sm:grid-cols-2 gap-1.5 max-h-[140px] overflow-y-auto overscroll-contain pr-1 scrollbar-thin"
+                    >
+                      <a
+                        href="https://www.youtube.com/watch?v=yVHtIviLXOE"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center justify-between gap-1.5 px-3 py-1.5 rounded-xl bg-[#fffdf5] hover:bg-[#fde047] text-[#0f172a] font-mono font-bold text-[11px] border border-[#0f172a] shadow-[1.5px_1.5px_0px_#0f172a] transition-all"
+                      >
+                        <span className="truncate">Demo 1: AutoLISP Wire Cut</span>
+                        <Play className="w-3 h-3 fill-[#0f172a] shrink-0" />
+                      </a>
+                      <a
+                        href="https://youtu.be/ZOpubFYgGWQ?si=DIj1XHhmxRDsvAML"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center justify-between gap-1.5 px-3 py-1.5 rounded-xl bg-[#fffdf5] hover:bg-[#fde047] text-[#0f172a] font-mono font-bold text-[11px] border border-[#0f172a] shadow-[1.5px_1.5px_0px_#0f172a] transition-all"
+                      >
+                        <span className="truncate">Demo 2: Excel to AutoCAD</span>
+                        <Play className="w-3 h-3 fill-[#0f172a] shrink-0" />
+                      </a>
+                      <a
+                        href="LINK_YT_3"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center justify-between gap-1.5 px-3 py-1.5 rounded-xl bg-[#fffdf5] hover:bg-[#fde047] text-[#0f172a] font-mono font-bold text-[11px] border border-[#0f172a] shadow-[1.5px_1.5px_0px_#0f172a] transition-all"
+                      >
+                        <span className="truncate">Demo 3: Prototype CAD 3</span>
+                        <Play className="w-3 h-3 fill-[#0f172a] shrink-0" />
+                      </a>
+                      <a
+                        href="LINK_YT_4"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center justify-between gap-1.5 px-3 py-1.5 rounded-xl bg-[#fffdf5] hover:bg-[#fde047] text-[#0f172a] font-mono font-bold text-[11px] border border-[#0f172a] shadow-[1.5px_1.5px_0px_#0f172a] transition-all"
+                      >
+                        <span className="truncate">Demo 4: Prototype CAD 4</span>
+                        <Play className="w-3 h-3 fill-[#0f172a] shrink-0" />
+                      </a>
+                      <a
+                        href="LINK_YT_5"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center justify-between gap-1.5 px-3 py-1.5 rounded-xl bg-[#fffdf5] hover:bg-[#fde047] text-[#0f172a] font-mono font-bold text-[11px] border border-[#0f172a] shadow-[1.5px_1.5px_0px_#0f172a] transition-all sm:col-span-2"
+                      >
+                        <span className="truncate">Demo 5: Prototype CAD 5</span>
+                        <Play className="w-3 h-3 fill-[#0f172a] shrink-0" />
+                      </a>
+                    </div>
+                  </div>
                 ) : (
-                  /* Slide Lainnya */
+                  /* Slide 05 ERP */
                   project.demoUrl && (
                     <a
                       href={project.demoUrl}
@@ -244,9 +305,11 @@ export const FlagshipSlideCard: React.FC<FlagshipSlideCardProps> = ({
                       className="inline-flex items-center justify-center gap-1.5 px-4 py-2 sm:px-5 sm:py-2.5 rounded-xl bg-[#fde047] hover:bg-[#facc15] text-[#0f172a] font-mono font-black text-xs sm:text-sm border-2 border-[#0f172a] shadow-[2.5px_2.5px_0px_#0f172a] hover:translate-x-0.5 hover:translate-y-0.5 transition-all cursor-pointer w-full sm:w-auto"
                     >
                       <ExternalLink className="w-3.5 h-3.5" />
-                      <span>{index === 0 ? 'Kunjungi Maqdis Group' : 'Konsultasi Sistem'}</span>
+                      <span>Konsultasi Sistem</span>
                     </a>
                   )
+                )}
+                )}
                 )}
               </div>
             </div>
