@@ -18,6 +18,7 @@ export interface Project {
   privateRepoReason?: string;
   isMobileApp?: boolean;
   demoStatusLabel?: string;
+  githubUrl?: string;
   imageUrl: string;
   imageFit?: 'cover' | 'contain';
   featured: boolean;
@@ -54,6 +55,7 @@ export interface ProfileData {
   name: string;
   tagline: string;
   status: string;
+  bio: string;
   experienceStart: string;
   avatarUrl: string;
   interests: string[];
