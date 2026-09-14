@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import { profileData } from '../../data/portfolioData';
+import React from 'react';
 
 interface BrandLogoProps {
   className?: string;
@@ -12,13 +11,11 @@ export const BrandLogo: React.FC<BrandLogoProps> = ({
   size = 'md',
   withText = false
 }) => {
-  const [hasError, setHasError] = useState(false);
-
   const sizeMap = {
-    sm: { box: 'w-8 h-8', text: 'text-xs', font: 'text-xs' },
-    md: { box: 'w-10 h-10', text: 'text-sm', font: 'text-sm' },
-    lg: { box: 'w-14 h-14', text: 'text-base', font: 'text-lg' },
-    xl: { box: 'w-24 h-24', text: 'text-lg', font: 'text-2xl' }
+    sm: { img: 'w-8 h-8', text: 'text-xs' },
+    md: { img: 'w-10 h-10', text: 'text-sm' },
+    lg: { img: 'w-14 h-14', text: 'text-base' },
+    xl: { img: 'w-24 h-24', text: 'text-lg' }
   };
 
   const currentSize = sizeMap[size];
@@ -26,24 +23,14 @@ export const BrandLogo: React.FC<BrandLogoProps> = ({
   return (
     <div className={`inline-flex items-center gap-2.5 ${className}`}>
       <div className="relative flex items-center justify-center transition-transform group-hover:scale-105 select-none shrink-0">
-        {!hasError ? (
-          <img
-            src={profileData.avatarUrl}
-            alt="RENDY Logo"
-            referrerPolicy="no-referrer"
-            crossOrigin="anonymous"
-            onError={() => setHasError(true)}
-            className={`${currentSize.box} rounded-full object-cover border-2 border-white/60 bg-[#0f172a] shadow-md`}
-            loading="eager"
-          />
-        ) : (
-          /* Fallback Logo Keren jika hosting gambar bermasalah */
-          <div className={`${currentSize.box} rounded-full bg-gradient-to-tr from-[#0284c7] to-[#38bdf8] border-2 border-white/80 flex items-center justify-center shadow-md`}>
-            <span className={`font-black text-white font-mono ${currentSize.font}`}>
-              R
-            </span>
-          </div>
-        )}
+        <img
+          src="https://i.ibb.co.com/tMN6mPt9/IMG-20260914-140952.png"
+          alt="RENDY Logo"
+          referrerPolicy="no-referrer"
+          crossOrigin="anonymous"
+          className={`${currentSize.img} rounded-full object-cover border border-white/40 drop-shadow-md bg-[#0f172a]`}
+          loading="eager"
+        />
       </div>
 
       {withText && (
