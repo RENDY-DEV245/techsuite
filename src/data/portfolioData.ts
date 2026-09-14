@@ -6,15 +6,13 @@ export const profileData: ProfileData = {
   status: 'Semarang, Jawa Tengah • Available for New Projects',
   bio: 'Merancang dan membangun website, aplikasi, CAD, hingga sistem ERP dari nol untuk startup, dan enterprise.',
   experienceStart: 'Active Developer',
-  avatarUrl: 'https://i.ibb.co.com/qFFk1kpC/file-00000000a8f482118dd0819622ba9c28.png',
+  avatarUrl: 'https://i.ibb.co.com/tMN6mPt9/IMG-20260914-140952.png', // <-- GANTI DENGAN LINK INI
   interests: [
     'Web Architecture',
     'Mobile Systems',
-    
   ],
   contact: {
     email: 'rendyajahh245@gmail.com',
-    
   }
 };
 
