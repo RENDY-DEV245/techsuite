@@ -284,13 +284,14 @@ export const ContactSection: React.FC = () => {
                       >
                         <span>Pesan Rahasia</span>
                        </button>
-                   </div>  
+                   </button>
+                    </div>
                   </div>
-               </div>
-              </div>          
+                </div>
 
                 {/* secret developer note */}
                 <div
+                  
                   style={{
                     backfaceVisibility: 'hidden',
                     transform: 'rotateY(180deg)'
