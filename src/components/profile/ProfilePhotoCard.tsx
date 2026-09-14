@@ -56,7 +56,7 @@ export const ProfilePhotoCard: React.FC<ProfilePhotoCardProps> = ({ isFlooded })
               {profileData.name}
             </div>
             <div className="text-xs text-[#8c6239] font-mono mt-0.5">
-              {profileData.education}
+              
             </div>
           </div>
         </div>
