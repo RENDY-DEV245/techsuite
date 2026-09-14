@@ -283,7 +283,7 @@ export const ContactSection: React.FC = () => {
 
                     <div className="grid grid-cols-2 gap-2 sm:gap-2.5">
                       <a
-                        href={profileData.contact.github}
+                        
                         target="_blank"
                         rel="noopener noreferrer"
                         className="p-2 sm:p-2.5 rounded-xl sm:rounded-2xl bg-[#fffdf5] hover:bg-[#fde047] text-[#0f172a] font-mono font-bold text-[11px] sm:text-xs transition-all border-2 border-[#0f172a] shadow-[2px_2px_0px_#0f172a] hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-[1px_1px_0px_#0f172a] flex items-center justify-between group"
@@ -298,7 +298,7 @@ export const ContactSection: React.FC = () => {
                       </a>
 
                       <a
-                        href={profileData.contact.linkedin}
+                        
                         target="_blank"
                         rel="noopener noreferrer"
                         className="p-2 sm:p-2.5 rounded-xl sm:rounded-2xl bg-[#fffdf5] hover:bg-[#fde047] text-[#0f172a] font-mono font-bold text-[11px] sm:text-xs transition-all border-2 border-[#0f172a] shadow-[2px_2px_0px_#0f172a] hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-[1px_1px_0px_#0f172a] flex items-center justify-between group"
