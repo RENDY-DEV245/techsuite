@@ -1494,3 +1494,4 @@ export const FlagshipSlideCard: React.FC<FlagshipSlideCardProps> = ({
 };
 
 export const FlagshipProjectParallax = FlagshipSlideCard;
+export default FlagshipSlideCard;
