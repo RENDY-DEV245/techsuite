@@ -13,9 +13,10 @@ import { ContactSection } from './components/contact/ContactSection';
 import { ProjectCaseStudyModal } from './components/projects/ProjectCaseStudyModal';
 
 export function App() {
-  const [isVerified, setIsVerified] = useState(false); // <-- TAMBAHKAN INI
+  const [isVerified, setIsVerified] = useState(false);
   const [showWelcome, setShowWelcome] = useState(true);
   const [activeModalProject, setActiveModalProject] = useState<Project | null>(null);
+
   useLenisSmoothScroll();
 
   return (
@@ -24,9 +25,9 @@ export function App() {
       {!isVerified && (
         <VerificationGate onVerified={() => setIsVerified(true)} />
       )}
-      
-    <div className="min-h-screen bg-[#fff9d4] text-[#0f172a] selection:bg-[#0284c7] selection:text-white">
-      {showWelcome && (
+
+      {/* 2. Welcome Animation ombak baru berjalan setelah lolos verifikasi */}
+      {isVerified && showWelcome && (
         <WelcomeAnimation onComplete={() => setShowWelcome(false)} />
       )}
 
@@ -37,7 +38,6 @@ export function App() {
         <EditorialProfile />
         <ProjectShowcase onOpenProject={setActiveModalProject} />
         <TechGrid onOpenProject={setActiveModalProject} />
-      
         <JourneyTimeline />
         <ContactSection />
       </main>
