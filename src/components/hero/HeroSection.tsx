@@ -208,7 +208,8 @@ export const HeroSection: React.FC = () => {
 
       <BeachDecorations />
 
-      <div className="relative z-30 max-w-6xl mx-auto px-6 w-full flex-1 flex flex-col items-center justify-center -translate-y-16 sm:-translate-y-24">
+      {/* POSISI VERTICAL SEIMBANG UNTUK MOBILE & DESKTOP */}
+      <div className="relative z-30 max-w-6xl mx-auto px-6 w-full flex-1 flex flex-col items-center justify-center -translate-y-4 sm:-translate-y-8 lg:-translate-y-10">
         <div className="w-full flex flex-col items-center text-center">
           <HeroPhysicsStage
             ref={stageRef}
@@ -231,7 +232,7 @@ export const HeroSection: React.FC = () => {
               Lihat Proyek
             </TactileButton>
 
-            {/* 2. Tombol Download Proposal (TETAP ADA) */}
+            {/* 2. Tombol Download Proposal */}
             <div className="relative inline-block" ref={proposalDropdownRef}>
               <button
                 type="button"
@@ -302,7 +303,7 @@ export const HeroSection: React.FC = () => {
               </AnimatePresence>
             </div>
 
-            {/* 3. Tombol Prototype (PENGGANTI GITHUB) */}
+            {/* 3. Tombol Prototype */}
             <div className="relative inline-block" ref={prototypeDropdownRef}>
               <button
                 type="button"
