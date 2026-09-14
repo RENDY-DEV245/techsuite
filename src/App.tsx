@@ -13,9 +13,9 @@ import { ContactSection } from './components/contact/ContactSection';
 import { ProjectCaseStudyModal } from './components/projects/ProjectCaseStudyModal';
 
 export function App() {
+  const [isVerified, setIsVerified] = useState(false); // <-- TAMBAHKAN INI
   const [showWelcome, setShowWelcome] = useState(true);
   const [activeModalProject, setActiveModalProject] = useState<Project | null>(null);
-
   useLenisSmoothScroll();
 
   return (
