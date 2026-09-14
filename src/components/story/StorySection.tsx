@@ -7,7 +7,6 @@ import {
   ArrowRight,
   ArrowLeft,
   ChevronRight,
-  CheckCircle2
 } from 'lucide-react';
 
 interface StoryChapter {
