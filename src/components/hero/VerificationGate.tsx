@@ -8,6 +8,7 @@ interface VerificationGateProps {
 
 export const VerificationGate: React.FC<VerificationGateProps> = ({ onVerified }) => {
   const [status, setStatus] = useState<'idle' | 'loading' | 'verified'>('idle');
+  const [isDismissed, setIsDismissed] = useState(false);
 
   const handleVerify = () => {
     if (status !== 'idle') return;
@@ -16,6 +17,7 @@ export const VerificationGate: React.FC<VerificationGateProps> = ({ onVerified }
     setTimeout(() => {
       setStatus('verified');
       setTimeout(() => {
+        setIsDismissed(true);
         onVerified();
       }, 700);
     }, 1200);
@@ -23,13 +25,12 @@ export const VerificationGate: React.FC<VerificationGateProps> = ({ onVerified }
 
   return (
     <AnimatePresence>
-      {status !== 'verified' && (
+      {!isDismissed && (
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0, scale: 1.05 }}
           transition={{ duration: 0.5 }}
-          /* Efek Kaca Blur (Transparan melihat pantai di belakang) */
           className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-[#02587a]/35 backdrop-blur-xl select-none"
         >
           {/* Card Verifikasi */}
@@ -39,7 +40,7 @@ export const VerificationGate: React.FC<VerificationGateProps> = ({ onVerified }
               Verify to access portfolio of
             </div>
 
-            {/* Nama diubah menjadi TECHSUITE */}
+            {/* Nama TECHSUITE */}
             <div className="text-2xl font-black font-mono tracking-wider text-[#00FF88] drop-shadow-[0_0_12px_rgba(0,255,136,0.6)] mb-3 uppercase">
               TECHSUITE
             </div>
