@@ -13,10 +13,10 @@ export const ArchitectureStage: React.FC<ArchitectureStageProps> = ({ isFlooded 
     {
       id: 'web',
       icon: <Code2 className="w-5 h-5 text-[#0284c7]" />,
-      title: 'Fullstack Web Development',
+      title: 'Full Stack Web, Mobile App,CAD, ERP, Design System & Architecture code).',
       subtitle: 'Laravel Monolith & Modern React Ecosystem',
       desc: 'Membangun aplikasi web end-to-end dengan backend Laravel / Node.js dan frontend modern React, Next.js, serta TypeScript. Terbiasa mengelola pemodelan database relasional, optimasi query SQL, integrasi REST API, dan antarmuka reaktif yang responsif.',
-      tags: ['Laravel', 'Inertia.js', 'React', 'Next.js', 'TypeScript', 'PostgreSQL', 'MySQL', 'Tailwind CSS']
+      tags: ['Laravel', 'GO', 'React', 'Next.js', 'TypeScript', 'PostgreSQL', 'MySQL', 'Tailwind CSS']
     },
     {
       id: 'mobile',
