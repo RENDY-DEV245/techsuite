@@ -1,13 +1,13 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   Sparkles,
-  ChevronDown,
   BookOpen,
   X,
   ArrowRight,
   ArrowLeft,
-  ChevronRight
+  ChevronRight,
+  CheckCircle2
 } from 'lucide-react';
 
 interface StoryChapter {
@@ -295,32 +295,13 @@ Termasuk:
 ];
 
 export const StorySection: React.FC = () => {
-  const [showDropdown, setShowDropdown] = useState<boolean>(false);
   const [activeModalChapter, setActiveModalChapter] = useState<number | null>(null);
-  const dropdownRef = useRef<HTMLDivElement | null>(null);
-
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      const target = event.target as Node;
-      if (dropdownRef.current && !dropdownRef.current.contains(target)) {
-        setShowDropdown(false);
-      }
-    };
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
-  }, []);
-
-  const openChapter = (index: number) => {
-    setShowDropdown(false);
-    setActiveModalChapter(index);
-  };
 
   return (
     <section
       id="story"
       className="relative z-20 -mt-1 w-full bg-[#02587a] select-none py-16 sm:py-24 lg:py-28 text-[#0f172a]"
     >
-      {/* Kontainer menyamai TechGrid & Profile (max-w-7xl) agar serasi di desktop */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-8 lg:px-12">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -346,98 +327,32 @@ export const StorySection: React.FC = () => {
               “Saya Telah Menemukan Senjata Pamungkas dalam Merebut Pasar yang Mengubah Nasib Finansial Anda Selamanya...”
             </h2>
             <p className="text-xs sm:text-base lg:text-lg text-[#475569] font-medium leading-relaxed">
-              Kisah lengkap bagaimana arsitektur 3-in-1 (Compro + E-Commerce + ERP) mendongkrak penjualan 300% dan menekan selisih stok hingga 0%. Pilih bab di bawah untuk membaca isi lengkapnya.
+              Kisah lengkap bagaimana arsitektur 3-in-1 (Compro + E-Commerce + ERP) mendongkrak penjualan 300% dan menekan selisih stok hingga 0%. Buka menu di bawah untuk membaca isi 13 bab cerita.
             </p>
           </div>
 
-          {/* Action Row */}
+          {/* Action Row: Tombol Buka Menu & Baca Bab */}
           <div className="pt-4 border-t-2 border-[#0f172a]/15 flex flex-wrap items-center gap-3.5">
-            {/* DROPDOWN MENU BAB CERITA */}
-            <div className="relative" ref={dropdownRef}>
-              <button
-                type="button"
-                onClick={() => setShowDropdown((prev: boolean) => !prev)}
-                className="inline-flex items-center justify-center gap-2 px-4 py-2.5 sm:px-6 sm:py-3.5 rounded-xl sm:rounded-2xl bg-[#0d2844] hover:bg-[#123559] text-white border-2 border-[#0f172a] shadow-[3px_3px_0px_#0f172a] sm:shadow-[4px_4px_0px_#0f172a] text-xs sm:text-sm font-mono font-black transition-all cursor-pointer hover:-translate-y-0.5"
-              >
-                <BookOpen className="w-4 h-4 text-[#38bdf8]" />
-                <span>Pilih Bab Cerita (1 - 13)</span>
-                <ChevronDown
-                  className={`w-4 h-4 text-[#38bdf8] transition-transform duration-200 ${
-                    showDropdown ? 'rotate-180' : ''
-                  }`}
-                />
-              </button>
-
-              <AnimatePresence>
-                {showDropdown && (
-                  <>
-                    <motion.div
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      exit={{ opacity: 0 }}
-                      onClick={() => setShowDropdown(false)}
-                      className="fixed inset-0 bg-black/50 backdrop-blur-xs z-[90] sm:hidden"
-                    />
-
-                    <motion.div
-                      initial={{ opacity: 0, y: 10, scale: 0.95 }}
-                      animate={{ opacity: 1, y: 0, scale: 1 }}
-                      exit={{ opacity: 0, y: 10, scale: 0.95 }}
-                      transition={{ duration: 0.15 }}
-                      className="fixed sm:absolute left-4 right-4 top-1/2 -translate-y-1/2 sm:top-full sm:translate-y-0 sm:left-0 sm:right-auto mt-0 sm:mt-2 w-auto sm:w-96 max-h-[65vh] overflow-y-auto p-3 rounded-2xl sm:rounded-3xl bg-[#071b2f] border-2 sm:border-3 border-[#38bdf8]/60 shadow-[0_15px_45px_rgba(0,0,0,0.85)] z-[100] flex flex-col gap-1.5"
-                    >
-                      <div className="flex items-center justify-between px-3 py-1.5 border-b border-[#224c75]/70">
-                        <span className="text-xs font-mono font-bold text-[#38bdf8] uppercase tracking-wider">
-                          Daftar 13 Bab Cerita:
-                        </span>
-                        <button
-                          type="button"
-                          onClick={() => setShowDropdown(false)}
-                          className="sm:hidden text-gray-400 hover:text-white p-1"
-                        >
-                          <X className="w-4 h-4" />
-                        </button>
-                      </div>
-
-                      {STORY_CHAPTERS.map((item, idx: number) => (
-                        <button
-                          key={idx}
-                          type="button"
-                          onClick={() => openChapter(idx)}
-                          className="w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs font-semibold text-[#f8fafc] bg-[#0c233c]/60 hover:bg-[#123559] hover:text-[#38bdf8] border border-transparent hover:border-[#38bdf8]/30 transition-all text-left cursor-pointer"
-                        >
-                          <div className="flex items-center gap-2.5 truncate">
-                            <span className="text-[10px] font-mono font-black text-[#38bdf8] px-2 py-0.5 rounded bg-[#0d2844] border border-[#224c75] shrink-0">
-                              {item.num}
-                            </span>
-                            <span className="truncate">{item.title}</span>
-                          </div>
-                          <ChevronRight className="w-4 h-4 text-[#64748b] shrink-0" />
-                        </button>
-                      ))}
-                    </motion.div>
-                  </>
-                )}
-              </AnimatePresence>
-            </div>
-
-            {/* Tombol Mulai Baca */}
             <button
               type="button"
-              onClick={() => openChapter(0)}
-              className="inline-flex items-center justify-center gap-2 px-4 py-2.5 sm:px-6 sm:py-3.5 rounded-xl sm:rounded-2xl bg-[#fde047] hover:bg-[#facc15] text-[#0f172a] border-2 border-[#0f172a] shadow-[3px_3px_0px_#0f172a] sm:shadow-[4px_4px_0px_#0f172a] text-xs sm:text-sm font-mono font-black transition-all cursor-pointer hover:-translate-y-0.5"
+              onClick={() => setActiveModalChapter(0)}
+              className="inline-flex items-center justify-center gap-2 px-5 py-3 sm:px-7 sm:py-4 rounded-xl sm:rounded-2xl bg-[#0d2844] hover:bg-[#123559] text-white border-2 border-[#0f172a] shadow-[3px_3px_0px_#0f172a] sm:shadow-[4px_4px_0px_#0f172a] text-xs sm:text-base font-mono font-black transition-all cursor-pointer hover:-translate-y-0.5"
             >
-              <span>Mulai Baca Bab 01</span>
-              <ArrowRight className="w-4 h-4" />
+              <BookOpen className="w-4 h-4 sm:w-5 sm:h-5 text-[#38bdf8]" />
+              <span>Buka Menu &amp; Daftar 13 Bab</span>
+              <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 text-[#fde047]" />
             </button>
           </div>
         </motion.div>
       </div>
 
-      {/* MODAL BACA BESAR, LEGA & RESPONSIF DI DESKTOP */}
+      {/* ========================================================
+          MODAL READER DUAL-PANE (SPLIT DI DESKTOP, BERSIH DI MOBILE)
+         ======================================================== */}
       <AnimatePresence>
         {activeModalChapter !== null && (
-          <div className="fixed inset-0 z-[120] flex items-center justify-center p-4 sm:p-8 lg:p-12 overflow-y-auto">
+          <div className="fixed inset-0 z-[150] flex items-center justify-center p-3 sm:p-6 lg:p-10 overflow-y-auto">
+            {/* Backdrop */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -446,79 +361,144 @@ export const StorySection: React.FC = () => {
               className="fixed inset-0 bg-[#071b2f]/85 backdrop-blur-md"
             />
 
+            {/* Modal Box */}
             <motion.div
               initial={{ opacity: 0, scale: 0.95, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
               transition={{ type: 'spring', damping: 25, stiffness: 280 }}
-              className="relative z-10 w-full max-w-4xl lg:max-w-5xl bg-[#fffdf5] border-3 sm:border-4 border-[#0f172a] rounded-[24px] sm:rounded-[36px] shadow-[8px_8px_0px_#0f172a] sm:shadow-[14px_14px_0px_#0f172a] overflow-hidden my-auto flex flex-col max-h-[88vh]"
+              className="relative z-10 w-full max-w-6xl bg-[#fffdf5] border-3 sm:border-4 border-[#0f172a] rounded-[24px] sm:rounded-[36px] shadow-[8px_8px_0px_#0f172a] sm:shadow-[16px_16px_0px_#0f172a] overflow-hidden my-auto flex flex-col h-[88vh]"
             >
-              {/* Header Modal */}
-              <div className="flex items-center justify-between p-4 sm:p-6 bg-[#071b2f] text-white border-b-3 sm:border-b-4 border-[#0f172a] shrink-0">
-                <div className="flex items-center gap-3 truncate">
-                  <span className="px-3 py-1 rounded-lg bg-[#fde047] text-[#0f172a] text-xs font-mono font-black border border-[#0f172a] shrink-0">
-                    BAB {STORY_CHAPTERS[activeModalChapter].num} / 13
-                  </span>
-                  <h3 className="text-sm sm:text-lg lg:text-xl font-black text-white truncate">
-                    {STORY_CHAPTERS[activeModalChapter].title}
-                  </h3>
+              {/* Header Modal Utama */}
+              <div className="flex items-center justify-between p-4 sm:p-5 bg-[#071b2f] text-white border-b-3 sm:border-b-4 border-[#0f172a] shrink-0">
+                <div className="flex items-center gap-3">
+                  <div className="p-2 rounded-xl bg-[#fde047] text-[#0f172a] border-2 border-[#0f172a] hidden sm:block">
+                    <BookOpen className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <span className="text-[10px] sm:text-xs font-mono font-bold text-[#38bdf8] uppercase tracking-wider block">
+                      STUDI KASUS LENGKAP
+                    </span>
+                    <h3 className="text-sm sm:text-lg font-black text-white leading-none mt-0.5">
+                      Rahasia Arsitektur Digital Trinitas
+                    </h3>
+                  </div>
                 </div>
 
                 <button
                   type="button"
                   onClick={() => setActiveModalChapter(null)}
-                  className="p-2 rounded-xl bg-[#fffdf5] hover:bg-[#fee2e2] text-[#0f172a] hover:text-[#dc2626] border-2 border-[#0f172a] shadow-[2px_2px_0px_#0f172a] transition-all cursor-pointer shrink-0"
+                  className="p-2 rounded-xl bg-[#fffdf5] hover:bg-[#fee2e2] text-[#0f172a] hover:text-[#dc2626] border-2 border-[#0f172a] shadow-[2px_2px_0px_#0f172a] transition-all cursor-pointer"
+                  title="Tutup"
                 >
                   <X className="w-5 h-5" />
                 </button>
               </div>
 
-              {/* Teks Cerita (Legible, Spasi Nyaman di Desktop) */}
-              <div className="p-6 sm:p-10 lg:p-12 overflow-y-auto space-y-4 text-xs sm:text-base lg:text-lg text-[#1e293b] leading-relaxed font-sans whitespace-pre-line">
-                {STORY_CHAPTERS[activeModalChapter].content}
-              </div>
+              {/* Body: Split View di Desktop (Daftar Bab di Kiri, Teks Cerita di Kanan) */}
+              <div className="flex-1 min-h-0 flex flex-col lg:flex-row overflow-hidden">
+                
+                {/* Panel Kiri (Daftar 13 Bab) - Muncul di Desktop & Tablet */}
+                <div className="hidden lg:flex w-80 flex-col border-r-3 border-[#0f172a]/20 bg-[#fff9d4] shrink-0">
+                  <div className="p-3.5 border-b-2 border-[#0f172a]/15 text-xs font-mono font-black uppercase text-[#0f172a] flex items-center justify-between">
+                    <span>PILIH BAB CERITA:</span>
+                    <span className="px-2 py-0.5 rounded bg-[#fde047] border border-[#0f172a]">
+                      13 BAB
+                    </span>
+                  </div>
 
-              {/* Footer Navigasi Antar Bab */}
-              <div className="p-4 sm:p-6 bg-[#fff9d4] border-t-3 border-[#0f172a]/20 flex items-center justify-between gap-3 shrink-0">
-                <button
-                  type="button"
-                  disabled={activeModalChapter === 0}
-                  onClick={() =>
-                    setActiveModalChapter((prev: number | null) =>
-                      prev !== null && prev > 0 ? prev - 1 : prev
-                    )
-                  }
-                  className={`inline-flex items-center gap-1.5 px-3.5 py-2 sm:px-5 sm:py-2.5 rounded-xl border-2 border-[#0f172a] text-xs sm:text-sm font-mono font-bold transition-all ${
-                    activeModalChapter === 0
-                      ? 'bg-gray-200 text-gray-400 border-gray-300 cursor-not-allowed shadow-none'
-                      : 'bg-[#fffdf5] hover:bg-[#fde047] text-[#0f172a] shadow-[2px_2px_0px_#0f172a] cursor-pointer'
-                  }`}
-                >
-                  <ArrowLeft className="w-4 h-4" />
-                  <span>Sebelumnya</span>
-                </button>
+                  <div className="flex-1 overflow-y-auto p-2.5 space-y-1.5">
+                    {STORY_CHAPTERS.map((item, idx) => {
+                      const isActive = activeModalChapter === idx;
+                      return (
+                        <button
+                          key={idx}
+                          type="button"
+                          onClick={() => setActiveModalChapter(idx)}
+                          className={`w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-xs font-bold transition-all text-left cursor-pointer border-2 ${
+                            isActive
+                              ? 'bg-[#0284c7] text-white border-[#0f172a] shadow-[2px_2px_0px_#0f172a]'
+                              : 'bg-[#fffdf5] hover:bg-[#fde047] text-[#0f172a] border-[#0f172a]/40 shadow-xs'
+                          }`}
+                        >
+                          <div className="flex items-center gap-2 truncate">
+                            <span className={`text-[10px] font-mono font-black px-1.5 py-0.5 rounded ${
+                              isActive ? 'bg-white/20 text-white' : 'bg-[#0f172a]/10 text-[#0f172a]'
+                            }`}>
+                              {item.num}
+                            </span>
+                            <span className="truncate">{item.title}</span>
+                          </div>
+                          <ChevronRight className={`w-3.5 h-3.5 shrink-0 ${isActive ? 'text-white' : 'text-[#64748b]'}`} />
+                        </button>
+                      );
+                    })}
+                  </div>
+                </div>
 
-                <span className="text-xs sm:text-sm font-mono font-black text-[#0f172a]">
-                  Bab {activeModalChapter + 1} dari 13
-                </span>
+                {/* Panel Kanan (Isi Teks Cerita 100% Persis) */}
+                <div className="flex-1 flex flex-col min-h-0 bg-[#fffdf5]">
+                  {/* Sub-Header Judul Bab Saat Ini */}
+                  <div className="p-4 sm:p-5 border-b-2 border-[#0f172a]/10 bg-[#fffdf5] flex items-center justify-between shrink-0">
+                    <div className="flex items-center gap-2.5 truncate">
+                      <span className="px-2.5 py-1 rounded-lg bg-[#fde047] text-[#0f172a] text-xs font-mono font-black border border-[#0f172a] shrink-0">
+                        BAB {STORY_CHAPTERS[activeModalChapter].num} / 13
+                      </span>
+                      <h4 className="text-sm sm:text-base lg:text-lg font-black text-[#0f172a] truncate">
+                        {STORY_CHAPTERS[activeModalChapter].title}
+                      </h4>
+                    </div>
+                  </div>
 
-                <button
-                  type="button"
-                  disabled={activeModalChapter === STORY_CHAPTERS.length - 1}
-                  onClick={() =>
-                    setActiveModalChapter((prev: number | null) =>
-                      prev !== null && prev < STORY_CHAPTERS.length - 1 ? prev + 1 : prev
-                    )
-                  }
-                  className={`inline-flex items-center gap-1.5 px-3.5 py-2 sm:px-5 sm:py-2.5 rounded-xl border-2 border-[#0f172a] text-xs sm:text-sm font-mono font-bold transition-all ${
-                    activeModalChapter === STORY_CHAPTERS.length - 1
-                      ? 'bg-gray-200 text-gray-400 border-gray-300 cursor-not-allowed shadow-none'
-                      : 'bg-[#fde047] hover:bg-[#facc15] text-[#0f172a] shadow-[2px_2px_0px_#0f172a] cursor-pointer'
-                  }`}
-                >
-                  <span>Selanjutnya</span>
-                  <ArrowRight className="w-4 h-4" />
-                </button>
+                  {/* Konten Teks Utuh & Nyaman Dibaca */}
+                  <div className="flex-1 overflow-y-auto p-5 sm:p-8 lg:p-10 text-xs sm:text-base text-[#1e293b] leading-relaxed font-sans whitespace-pre-line select-text">
+                    {STORY_CHAPTERS[activeModalChapter].content}
+                  </div>
+
+                  {/* Navigasi Sebelumnya / Selanjutnya */}
+                  <div className="p-3.5 sm:p-4 bg-[#fff9d4] border-t-2 border-[#0f172a]/20 flex items-center justify-between gap-3 shrink-0">
+                    <button
+                      type="button"
+                      disabled={activeModalChapter === 0}
+                      onClick={() =>
+                        setActiveModalChapter((prev) =>
+                          prev !== null && prev > 0 ? prev - 1 : prev
+                        )
+                      }
+                      className={`inline-flex items-center gap-1.5 px-3.5 py-2 sm:px-5 sm:py-2.5 rounded-xl border-2 border-[#0f172a] text-xs sm:text-sm font-mono font-bold transition-all ${
+                        activeModalChapter === 0
+                          ? 'bg-gray-200 text-gray-400 border-gray-300 cursor-not-allowed shadow-none'
+                          : 'bg-[#fffdf5] hover:bg-[#fde047] text-[#0f172a] shadow-[2px_2px_0px_#0f172a] cursor-pointer'
+                      }`}
+                    >
+                      <ArrowLeft className="w-4 h-4" />
+                      <span>Sebelumnya</span>
+                    </button>
+
+                    <span className="text-xs font-mono font-black text-[#0f172a]">
+                      Bab {activeModalChapter + 1} dari 13
+                    </span>
+
+                    <button
+                      type="button"
+                      disabled={activeModalChapter === STORY_CHAPTERS.length - 1}
+                      onClick={() =>
+                        setActiveModalChapter((prev) =>
+                          prev !== null && prev < STORY_CHAPTERS.length - 1 ? prev + 1 : prev
+                        )
+                      }
+                      className={`inline-flex items-center gap-1.5 px-3.5 py-2 sm:px-5 sm:py-2.5 rounded-xl border-2 border-[#0f172a] text-xs sm:text-sm font-mono font-bold transition-all ${
+                        activeModalChapter === STORY_CHAPTERS.length - 1
+                          ? 'bg-gray-200 text-gray-400 border-gray-300 cursor-not-allowed shadow-none'
+                          : 'bg-[#fde047] hover:bg-[#facc15] text-[#0f172a] shadow-[2px_2px_0px_#0f172a] cursor-pointer'
+                      }`}
+                    >
+                      <span>Selanjutnya</span>
+                      <ArrowRight className="w-4 h-4" />
+                    </button>
+                  </div>
+                </div>
+
               </div>
             </motion.div>
           </div>
