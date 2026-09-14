@@ -74,9 +74,11 @@ export const PipelineNodeLayer: React.FC<PipelineNodeLayerProps> = ({
     activeDomain === 'all' ||
     (activeDomain === 'web' && layerId === 'client') ||
     (activeDomain === 'mobile' && layerId === 'client') ||
+    (activeDomain === 'cad' && layerId === 'client') ||
+    (activeDomain === 'erp' && (layerId === 'backend' || layerId === 'database')) ||
     (activeDomain === 'backend' && (layerId === 'backend' || layerId === 'database')) ||
     (activeDomain === 'devops' && layerId === 'devops');
-
+  
   const handleInspectClick = (e: React.MouseEvent) => {
     e.stopPropagation();
     if (!isLayerActiveInDomain) return;
@@ -170,8 +172,10 @@ export const PipelineNodeLayer: React.FC<PipelineNodeLayerProps> = ({
               (activeDomain === 'web' && tech.category === 'frontend') ||
               (activeDomain === 'mobile' && tech.category === 'mobile') ||
               (activeDomain === 'backend' && tech.category === 'backend') ||
+              (activeDomain === 'erp' && (tech.name.includes('ERP') || tech.name === 'Laravel' || tech.name === 'PostgreSQL' || tech.name === 'MySQL')) ||
+              (activeDomain === 'cad' && (tech.name === 'AutoCAD' || tech.name === 'SolidWorks')) ||
               (activeDomain === 'devops' && tech.category === 'tools');
-
+      
             const isToolSelected = isLayerActiveInDomain && selectedTech?.name === tech.name;
 
             return (
