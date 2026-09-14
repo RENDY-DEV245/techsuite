@@ -37,8 +37,9 @@ export const FlagshipSlideCard: React.FC<FlagshipSlideCardProps> = ({
 }) => {
   const [showEcommerceModal, setShowEcommerceModal] = useState(false);
   const [showHrisModal, setShowHrisModal] = useState(false);
+  const [showErpModal, setShowErpModal] = useState(false);
   const zIndex = (index + 1) * 10;
-
+  
   // 12 Katalog Web Klien Lengkap untuk Slide 01
   const clientWebs = [
     {
@@ -295,20 +296,28 @@ export const FlagshipSlideCard: React.FC<FlagshipSlideCardProps> = ({
                       </a>
                     </div>
                   </div>
-            ) : (
-                  /* Slide 05 ERP */
-                  project.demoUrl && (
-                    <a
-                      href="https://clarate.id/id/register?service_id=1"
-                      target="_blank"
-                      rel="noopener noreferrer"
+) : (
+                  /* Slide 05 ERP: Tahu Lebih Lanjut & Coba Gratis */
+                  <>
+                    <button
+                      type="button"
+                      onClick={() => setShowErpModal(true)}
                       className="inline-flex items-center justify-center gap-1.5 px-4 py-2 sm:px-5 sm:py-2.5 rounded-xl bg-[#fde047] hover:bg-[#facc15] text-[#0f172a] font-mono font-black text-xs sm:text-sm border-2 border-[#0f172a] shadow-[2.5px_2.5px_0px_#0f172a] hover:translate-x-0.5 hover:translate-y-0.5 transition-all cursor-pointer flex-1"
                     >
                       <Sparkles className="w-3.5 h-3.5 text-[#0f172a]" />
                       <span>Tahu Lebih Lanjut</span>
+                    </button>
+
+                    <a
+                      href="https://clarate.id/id/register?service_id=1"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center justify-center gap-1.5 px-3.5 py-2 sm:px-4 sm:py-2.5 rounded-xl bg-[#0284c7] hover:bg-[#0369a1] text-white font-mono font-bold text-xs sm:text-sm border-2 border-[#0f172a] shadow-[2.5px_2.5px_0px_#0f172a] hover:translate-x-0.5 hover:translate-y-0.5 transition-all cursor-pointer"
+                    >
+                      <span>Coba Gratis</span>
                       <ExternalLink className="w-3.5 h-3.5" />
                     </a>
-                  )
+                  </>
                 )}
               </div>
             </div>
@@ -976,21 +985,497 @@ export const FlagshipSlideCard: React.FC<FlagshipSlideCardProps> = ({
 
               </div>
 
-              {/* Footer CTA Modal */}
+              
+
+
+
+            {/* MODAL 03: CLARATE ERP (100% TEKS LENGKAP) */}
+      <AnimatePresence>
+        {showErpModal && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[110] flex items-center justify-center p-3 sm:p-6 bg-[#071b2f]/80 backdrop-blur-md select-none"
+          >
+            <motion.div
+              initial={{ scale: 0.92, y: 20 }}
+              animate={{ scale: 1, y: 0 }}
+              exit={{ scale: 0.92, y: 20 }}
+              transition={{ type: 'spring', damping: 25, stiffness: 280 }}
+              className="relative w-full max-w-4xl bg-[#fffdf5] rounded-3xl border-3 sm:border-4 border-[#0f172a] shadow-[8px_8px_0px_#0f172a] sm:shadow-[12px_12px_0px_#0f172a] p-5 sm:p-8 max-h-[90vh] overflow-y-auto overscroll-contain flex flex-col justify-between space-y-6 text-[#0f172a]"
+              data-lenis-prevent="true"
+              style={{ touchAction: 'pan-y' }}
+            >
+              {/* Header Modal */}
+              <div className="flex items-start justify-between gap-4 pb-4 border-b-2 border-[#0f172a]/15">
+                <div>
+                  <div className="flex items-center gap-2 mb-1.5">
+                    <span className="px-2.5 py-0.5 rounded-lg bg-[#fde047] text-[#0f172a] text-[10px] sm:text-xs font-mono font-black border-2 border-[#0f172a]">
+                      CLARATE ERP
+                    </span>
+                    <span className="text-[11px] font-mono font-bold text-[#15803d]">
+                      • Kasir • Stok • Pembelian • Penjualan • Akuntansi
+                    </span>
+                  </div>
+                  <h2 className="text-xl sm:text-3xl font-black text-[#0f172a] tracking-tight leading-tight">
+                    Sistem Operasional Bisnis ,Bukan Sekadar Akuntansi
+                  </h2>
+                  <p className="text-xs sm:text-sm font-bold text-[#0284c7] mt-1">
+                    Setiap Transaksi Langsung Jadi Laporan. Tanpa Rekap. Tanpa Akuntan. Tanpa Excel.
+                  </p>
+                </div>
+
+                <button
+                  type="button"
+                  onClick={() => setShowErpModal(false)}
+                  className="p-2 rounded-xl bg-[#fff9d4] hover:bg-[#fee2e2] text-[#0f172a] hover:text-[#dc2626] border-2 border-[#0f172a] shadow-[2px_2px_0px_#0f172a] transition-all cursor-pointer shrink-0"
+                >
+                  <X className="w-5 h-5" />
+                </button>
+              </div>
+
+              {/* Isi Konten Lengkap */}
+              <div className="space-y-6 text-xs sm:text-sm text-[#334155] leading-relaxed">
+                {/* Intro & Trial Badges */}
+                <div className="p-4 sm:p-5 rounded-2xl bg-[#fff9d4] border-2 border-[#0f172a] space-y-3">
+                  <p className="font-medium text-[#0f172a]">
+                    Clarate ERP menghubungkan kasir, stok, pembelian, penjualan, dan akuntansi dalam satu sistem. Setiap kali ada transaksi, laporan keuangan langsung terupdate ,tanpa kamu harus input apapun dua kali.
+                  </p>
+
+                  <div className="flex flex-wrap items-center gap-3 pt-1">
+                    <a
+                      href="https://clarate.id/id/register?service_id=1"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-[#fde047] hover:bg-[#facc15] text-[#0f172a] font-mono font-black text-xs border-2 border-[#0f172a] shadow-[2px_2px_0px_#0f172a]"
+                    >
+                      <span>Coba Gratis 14 Hari</span>
+                      <ArrowRight className="w-3.5 h-3.5" />
+                    </a>
+                    <a
+                      href="https://clarate.id/id/register?service_id=1"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-[#fffdf5] text-[#0f172a] font-mono font-bold text-xs border border-[#0f172a]"
+                    >
+                      <span>Lihat Harga</span>
+                    </a>
+                  </div>
+
+                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 pt-2 border-t border-[#0f172a]/10">
+                    <div className="flex items-center gap-1.5 font-bold text-[11px] text-[#0f172a]">
+                      <CheckCircle2 className="w-3.5 h-3.5 text-[#16a34a] shrink-0" />
+                      <span>Trial gratis 14 hari</span>
+                    </div>
+                    <div className="flex items-center gap-1.5 font-bold text-[11px] text-[#0f172a]">
+                      <CheckCircle2 className="w-3.5 h-3.5 text-[#16a34a] shrink-0" />
+                      <span>Tanpa kartu kredit</span>
+                    </div>
+                    <div className="flex items-center gap-1.5 font-bold text-[11px] text-[#0f172a]">
+                      <CheckCircle2 className="w-3.5 h-3.5 text-[#16a34a] shrink-0" />
+                      <span>Data 100% milikmu</span>
+                    </div>
+                    <div className="flex items-center gap-1.5 font-bold text-[11px] text-[#0f172a]">
+                      <CheckCircle2 className="w-3.5 h-3.5 text-[#16a34a] shrink-0" />
+                      <span>Support tersedia</span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Section 1: Kenapa Clarate ERP? */}
+                <div className="space-y-3">
+                  <h3 className="text-base sm:text-lg font-black text-[#0f172a]">
+                    Kenapa Clarate ERP?
+                  </h3>
+                  <p className="text-xs text-[#475569]">
+                    Terlalu banyak pengusaha kerja keras, tapi tidak tahu bisnisnya untung atau rugi. Karena data bisnis mereka tersebar di buku kas, Excel, dan aplikasi yang tidak terhubung satu sama lain.
+                  </p>
+
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-3 pt-1">
+                    <div className="p-4 rounded-2xl bg-[#fffdf5] border-2 border-[#0f172a] shadow-[3px_3px_0px_#0f172a] space-y-2 flex flex-col justify-between">
+                      <span className="text-[10px] font-mono font-black uppercase text-[#0284c7] bg-[#e0f2fe] px-2 py-0.5 rounded border border-[#0284c7]/30 w-fit">
+                        Retail
+                      </span>
+                      <p className="text-xs italic text-[#475569]">
+                        “Stok laptop terakhir terjual Sabtu malam. Senin pagi, 3 customer datang ,dan baru ketahuan habis. Padahal kalau ada notifikasi, sudah bisa restock Jumat.”
+                      </p>
+                      <div className="p-2 rounded-xl bg-[#fef2f2] border border-[#ef4444]/20 text-[11px] text-[#991b1b] font-bold space-y-1">
+                        <div>Dampak: 3 customer kecewa. 1 pindah ke kompetitor.</div>
+                        <div className="text-[#8c6239] font-normal">💡 Data ada , tapi tersebar di kasir dan Excel yang tidak terhubung.</div>
+                      </div>
+                    </div>
+
+                    <div className="p-4 rounded-2xl bg-[#fffdf5] border-2 border-[#0f172a] shadow-[3px_3px_0px_#0f172a] space-y-2 flex flex-col justify-between">
+                      <span className="text-[10px] font-mono font-black uppercase text-[#f59e0b] bg-[#fef3c7] px-2 py-0.5 rounded border border-[#f59e0b]/30 w-fit">
+                        F&amp;B
+                      </span>
+                      <p className="text-xs italic text-[#475569]">
+                        “Restoran ramai sepanjang bulan. Tapi pas laporan akhir bulan keluar, food cost ternyata 52% ,jauh di atas target 35%. Margin sudah terkikis, dan baru ketahuan sekarang.”
+                      </p>
+                      <div className="p-2 rounded-xl bg-[#fffbeb] border border-[#f59e0b]/20 text-[11px] text-[#92400e] font-bold space-y-1">
+                        <div>Dampak: Terlambat mengambil tindakan. Margin bulan ini hilang.</div>
+                        <div className="text-[#8c6239] font-normal">💡 Tanpa cost tracking real-time, kamu tahu masalah setelah sudah terlambat.</div>
+                      </div>
+                    </div>
+
+                    <div className="p-4 rounded-2xl bg-[#fffdf5] border-2 border-[#0f172a] shadow-[3px_3px_0px_#0f172a] space-y-2 flex flex-col justify-between">
+                      <span className="text-[10px] font-mono font-black uppercase text-[#15803d] bg-[#dcfce7] px-2 py-0.5 rounded border border-[#15803d]/30 w-fit">
+                        B2B / Distributor
+                      </span>
+                      <p className="text-xs italic text-[#475569]">
+                        “Ada 12 invoice ke customer yang sudah lewat tempo. Tidak ada yang mengingatkan. Baru ketahuan saat butuh bayar supplier , cashflow mendadak kritis.”
+                      </p>
+                      <div className="p-2 rounded-xl bg-[#f0fdf4] border border-[#15803d]/20 text-[11px] text-[#166534] font-bold space-y-1">
+                        <div>Dampak: Harus tarik pinjaman darurat untuk bayar supplier.</div>
+                        <div className="text-[#8c6239] font-normal">💡 Piutang tidak terpantau = cashflow yang tidak bisa diprediksi.</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Section 2: Keputusan Lebih Cepat */}
+                <div className="p-4 sm:p-5 rounded-2xl bg-[#fffdf5] border-2 border-[#0f172a] shadow-[3px_3px_0px_#0f172a] space-y-3">
+                  <div>
+                    <div className="text-[10px] font-mono font-black uppercase text-[#0284c7]">
+                      Keputusan Lebih Cepat
+                    </div>
+                    <h3 className="text-base sm:text-lg font-black text-[#0f172a] mt-0.5">
+                      Saat Kompetitor Masih Rekap, Kamu Sudah Tahu Hasilnya.
+                    </h3>
+                    <p className="text-xs text-[#475569] mt-1">
+                      Dashboard real-time bukan sekadar grafik cantik ,ini adalah keunggulan kompetitif. Tahu jam berapa produk paling laku, cabang mana yang underperform, dan kapan harus restock, sebelum masalah muncul.
+                    </p>
+                  </div>
+
+                  <div className="space-y-1 text-xs text-[#1e293b] font-medium">
+                    <div className="flex items-center gap-1.5">
+                      <CheckCircle2 className="w-3.5 h-3.5 text-[#16a34a] shrink-0" />
+                      <span>Profit per produk, per cabang, per karyawan, real-time</span>
+                    </div>
+                    <div className="flex items-center gap-1.5">
+                      <CheckCircle2 className="w-3.5 h-3.5 text-[#16a34a] shrink-0" />
+                      <span>Deteksi otomatis transaksi tidak wajar berdasarkan aturan yang kamu set</span>
+                    </div>
+                    <div className="flex items-center gap-1.5">
+                      <CheckCircle2 className="w-3.5 h-3.5 text-[#16a34a] shrink-0" />
+                      <span>Akses dari HP kapan saja, dari mana saja</span>
+                    </div>
+                  </div>
+
+                  {/* Dashboard Visual Mock */}
+                  <div className="p-3.5 rounded-xl bg-[#0f172a] text-white space-y-2.5">
+                    <div className="flex items-center justify-between text-[11px] font-mono text-[#94a3b8]">
+                      <span>Dashboard</span>
+                      <span>30 hari terakhir</span>
+                    </div>
+                    <div className="grid grid-cols-3 gap-2 text-center">
+                      <div className="p-2 rounded-lg bg-[#1e293b] border border-[#334155]">
+                        <div className="text-[9px] text-[#94a3b8]">Pendapatan</div>
+                        <div className="text-xs font-black text-[#38bdf8] mt-0.5">Rp48.500.000</div>
+                        <div className="text-[8px] text-[#4ade80] font-bold">+12%</div>
+                      </div>
+                      <div className="p-2 rounded-lg bg-[#1e293b] border border-[#334155]">
+                        <div className="text-[9px] text-[#94a3b8]">Pengeluaran</div>
+                        <div className="text-xs font-black text-[#fb7185] mt-0.5">Rp21.200.000</div>
+                        <div className="text-[8px] text-[#4ade80] font-bold">−4%</div>
+                      </div>
+                      <div className="p-2 rounded-lg bg-[#1e293b] border border-[#334155]">
+                        <div className="text-[9px] text-[#94a3b8]">Laba Bersih</div>
+                        <div className="text-xs font-black text-[#4ade80] mt-0.5">Rp27.300.000</div>
+                        <div className="text-[8px] text-[#4ade80] font-bold">+18%</div>
+                      </div>
+                    </div>
+                    <div className="text-[10px] font-mono text-[#94a3b8] text-center pt-1 border-t border-[#334155]">
+                      Grafik Pendapatan: Setiap transaksi kasir, penjualan, dan pembelian langsung membentuk angka ini , tanpa rekap.
+                    </div>
+                  </div>
+                </div>
+
+                {/* Section 3: Tidak Lagi Kehabisan Stok */}
+                <div className="p-4 sm:p-5 rounded-2xl bg-[#fffdf5] border-2 border-[#0f172a] shadow-[3px_3px_0px_#0f172a] space-y-3">
+                  <div>
+                    <div className="text-[10px] font-mono font-black uppercase text-[#0284c7]">
+                      Tidak Lagi Kehabisan Stok
+                    </div>
+                    <h3 className="text-base sm:text-lg font-black text-[#0f172a] mt-0.5">
+                      Kehabisan Stok di Momen Ramai Adalah Kerugian yang Bisa Dicegah.
+                    </h3>
+                    <p className="text-xs text-[#475569] mt-1">
+                      Clarate memantau pergerakan stokmu dan memberi peringatan otomatis saat stok menyentuh titik minimum yang kamu tetapkan , bahkan bisa langsung siapkan draf purchase order ke supplier. Tidak ada lagi customer kecewa karena kehabisan.
+                    </p>
+                  </div>
+
+                  <div className="space-y-1 text-xs text-[#1e293b] font-medium">
+                    <div className="flex items-center gap-1.5">
+                      <CheckCircle2 className="w-3.5 h-3.5 text-[#16a34a] shrink-0" />
+                      <span>Peringatan dini otomatis saat stok mendekati titik minimum</span>
+                    </div>
+                    <div className="flex items-center gap-1.5">
+                      <CheckCircle2 className="w-3.5 h-3.5 text-[#16a34a] shrink-0" />
+                      <span>Kelola stok di banyak gudang dari satu tampilan</span>
+                    </div>
+                    <div className="flex items-center gap-1.5">
+                      <CheckCircle2 className="w-3.5 h-3.5 text-[#16a34a] shrink-0" />
+                      <span>Draf PO ke supplier siap kirim , tidak perlu buat dari awal</span>
+                    </div>
+                  </div>
+
+                  {/* Inventory Visual Table */}
+                  <div className="p-3.5 rounded-xl bg-[#fff9d4] border border-[#0f172a] space-y-2">
+                    <div className="flex items-center justify-between text-[11px] font-mono font-bold text-[#8c6239]">
+                      <span>Inventory</span>
+                      <span>234 produk</span>
+                    </div>
+                    <table className="w-full text-[11px] font-mono text-left">
+                      <thead>
+                        <tr className="border-b border-[#0f172a]/20 text-[#64748b]">
+                          <th className="py-1">Stok Produk</th>
+                          <th className="py-1">Stok</th>
+                          <th className="py-1">Status</th>
+                        </tr>
+                      </thead>
+                      <tbody className="divide-y divide-[#0f172a]/10">
+                        <tr>
+                          <td className="py-1 font-bold">Laptop Asus VivoBook (LPT-001)</td>
+                          <td className="py-1">24pcs</td>
+                          <td className="py-1 text-[#16a34a] font-bold">Aman</td>
+                        </tr>
+                        <tr>
+                          <td className="py-1 font-bold">Mouse Wireless Logitech (MSE-024)</td>
+                          <td className="py-1">5pcs</td>
+                          <td className="py-1 text-[#eab308] font-bold">Menipis</td>
+                        </tr>
+                        <tr>
+                          <td className="py-1 font-bold">Keyboard Mechanical (KBD-012)</td>
+                          <td className="py-1">0pcs</td>
+                          <td className="py-1 text-[#dc2626] font-bold">Habis</td>
+                        </tr>
+                        <tr>
+                          <td className="py-1 font-bold">Monitor 24 inch IPS (MNT-008)</td>
+                          <td className="py-1">12pcs</td>
+                          <td className="py-1 text-[#16a34a] font-bold">Aman</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <div className="p-2 rounded-lg bg-[#fef9c3] border border-[#ca8a04] text-[10.5px] text-[#854d0e] font-bold">
+                      Alert Stok: MSE-024 di bawah titik minimum. Draf PO siap dikirim ke supplier.
+                    </div>
+                    <div className="text-[9.5px] font-mono text-[#64748b]">
+                      Stok berkurang saat surat jalan diposting, bukan saat pesanan dibuat.
+                    </div>
+                  </div>
+                </div>
+
+                {/* Section 4: Laporan Otomatis */}
+                <div className="p-4 sm:p-5 rounded-2xl bg-[#fffdf5] border-2 border-[#0f172a] shadow-[3px_3px_0px_#0f172a] space-y-3">
+                  <div>
+                    <div className="text-[10px] font-mono font-black uppercase text-[#0284c7]">
+                      Laporan Otomatis
+                    </div>
+                    <h3 className="text-base sm:text-lg font-black text-[#0f172a] mt-0.5">
+                      Laporan yang Biasanya 3 Hari , Sekarang Terbuat Sendiri.
+                    </h3>
+                    <p className="text-xs text-[#475569] mt-1">
+                      Setiap transaksi otomatis membuat jurnal, mengupdate stok, dan masuk ke laporan keuangan. Tidak perlu akuntan untuk bikin laporan bulanan. Tidak perlu Excel yang bisa salah formula. Data akurat, audit trail lengkap ,siap untuk bank, investor, atau pajak.
+                    </p>
+                  </div>
+
+                  <div className="space-y-1 text-xs text-[#1e293b] font-medium">
+                    <div className="flex items-center gap-1.5">
+                      <CheckCircle2 className="w-3.5 h-3.5 text-[#16a34a] shrink-0" />
+                      <span>Standar SAK ETAP , sesuai regulasi UMKM Indonesia</span>
+                    </div>
+                    <div className="flex items-center gap-1.5">
+                      <CheckCircle2 className="w-3.5 h-3.5 text-[#16a34a] shrink-0" />
+                      <span>Export ke Excel, PDF, atau langsung ke konsultan pajak</span>
+                    </div>
+                    <div className="flex items-center gap-1.5">
+                      <CheckCircle2 className="w-3.5 h-3.5 text-[#16a34a] shrink-0" />
+                      <span>Audit trail lengkap, siap untuk due diligence investor</span>
+                    </div>
+                  </div>
+
+                  {/* Laporan Laba Rugi Visual Mock */}
+                  <div className="p-3.5 rounded-xl bg-[#fff9d4] border border-[#0f172a] space-y-2">
+                    <div className="flex items-center justify-between text-[11px] font-mono font-bold text-[#8c6239]">
+                      <span>Laporan Keuangan</span>
+                      <span>Maret 2025</span>
+                    </div>
+                    <div className="text-xs font-black text-[#0f172a] border-b border-[#0f172a]/20 pb-1">
+                      Laporan Laba Rugi
+                    </div>
+                    <div className="space-y-1 text-[11px] font-mono">
+                      <div className="flex justify-between">
+                        <span>Pendapatan Penjualan</span>
+                        <span className="font-bold">48.500.000</span>
+                      </div>
+                      <div className="flex justify-between text-[#dc2626]">
+                        <span>HPP</span>
+                        <span>(21.200.000)</span>
+                      </div>
+                      <div className="flex justify-between font-bold border-t border-[#0f172a]/10 pt-0.5">
+                        <span>Laba Kotor</span>
+                        <span>27.300.000</span>
+                      </div>
+                      <div className="flex justify-between text-[#dc2626]">
+                        <span>Biaya Operasional</span>
+                        <span>(8.500.000)</span>
+                      </div>
+                      <div className="flex justify-between font-black text-xs text-[#16a34a] border-t-2 border-[#0f172a] pt-1">
+                        <span>Laba Bersih</span>
+                        <span>Rp 18.800.000</span>
+                      </div>
+                    </div>
+                    <div className="flex gap-2 pt-1">
+                      <span className="px-2 py-0.5 rounded bg-[#fffdf5] border border-[#0f172a] text-[9.5px] font-mono font-bold">
+                        Export Excel
+                      </span>
+                      <span className="px-2 py-0.5 rounded bg-[#fffdf5] border border-[#0f172a] text-[9.5px] font-mono font-bold">
+                        Export PDF
+                      </span>
+                    </div>
+                    <div className="text-[9.5px] font-mono text-[#64748b]">
+                      Dihitung dari jurnal yang sama dengan Neraca,angkanya tidak mungkin berbeda.
+                    </div>
+                  </div>
+                </div>
+
+                {/* Section 5: Serba Otomatis */}
+                <div className="space-y-3">
+                  <div>
+                    <div className="text-[10px] font-mono font-black uppercase text-[#0284c7]">
+                      Serba Otomatis
+                    </div>
+                    <h3 className="text-base sm:text-lg font-black text-[#0f172a] mt-0.5">
+                      Bukan Sekadar Catat Transaksi
+                    </h3>
+                    <p className="text-xs text-[#475569] mt-0.5">
+                      Clarate ERP mengotomatiskan pekerjaan berulang , laporan, jurnal, dan peringatan stok berjalan sendiri setiap hari.
+                    </p>
+                  </div>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                    <div className="p-3 rounded-xl bg-[#fff9d4] border border-[#0f172a] space-y-1">
+                      <div className="text-xs font-black text-[#0f172a]">Laporan Biaya Otomatis</div>
+                      <p className="text-[11px] text-[#475569]">
+                        Rincian pengeluaran per kategori terhitung otomatis, lengkap dengan tren bulanannya
+                      </p>
+                    </div>
+                    <div className="p-3 rounded-xl bg-[#fff9d4] border border-[#0f172a] space-y-1">
+                      <div className="text-xs font-black text-[#0f172a]">Deteksi Selisih</div>
+                      <p className="text-[11px] text-[#475569]">
+                        Sistem menandai transaksi di luar batas wajar berdasarkan aturan yang kamu set
+                      </p>
+                    </div>
+                    <div className="p-3 rounded-xl bg-[#fff9d4] border border-[#0f172a] space-y-1">
+                      <div className="text-xs font-black text-[#0f172a]">Alert Stok Menipis</div>
+                      <p className="text-[11px] text-[#475569]">
+                        Peringatan otomatis saat stok menyentuh titik minimum yang kamu tetapkan
+                      </p>
+                    </div>
+                    <div className="p-3 rounded-xl bg-[#fff9d4] border border-[#0f172a] space-y-1">
+                      <div className="text-xs font-black text-[#0f172a]">Jurnal Otomatis</div>
+                      <p className="text-[11px] text-[#475569]">
+                        Setiap transaksi otomatis masuk ke akun akuntansi yang tepat , tidak perlu input manual
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Section 6: Clarate ERP - Satu Sistem, Semua Terhubung */}
+                <div className="space-y-3">
+                  <div>
+                    <div className="text-[10px] font-mono font-black uppercase text-[#0284c7]">
+                      Clarate ERP
+                    </div>
+                    <h3 className="text-base sm:text-lg font-black text-[#0f172a] mt-0.5">
+                      Satu Sistem, Semua Terhubung
+                    </h3>
+                    <p className="text-xs text-[#475569] mt-0.5">
+                      Kasir → stok → akuntansi ,semuanya terintegrasi. Input sekali di kasir, semua modul langsung terupdate otomatis.
+                    </p>
+                  </div>
+
+                  <div className="space-y-2">
+                    <div className="p-3 rounded-xl bg-[#fffdf5] border border-[#0f172a] space-y-0.5">
+                      <div className="flex items-center gap-1.5 font-black text-xs text-[#0f172a]">
+                        <span className="px-1.5 py-0.2 rounded bg-[#e0f2fe] text-[#0284c7] font-mono text-[9px]">SAK ETAP</span>
+                        <span>Laporan Keuangan Otomatis</span>
+                      </div>
+                      <p className="text-[11px] text-[#475569]">
+                        Jurnal terbuat sendiri setiap ada transaksi. Laporan Laba Rugi, Neraca, dan Arus Kas tersedia kapan saja tanpa rekap manual, tanpa formula Excel yang bisa salah.
+                      </p>
+                    </div>
+
+                    <div className="p-3 rounded-xl bg-[#fffdf5] border border-[#0f172a] space-y-0.5">
+                      <div className="flex items-center gap-1.5 font-black text-xs text-[#0f172a]">
+                        <span className="px-1.5 py-0.2 rounded bg-[#dcfce7] text-[#15803d] font-mono text-[9px]">Real-time</span>
+                        <span>Kasir yang Terhubung ke Segalanya</span>
+                      </div>
+                      <p className="text-[11px] text-[#475569]">
+                        Setiap penjualan di kasir langsung tercatat ke stok dan akuntansi bersamaan. Tidak ada rekap malam hari. Tidak ada data yang tidak nyambung.
+                      </p>
+                    </div>
+
+                    <div className="p-3 rounded-xl bg-[#fffdf5] border border-[#0f172a] space-y-0.5">
+                      <div className="flex items-center gap-1.5 font-black text-xs text-[#0f172a]">
+                        <span className="px-1.5 py-0.2 rounded bg-[#fef3c7] text-[#d97706] font-mono text-[9px]">Multi-gudang</span>
+                        <span>Stok Tidak Pernah Keliru</span>
+                      </div>
+                      <p className="text-[11px] text-[#475569]">
+                        Pantau stok di semua lokasi dari satu layar. Notifikasi otomatis sebelum stok habis bukan setelah customer sudah kecewa dan minta refund.
+                      </p>
+                    </div>
+
+                    <div className="p-3 rounded-xl bg-[#fffdf5] border border-[#0f172a] space-y-0.5">
+                      <div className="flex items-center gap-1.5 font-black text-xs text-[#0f172a]">
+                        <span className="px-1.5 py-0.2 rounded bg-[#e0f2fe] text-[#0284c7] font-mono text-[9px]">Terintegrasi</span>
+                        <span>Pembelian Tidak Ada yang Terlewat</span>
+                      </div>
+                      <p className="text-[11px] text-[#475569]">
+                        Dari PO ke penerimaan barang semua terdokumentasi. Hutang supplier selalu akurat. Tidak ada pembelian yang terlewat atau tidak tercatat.
+                      </p>
+                    </div>
+
+                    <div className="p-3 rounded-xl bg-[#fffdf5] border border-[#0f172a] space-y-0.5">
+                      <div className="flex items-center gap-1.5 font-black text-xs text-[#0f172a]">
+                        <span className="px-1.5 py-0.2 rounded bg-[#dcfce7] text-[#15803d] font-mono text-[9px]">Otomatis</span>
+                        <span>Piutang Terpantau, Tidak Ada yang Lupa Ditagih</span>
+                      </div>
+                      <p className="text-[11px] text-[#475569]">
+                        Dari penawaran ke invoice ke pelunasan dalam satu alur. Piutang customer terpantau otomatis. Tidak ada invoice yang lupa ditagih atau terlewat.
+                      </p>
+                    </div>
+
+                    <div className="p-3 rounded-xl bg-[#fffdf5] border border-[#0f172a] space-y-0.5">
+                      <div className="flex items-center gap-1.5 font-black text-xs text-[#0f172a]">
+                        <span className="px-1.5 py-0.2 rounded bg-[#fef3c7] text-[#d97706] font-mono text-[9px]">20+ Laporan</span>
+                        <span>Laporan yang Dulu 3 Hari Sekarang Tersedia Setiap Saat</span>
+                      </div>
+                      <p className="text-[11px] text-[#475569]">
+                        20+ laporan siap pakai: neraca, laba rugi, arus kas, omzet per produk. Export ke Excel atau PDF kapanpun dengan satu klik.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Footer Modal */}
               <div className="pt-4 border-t-2 border-[#0f172a]/15 flex flex-col sm:flex-row items-center justify-between gap-3">
                 <div className="text-xs font-mono font-bold text-[#64748b] text-center sm:text-left">
-                  Sistem HRIS aktif seketika • Bebas coba 14 hari penuh
+                  Sistem ERP siap pakai • Bebas coba 14 hari tanpa komitmen
                 </div>
                 <div className="flex items-center gap-2.5 w-full sm:w-auto">
                   <button
                     type="button"
-                    onClick={() => setShowHrisModal(false)}
+                    onClick={() => setShowErpModal(false)}
                     className="px-4 py-2.5 rounded-xl bg-[#fff9d4] hover:bg-[#faeed1] text-[#0f172a] text-xs font-mono font-black border-2 border-[#0f172a] shadow-[2px_2px_0px_#0f172a] transition-all cursor-pointer flex-1 sm:flex-none"
                   >
                     Tutup
                   </button>
                   <a
-                    href="https://clarate.id/id/register?service_id=3"
+                    href="https://clarate.id/id/register?service_id=1"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-xl bg-[#0284c7] hover:bg-[#0369a1] text-white text-xs sm:text-sm font-mono font-black border-2 border-[#0f172a] shadow-[3px_3px_0px_#0f172a] hover:translate-x-0.5 hover:translate-y-0.5 transition-all cursor-pointer flex-1 sm:flex-none"
