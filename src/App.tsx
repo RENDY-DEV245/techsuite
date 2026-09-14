@@ -4,6 +4,7 @@ import { useLenisSmoothScroll } from './hooks/useLenisSmoothScroll';
 import { NavigationBar } from './components/navigation/NavigationBar';
 import { HeroSection } from './components/hero/HeroSection';
 import { WelcomeAnimation } from './components/hero/WelcomeAnimation';
+import { VerificationGate } from './components/hero/VerificationGate';
 import { EditorialProfile } from './components/profile/EditorialProfile';
 import { ProjectShowcase } from './components/projects/ProjectShowcase';
 import { TechGrid } from './components/tech/TechGrid';
