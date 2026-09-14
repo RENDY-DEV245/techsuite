@@ -283,12 +283,11 @@ export const ContactSection: React.FC = () => {
                         className="inline-flex items-center gap-1 text-[10px] sm:text-[11px] font-mono font-bold text-[#0284c7] hover:text-[#0f172a] cursor-pointer"
                       >
                         <span>Pesan Rahasia</span>
-                        <RotateCw className="w-3 h-3" />
-                              </button>
-      </div>
-    </div>      
-
-                    
+                       </button>
+                   </div>  
+                  </div>
+               </div>
+              </div>          
 
                 {/* secret developer note */}
                 <div
