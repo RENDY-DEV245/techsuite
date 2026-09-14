@@ -1,3 +1,5 @@
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import {
   Sparkles,
   Zap,
@@ -26,10 +28,6 @@ export const StorySection: React.FC = () => {
       <div className="absolute inset-0 bg-gradient-to-b from-[#02587a] via-[#024968] to-[#013852] pointer-events-none" />
 
       <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-12 space-y-6 sm:space-y-8">
-        
-        {/* ========================================================
-            CARD UTAMA STORY (STANDALONE CARD DI ATAS KONTAK)
-           ======================================================== */}
         <motion.div
           initial={{ opacity: 0, y: 35 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -37,7 +35,6 @@ export const StorySection: React.FC = () => {
           transition={{ duration: 0.55, type: 'spring', stiffness: 220, damping: 24 }}
           className="p-5 sm:p-12 rounded-[28px] sm:rounded-[40px] bg-[#fffdf5] border-3 sm:border-4 border-[#0f172a] shadow-[8px_8px_0px_#0f172a] sm:shadow-[12px_12px_0px_#0f172a] space-y-6 sm:space-y-8"
         >
-          
           {/* Header Section */}
           <div className="space-y-3 pb-6 border-b-2 sm:border-b-3 border-[#0f172a]/15">
             <div className="flex flex-wrap items-center justify-between gap-2.5">
@@ -58,9 +55,7 @@ export const StorySection: React.FC = () => {
             </p>
           </div>
 
-          {/* ========================================================
-              BAB 1: PENGAKUAN & OTOMASI PENUH
-             ======================================================== */}
+          {/* Bab 1: Pengakuan & Otomasi Penuh */}
           <div className="p-4 sm:p-6 rounded-2xl sm:rounded-3xl bg-[#071b2f] text-white border-2 sm:border-3 border-[#0f172a] shadow-[4px_4px_0px_#0f172a] space-y-3">
             <div className="flex items-center gap-2 text-xs font-mono font-bold text-[#38bdf8]">
               <Clock className="w-4 h-4 text-[#fde047]" />
@@ -85,9 +80,7 @@ export const StorySection: React.FC = () => {
             </div>
           </div>
 
-          {/* ========================================================
-              BAB 2 & 4: FRUSTRASI LAMA VS SOLUSI TERPADU
-             ======================================================== */}
+          {/* Bab 2 & 4: Frustrasi Lama vs Solusi Trinitas */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="p-4 sm:p-6 rounded-2xl sm:rounded-3xl bg-[#fee2e2] border-2 border-[#0f172a] shadow-[3px_3px_0px_#0f172a] space-y-2.5">
               <div className="flex items-center gap-2 text-xs font-mono font-black text-[#dc2626]">
@@ -110,9 +103,7 @@ export const StorySection: React.FC = () => {
             </div>
           </div>
 
-          {/* ========================================================
-              BAB 5 & 6: METRIK & DAMPAK DALAM 18 BULAN
-             ======================================================== */}
+          {/* Bab 5 & 6: Metrik & Dampak */}
           <div className="space-y-2.5">
             <div className="text-xs font-mono font-black text-[#8c6239] uppercase tracking-wider">
               Hasil Nyata Implementasi Selama 18 Bulan:
@@ -137,13 +128,11 @@ export const StorySection: React.FC = () => {
             </div>
           </div>
 
-          {/* ========================================================
-              ACCORDION TOGGLE UNTUK CERITA LENGKAP & SPESIFIKASI
-             ======================================================== */}
+          {/* Accordion Rincian */}
           <div className="pt-2">
             <button
               type="button"
-              onClick={() => setIsExpanded((prev) => !prev)}
+              onClick={() => setIsExpanded((prev: boolean) => !prev)}
               className="w-full py-3 px-4 rounded-2xl bg-[#fff9d4] hover:bg-[#fde047] border-2 border-[#0f172a] shadow-[3px_3px_0px_#0f172a] text-xs font-mono font-black text-[#0f172a] flex items-center justify-between transition-all cursor-pointer"
             >
               <span>{isExpanded ? 'Tutup Rincian Spesifikasi & Bab Cerita' : 'Lihat Seluruh Rincian Paket & Spesifikasi Teknis (Bab 7 - 13)'}</span>
@@ -159,7 +148,7 @@ export const StorySection: React.FC = () => {
                   transition={{ duration: 0.35 }}
                   className="space-y-6 pt-5 overflow-hidden"
                 >
-                  {/* Paket 3 Pilar Detail */}
+                  {/* Paket 3 Pilar */}
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-3.5">
                     <div className="p-4 rounded-2xl bg-[#fffdf5] border-2 border-[#0f172a] shadow-[2.5px_2.5px_0px_#0f172a] space-y-2">
                       <div className="p-2 w-fit rounded-xl bg-[#e0f2fe] text-[#0284c7] border border-[#0f172a]">
@@ -222,9 +211,7 @@ export const StorySection: React.FC = () => {
             </AnimatePresence>
           </div>
 
-          {/* ========================================================
-              BAB 12 & 13: SKEMA HARGA & PENAWARAN TERBATAS
-             ======================================================== */}
+          {/* Bab 12 & 13: Skema Harga & CTA WhatsApp */}
           <div className="p-5 sm:p-8 rounded-3xl bg-gradient-to-br from-[#fff9d4] via-[#fef08a] to-[#fde047] border-3 border-[#0f172a] shadow-[6px_6px_0px_#0f172a] space-y-4">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b-2 border-[#0f172a]/20 pb-3">
               <div>
@@ -241,7 +228,6 @@ export const StorySection: React.FC = () => {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 items-center">
-              {/* Harga Pasaran */}
               <div className="space-y-1.5 text-xs font-mono text-[#64748b]">
                 <div>• Web Company Profile Korporat: <span className="line-through">Rp25.000.000</span></div>
                 <div>• Portal E-Commerce &amp; Payment: <span className="line-through">Rp35.000.000</span></div>
@@ -249,7 +235,6 @@ export const StorySection: React.FC = () => {
                 <div className="pt-1 font-bold text-[#334155]">Total Nilai Investasi Asli: <span className="line-through font-black text-red-600">Rp100.000.000</span></div>
               </div>
 
-              {/* Harga Spesial */}
               <div className="p-4 rounded-2xl bg-[#fffdf5] border-2 border-[#0f172a] shadow-[3px_3px_0px_#0f172a] text-center space-y-1">
                 <span className="text-[11px] font-mono font-bold text-[#64748b] uppercase">Investasi Satu Kali Saja:</span>
                 <div className="text-3xl sm:text-4xl font-black text-[#0f172a] tracking-tight">
@@ -261,14 +246,12 @@ export const StorySection: React.FC = () => {
               </div>
             </div>
 
-            {/* Benefit Tambahan */}
             <div className="pt-2 text-xs font-mono font-bold text-[#1e293b] flex flex-wrap items-center gap-x-4 gap-y-1">
               <span>✓ Full Setup &amp; Deployment</span>
               <span>✓ Garansi &amp; Dukungan Teknis Purna-Jual</span>
               <span>✓ Data 100% Milik Server Anda Sendiri</span>
             </div>
 
-            {/* Tombol Aksi WhatsApp & Konsultasi */}
             <div className="pt-3 border-t-2 border-[#0f172a]/20 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
               <span className="text-xs font-mono font-bold text-[#475569]">
                 Ambil alih dominasi pasar Anda sekarang juga.
@@ -285,7 +268,6 @@ export const StorySection: React.FC = () => {
               </a>
             </div>
           </div>
-
         </motion.div>
       </div>
     </section>
