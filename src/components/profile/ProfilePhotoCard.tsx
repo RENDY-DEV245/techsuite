@@ -40,12 +40,14 @@ export const ProfilePhotoCard: React.FC<ProfilePhotoCardProps> = ({ isFlooded })
       >
         <div className="relative aspect-[3/4] w-full rounded-[24px] overflow-hidden bg-[#faeed1] border border-[#e2d3b3] flex items-center justify-center">
           <img
-            src={profileData.avatarUrl || '/avatar.svg'}
+            src={profileData.avatarUrl || 'https://i.ibb.co.com/tMN6mPt9/IMG-20260914-140952.png'}
             alt={profileData.name}
+            referrerPolicy="no-referrer"
+            crossOrigin="anonymous"
             className="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
             onError={(e) => {
               const target = e.target as HTMLImageElement;
-              target.src = '/avatar.svg';
+              target.src = 'https://i.ibb.co.com/tMN6mPt9/IMG-20260914-140952.png';
             }}
           />
 
