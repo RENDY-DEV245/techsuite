@@ -1,9 +1,6 @@
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
 import {
   Sparkles,
   Zap,
-  TrendingUp,
   ShieldCheck,
   AlertTriangle,
   Building2,
@@ -13,7 +10,6 @@ import {
   ArrowRight,
   MessageCircle,
   Clock,
-  Layers,
   ChevronDown
 } from 'lucide-react';
 
