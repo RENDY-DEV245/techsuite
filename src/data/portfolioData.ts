@@ -199,7 +199,7 @@ export const techStackData: TechItem[] = [
   {
     name: 'AutoCAD',
     category: 'tools',
-    layer: 'client',
+    layer: 'cad',
     iconKey: 'autocad',
     color: '#E51027',
     roleTag: '2D/3D Drafting',
@@ -209,7 +209,7 @@ export const techStackData: TechItem[] = [
   {
     name: 'SolidWorks',
     category: 'tools',
-    layer: 'client',
+    layer: 'cad',
     iconKey: 'solidworks',
     color: '#D42027',
     roleTag: '3D CAD & Assembly',
