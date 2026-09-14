@@ -13,7 +13,7 @@ export const profileData: ProfileData = {
     
   ],
   contact: {
-    email: 'renryajahh245@gmail.com',
+    email: 'rendyajahh245@gmail.com',
     
   }
 };
