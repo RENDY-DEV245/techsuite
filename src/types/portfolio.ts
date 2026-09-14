@@ -25,7 +25,7 @@ export interface Project {
   metrics: { label: string; value: string }[];
 }
 
-export type TechLayer = 'client' | 'backend' | 'database' | 'devops';
+export type TechLayer = 'client' | 'backend' | 'database' | 'devops'| 'cad';
 
 export interface TechItem {
   name: string;
