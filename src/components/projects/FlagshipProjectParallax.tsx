@@ -7,14 +7,10 @@ import {
   Sparkles,
   ShoppingBag,
   Bell,
-  RefreshCw,
-  BarChart3,
-  Sliders,
   DollarSign,
   ArrowRight,
   Users,
   MapPin,
-  FileText,
   Calendar,
   Receipt,
   UserCheck,
@@ -77,6 +73,7 @@ export const FlagshipSlideCard: React.FC<FlagshipSlideCardProps> = ({
     {
       name: 'UrbanWear',
       subtitle: 'Fashion Store',
+      type: 'Populer',
       desc: 'Website toko fashion dengan foto besar, katalog produk, dan halaman brand. Untuk toko yang menjual lewat tampilan.',
       categoryTag: 'Toko · Fashion · Katalog Produk',
       url: 'https://clarate.id/templates/urbanwear',
@@ -85,6 +82,7 @@ export const FlagshipSlideCard: React.FC<FlagshipSlideCardProps> = ({
     {
       name: 'Kopi Senja',
       subtitle: 'Coffee Shop & Roastery',
+      type: 'Populer',
       desc: 'Website coffee shop dengan menu berharga, cerita brand, galeri, jam buka, dan lokasi. Semua yang dicari calon pelanggan.',
       categoryTag: 'F&B · Coffee Shop · Cafe',
       url: 'https://clarate.id/templates/kopi-senja',
@@ -667,9 +665,7 @@ export const FlagshipSlideCard: React.FC<FlagshipSlideCardProps> = ({
         )}
       </AnimatePresence>
 
-      {/* =========================================================================
-          MODAL 02: CLARATE HRIS & PAYROLL (SESUAI REQUEST USER)
-          ========================================================================= */}
+      {/* MODAL 02: CLARATE HRIS & PAYROLL */}
       <AnimatePresence>
         {showHrisModal && (
           <motion.div
@@ -687,7 +683,6 @@ export const FlagshipSlideCard: React.FC<FlagshipSlideCardProps> = ({
               data-lenis-prevent="true"
               style={{ touchAction: 'pan-y' }}
             >
-              {/* Header Modal */}
               <div className="flex items-start justify-between gap-4 pb-4 border-b-2 border-[#0f172a]/15">
                 <div>
                   <div className="flex items-center gap-2 mb-1.5">
@@ -715,10 +710,7 @@ export const FlagshipSlideCard: React.FC<FlagshipSlideCardProps> = ({
                 </button>
               </div>
 
-              {/* Body Content */}
               <div className="space-y-6 text-xs sm:text-sm text-[#334155] leading-relaxed">
-                
-                {/* Hero Callout */}
                 <div className="p-4 sm:p-5 rounded-2xl bg-[#fff9d4] border-2 border-[#0f172a] space-y-3">
                   <p className="font-medium text-[#0f172a]">
                     <strong>Clarate HRIS</strong> menghitung gaji, PPh 21 metode TER, lembur, dan tunjangan secara otomatis setiap bulan. Absensi GPS yang tidak bisa diakali, dan slip gaji terkirim langsung ke HP karyawan tanpa perlu diprint satu per satu.
@@ -749,51 +741,38 @@ export const FlagshipSlideCard: React.FC<FlagshipSlideCardProps> = ({
                   <h3 className="text-base sm:text-lg font-black text-[#0f172a]">
                     Kenapa Clarate HRIS?
                   </h3>
-                  <p className="font-medium text-[#64748b]">
-                    Terlalu banyak HR Manager menghabiskan waktu untuk pekerjaan yang seharusnya berjalan otomatis. Rekap absensi manual, hitung PPh 21 satu per satu, dan approve cuti via WhatsApp menghabiskan waktu tim HR yang seharusnya fokus ke hal strategis.
-                  </p>
-
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-3 pt-2">
-                    {/* Pemilik UMKM */}
-                    <div className="p-4 rounded-2xl bg-[#fffdf5] border-2 border-[#0f172a] shadow-[3px_3px_0px_#0f172a] space-y-2 flex flex-col justify-between">
-                      <div>
-                        <span className="text-[10px] font-mono font-black uppercase text-[#ef4444] bg-[#fee2e2] px-2 py-0.5 rounded border border-[#ef4444]/30">
-                          Pemilik UMKM
-                        </span>
-                        <p className="text-xs italic text-[#475569] mt-2">
-                          “20 karyawan, payroll masih manual di Excel. PPh 21 dihitung satu per satu. Setiap awal bulan, owner ikut bantu HR sampai jam 10 malam. Satu formula Excel salah, semua slip gaji harus diulang.”
-                        </p>
-                      </div>
+                    <div className="p-4 rounded-2xl bg-[#fffdf5] border-2 border-[#0f172a] shadow-[3px_3px_0px_#0f172a] space-y-2">
+                      <span className="text-[10px] font-mono font-black uppercase text-[#ef4444] bg-[#fee2e2] px-2 py-0.5 rounded border border-[#ef4444]/30">
+                        Pemilik UMKM
+                      </span>
+                      <p className="text-xs italic text-[#475569]">
+                        “20 karyawan, payroll masih manual di Excel. PPh 21 dihitung satu per satu. Setiap awal bulan, owner ikut bantu HR sampai jam 10 malam. Satu formula Excel salah, semua slip gaji harus diulang.”
+                      </p>
                       <div className="p-2 rounded-xl bg-[#fef2f2] border border-[#ef4444]/20 text-[11px] text-[#991b1b] font-bold">
                         💡 Satu kesalahan formula Excel cukup untuk mengulang payroll dari awal.
                       </div>
                     </div>
 
-                    {/* HR Manager */}
-                    <div className="p-4 rounded-2xl bg-[#fffdf5] border-2 border-[#0f172a] shadow-[3px_3px_0px_#0f172a] space-y-2 flex flex-col justify-between">
-                      <div>
-                        <span className="text-[10px] font-mono font-black uppercase text-[#f59e0b] bg-[#fef3c7] px-2 py-0.5 rounded border border-[#f59e0b]/30">
-                          HR Manager
-                        </span>
-                        <p className="text-xs italic text-[#475569] mt-2">
-                          “Absensi dari fingerprint harus di-export manual lalu di-paste ke Excel payroll. Karyawan minta slip gaji harus cetak manual. Cuti diajukan via WhatsApp sering lupa di-approve.”
-                        </p>
-                      </div>
+                    <div className="p-4 rounded-2xl bg-[#fffdf5] border-2 border-[#0f172a] shadow-[3px_3px_0px_#0f172a] space-y-2">
+                      <span className="text-[10px] font-mono font-black uppercase text-[#f59e0b] bg-[#fef3c7] px-2 py-0.5 rounded border border-[#f59e0b]/30">
+                        HR Manager
+                      </span>
+                      <p className="text-xs italic text-[#475569]">
+                        “Absensi dari fingerprint harus di-export manual lalu di-paste ke Excel payroll. Karyawan minta slip gaji harus cetak manual. Cuti diajukan via WhatsApp sering lupa di-approve.”
+                      </p>
                       <div className="p-2 rounded-xl bg-[#fffbeb] border border-[#f59e0b]/20 text-[11px] text-[#92400e] font-bold">
                         💡 Sistem terpisah memaksa HR jadi operator data entry, bukan strategic partner.
                       </div>
                     </div>
 
-                    {/* Perusahaan Multi-Cabang */}
-                    <div className="p-4 rounded-2xl bg-[#fffdf5] border-2 border-[#0f172a] shadow-[3px_3px_0px_#0f172a] space-y-2 flex flex-col justify-between">
-                      <div>
-                        <span className="text-[10px] font-mono font-black uppercase text-[#0284c7] bg-[#e0f2fe] px-2 py-0.5 rounded border border-[#0284c7]/30">
-                          Multi-Cabang
-                        </span>
-                        <p className="text-xs italic text-[#475569] mt-2">
-                          “Karyawan di 3 cabang berbeda kota. Tidak ada cara audit absensi real-time. Laporan kehadiran baru masuk di akhir bulan, sudah terlambat untuk tindakan.”
-                        </p>
-                      </div>
+                    <div className="p-4 rounded-2xl bg-[#fffdf5] border-2 border-[#0f172a] shadow-[3px_3px_0px_#0f172a] space-y-2">
+                      <span className="text-[10px] font-mono font-black uppercase text-[#0284c7] bg-[#e0f2fe] px-2 py-0.5 rounded border border-[#0284c7]/30">
+                        Multi-Cabang
+                      </span>
+                      <p className="text-xs italic text-[#475569]">
+                        “Karyawan di 3 cabang berbeda kota. Tidak ada cara audit absensi real-time. Laporan kehadiran baru masuk di akhir bulan, sudah terlambat untuk tindakan.”
+                      </p>
                       <div className="p-2 rounded-xl bg-[#f0f9ff] border border-[#0284c7]/20 text-[11px] text-[#0369a1] font-bold">
                         💡 Tanpa visibilitas real-time, masalah SDM baru diketahui setelah berdampak.
                       </div>
@@ -801,12 +780,11 @@ export const FlagshipSlideCard: React.FC<FlagshipSlideCardProps> = ({
                   </div>
                 </div>
 
-                {/* 3 Pilar Utama HRIS */}
+                {/* 6 Fitur Utama HRIS */}
                 <div className="space-y-4 pt-2">
                   <h3 className="text-base sm:text-lg font-black text-[#0f172a]">
                     Clarate HRM: Semua yang Dibutuhkan HR dalam Satu Sistem
                   </h3>
-
                   <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
                     <div className="p-3.5 rounded-2xl bg-[#fff9d4] border-2 border-[#0f172a] space-y-1">
                       <div className="flex items-center gap-1.5 text-xs font-black text-[#0f172a]">
