@@ -3,9 +3,6 @@ import { motion, AnimatePresence } from 'framer-motion';
 import {
   MapPin,
   ShieldCheck,
-  CheckCircle2,
-  FileText,
-  CreditCard,
   ZoomIn,
   X,
   Sparkles
@@ -23,7 +20,6 @@ interface ProofItem {
   subtitle: string;
   badge: string;
   imageUrl: string;
-  icon: React.FC<{ className?: string }>;
 }
 
 export const ProfilePhotoCard: React.FC<ProfilePhotoCardProps> = ({ isFlooded }) => {
@@ -39,24 +35,21 @@ export const ProfilePhotoCard: React.FC<ProfilePhotoCardProps> = ({ isFlooded })
       title: 'Kesepakatan Kerjasama',
       subtitle: 'Surat Kontrak & SPK',
       badge: 'OFFICIAL MOU',
-      imageUrl: 'https://i.ibb.co.com/4wB0Cg5v/IMG-20260913-WA0002.jpg',
-      icon: FileText
+      imageUrl: 'https://i.ibb.co.com/4wB0Cg5v/IMG-20260913-WA0002.jpg'
     },
     {
       id: 'dp90',
       title: 'Bukti Transfer DP 90%',
       subtitle: 'Pembayaran Uang Muka',
       badge: 'DP 90% VERIFIED',
-      imageUrl: 'https://i.ibb.co.com/KcmSz54M/IMG-20260913-WA0003.jpg',
-      icon: CreditCard
+      imageUrl: 'https://i.ibb.co.com/KcmSz54M/IMG-20260913-WA0003.jpg'
     },
     {
       id: 'pelunasan10',
       title: 'Bukti Pelunasan 10%',
       subtitle: 'Serah Terima & Selesai',
       badge: '100% COMPLETED',
-      imageUrl: 'https://i.ibb.co.com/My7pC0TR/IMG-20260913-WA0004.jpg',
-      icon: CheckCircle2
+      imageUrl: 'https://i.ibb.co.com/My7pC0TR/IMG-20260913-WA0004.jpg'
     }
   ];
 
@@ -167,37 +160,34 @@ export const ProfilePhotoCard: React.FC<ProfilePhotoCardProps> = ({ isFlooded })
 
           {/* 3 Kartu Bukti (Klik untuk Preview/Zoom) */}
           <div className="grid grid-cols-3 gap-2">
-            {proofList.map((item) => {
-              const Icon = item.icon;
-              return (
-                <div
-                  key={item.id}
-                  onClick={() => setActivePreviewImage(item)}
-                  className="group/proof relative flex flex-col justify-between p-2 rounded-xl bg-[#fff9d4] hover:bg-[#fde047] border border-[#0f172a] shadow-[2px_2px_0px_#0f172a] cursor-pointer transition-all hover:-translate-y-0.5 select-none"
-                  title="Klik untuk melihat bukti foto"
-                >
-                  <div className="aspect-[4/3] w-full rounded-lg overflow-hidden bg-[#0f172a] relative border border-[#0f172a]/20 mb-1.5">
-                    <img
-                      src={item.imageUrl}
-                      alt={item.title}
-                      className="w-full h-full object-cover group-hover/proof:scale-110 transition-transform duration-300 opacity-90"
-                    />
-                    <div className="absolute inset-0 bg-black/30 opacity-0 group-hover/proof:opacity-100 transition-opacity flex items-center justify-center text-white">
-                      <ZoomIn className="w-4 h-4" />
-                    </div>
-                  </div>
-
-                  <div>
-                    <div className="text-[9px] font-mono font-black text-[#0f172a] truncate leading-tight">
-                      {item.title}
-                    </div>
-                    <div className="text-[8px] font-mono text-[#0284c7] font-bold mt-0.5 truncate">
-                      {item.badge}
-                    </div>
+            {proofList.map((item) => (
+              <div
+                key={item.id}
+                onClick={() => setActivePreviewImage(item)}
+                className="group/proof relative flex flex-col justify-between p-2 rounded-xl bg-[#fff9d4] hover:bg-[#fde047] border border-[#0f172a] shadow-[2px_2px_0px_#0f172a] cursor-pointer transition-all hover:-translate-y-0.5 select-none"
+                title="Klik untuk melihat bukti foto"
+              >
+                <div className="aspect-[4/3] w-full rounded-lg overflow-hidden bg-[#0f172a] relative border border-[#0f172a]/20 mb-1.5">
+                  <img
+                    src={item.imageUrl}
+                    alt={item.title}
+                    className="w-full h-full object-cover group-hover/proof:scale-110 transition-transform duration-300 opacity-90"
+                  />
+                  <div className="absolute inset-0 bg-black/30 opacity-0 group-hover/proof:opacity-100 transition-opacity flex items-center justify-center text-white">
+                    <ZoomIn className="w-4 h-4" />
                   </div>
                 </div>
-              );
-            })}
+
+                <div>
+                  <div className="text-[9px] font-mono font-black text-[#0f172a] truncate leading-tight">
+                    {item.title}
+                  </div>
+                  <div className="text-[8px] font-mono text-[#0284c7] font-bold mt-0.5 truncate">
+                    {item.badge}
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
 
           {/* ========================================================
