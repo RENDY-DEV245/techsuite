@@ -1,33 +1,24 @@
-import React, { useState, useRef } from 'react';
+import React, { useRef } from 'react';
 import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
-import type { Project, ProjectCategory } from '../../types/portfolio';
 import { projectsData } from '../../data/portfolioData';
 import { FlagshipSlideCard } from './FlagshipProjectParallax';
-import { FilteredProjectDock } from './FilteredProjectDock';
-import { ProjectCaseStudyModal } from './ProjectCaseStudyModal';
 
-interface ProjectShowcaseProps {
-  onOpenProject?: (project: Project) => void;
-}
-
-export const ProjectShowcase: React.FC<ProjectShowcaseProps> = ({ onOpenProject }) => {
+export const ProjectShowcase: React.FC = () => {
   const containerRef = useRef<HTMLDivElement | null>(null);
-  const [selectedCategory, setSelectedCategory] = useState<ProjectCategory>('all');
-  const [localActiveProject, setLocalActiveProject] = useState<Project | null>(null);
 
-  const handleSelect = onOpenProject || setLocalActiveProject;
-  const activeProject = onOpenProject ? null : localActiveProject;
+  // 5 Slide Cards
+  const pWeb = projectsData[0];
+  const pEcommerce = projectsData[1];
+  const pHris = projectsData[2];
+  const pCad = projectsData[3];
+  const pErp = projectsData[4];
 
-  // featured flagship projects
-  const flagshipProjects = projectsData.filter((p) => p.featured);
-
-  // pinning scroll progress
+  // Scroll Progress pinning 5 slides
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ['start start', 'end end']
   });
 
-  // smooth inertial spring for tactile deceleration
   const smoothProgress = useSpring(scrollYProgress, {
     stiffness: 55,
     damping: 20,
@@ -35,32 +26,34 @@ export const ProjectShowcase: React.FC<ProjectShowcaseProps> = ({ onOpenProject 
     restDelta: 0.0005
   });
 
-  // gradual overlapping curtain wipe ranges
-  const ySlide2 = useTransform(smoothProgress, [0.22, 0.36], ['100%', '0%'], { clamp: true });
-  const ySlide3 = useTransform(smoothProgress, [0.47, 0.61], ['100%', '0%'], { clamp: true });
-  const ySlide4 = useTransform(smoothProgress, [0.72, 0.86], ['100%', '0%'], { clamp: true });
+  // 5 Layer Curtain Wipes
+  const ySlide2 = useTransform(smoothProgress, [0.18, 0.28], ['100%', '0%'], { clamp: true });
+  const ySlide3 = useTransform(smoothProgress, [0.38, 0.48], ['100%', '0%'], { clamp: true });
+  const ySlide4 = useTransform(smoothProgress, [0.58, 0.68], ['100%', '0%'], { clamp: true });
+  const ySlide5 = useTransform(smoothProgress, [0.78, 0.88], ['100%', '0%'], { clamp: true });
 
   return (
     <section
       id="projects"
       ref={containerRef}
-      className="relative h-[560vh] bg-[#fff9d4] select-none"
+      className="relative h-[650vh] bg-[#fff9d4] select-none"
     >
-      {/* pinned viewport stage */}
+      {/* Pinned Viewport Stage */}
       <div className="sticky top-0 h-screen w-full overflow-hidden">
-        {/* progress indicators */}
+        
+        {/* 5 Slide Progress Indicator */}
         <div className="absolute top-[76px] sm:top-24 right-4 sm:right-12 z-50 flex items-center gap-1.5 sm:gap-2 p-1.5 sm:p-2 rounded-xl sm:rounded-2xl bg-[#fffdf5] border-2 border-[#0f172a] shadow-[2.5px_2.5px_0px_#0f172a] sm:shadow-[4px_4px_0px_#0f172a]">
-          {[0, 1, 2, 3].map((idx) => (
+          {[0, 1, 2, 3, 4].map((idx) => (
             <div
               key={idx}
-              className="h-2 sm:h-2.5 rounded-full bg-[#faeed1] border border-[#0f172a] overflow-hidden w-5 sm:w-10"
+              className="h-2 sm:h-2.5 rounded-full bg-[#faeed1] border border-[#0f172a] overflow-hidden w-4 sm:w-8"
             >
               <motion.div
                 className="h-full bg-[#0284c7]"
                 style={{
                   scaleX: useTransform(
                     smoothProgress,
-                    [idx * 0.25, (idx + 1) * 0.25],
+                    [idx * 0.2, (idx + 1) * 0.2],
                     [0, 1],
                     { clamp: true }
                   )
@@ -71,59 +64,56 @@ export const ProjectShowcase: React.FC<ProjectShowcaseProps> = ({ onOpenProject 
           ))}
         </div>
 
-        {/* flagship slide presentation */}
-        {flagshipProjects[0] && (
+        {/* SLIDE 01: WEBSITE KUSTOM (12 Klien) */}
+        {pWeb && (
           <FlagshipSlideCard
-            project={flagshipProjects[0]}
+            project={pWeb}
             index={0}
             yMotion="0%"
             depthLevel={1}
-            onSelectProject={handleSelect}
           />
         )}
 
-        {flagshipProjects[1] && (
+        {/* SLIDE 02: E-COMMERCE & STORE */}
+        {pEcommerce && (
           <FlagshipSlideCard
-            project={flagshipProjects[1]}
+            project={pEcommerce}
             index={1}
             yMotion={ySlide2}
             depthLevel={2}
-            onSelectProject={handleSelect}
           />
         )}
 
-        {flagshipProjects[2] && (
+        {/* SLIDE 03: HRIS WORKFORCE */}
+        {pHris && (
           <FlagshipSlideCard
-            project={flagshipProjects[2]}
+            project={pHris}
             index={2}
             yMotion={ySlide3}
             depthLevel={3}
-            onSelectProject={handleSelect}
           />
         )}
 
-        {/* project index overview */}
-        <motion.div
-          style={{ y: ySlide4, zIndex: 40 }}
-          className="absolute inset-0 w-full h-full bg-[#02587a] shadow-[0_-8px_24px_rgba(15,23,42,0.35)]"
-        >
-          <FilteredProjectDock
-            projects={projectsData}
-            selectedCategory={selectedCategory}
-            onSelectCategory={setSelectedCategory}
-            onSelectProject={handleSelect}
+        {/* SLIDE 04: CAD MODELING */}
+        {pCad && (
+          <FlagshipSlideCard
+            project={pCad}
+            index={3}
+            yMotion={ySlide4}
+            depthLevel={3}
           />
-        </motion.div>
-      </div>
+        )}
 
-      {/* local fallback case study modal */}
-      {!onOpenProject && activeProject && (
-        <ProjectCaseStudyModal
-          project={activeProject}
-          isOpen={!!activeProject}
-          onClose={() => setLocalActiveProject(null)}
-        />
-      )}
+        {/* SLIDE 05: ERP ENTERPRISE */}
+        {pErp && (
+          <FlagshipSlideCard
+            project={pErp}
+            index={4}
+            yMotion={ySlide5}
+            depthLevel={4}
+          />
+        )}
+      </div>
     </section>
   );
 };
