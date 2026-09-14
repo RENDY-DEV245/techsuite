@@ -60,9 +60,6 @@ export interface ProfileData {
   avatarUrl: string;
   interests: string[];
   contact: {
-    email: string;
-    github: string;
-    linkedin: string;
-    location: string;
-  };
+  email: string;
+  }:
 }
