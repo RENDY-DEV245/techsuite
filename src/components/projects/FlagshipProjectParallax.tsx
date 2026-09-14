@@ -296,21 +296,18 @@ export const FlagshipSlideCard: React.FC<FlagshipSlideCardProps> = ({
                     </div>
                   </div>
                 ) : (
-                  /* Slide 05 ERP */
-                  project.demoUrl && (
-                    <a
-                      href={project.demoUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center justify-center gap-1.5 px-4 py-2 sm:px-5 sm:py-2.5 rounded-xl bg-[#fde047] hover:bg-[#facc15] text-[#0f172a] font-mono font-black text-xs sm:text-sm border-2 border-[#0f172a] shadow-[2.5px_2.5px_0px_#0f172a] hover:translate-x-0.5 hover:translate-y-0.5 transition-all cursor-pointer w-full sm:w-auto"
-                    >
-                      <ExternalLink className="w-3.5 h-3.5" />
-                      <span>Konsultasi Sistem</span>
-                    </a>
-                  )
-                )}
-              </div>
-            </div>
+                /* Slide 05 ERP */
+project.demoUrl && (
+  <a
+    href="https://clarate.id/id/register?service_id=1"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="inline-flex items-center justify-center..."
+  >
+    <span>Tahu Lebih Lanjut</span>
+    <ExternalLink className="w-3.5 h-3.5" />
+  </a>
+)
 
             {/* Right Showcase Box */}
             <div className="lg:col-span-7 p-3.5 sm:p-6 rounded-2xl sm:rounded-[32px] bg-[#fffdf5]/95 border-2 border-[#0f172a] shadow-[4px_4px_0px_#0f172a] sm:shadow-[6px_6px_0px_#0f172a] flex flex-col justify-between">
