@@ -272,20 +272,15 @@ export const ContactSection: React.FC = () => {
                     </div>
                   </div>
 
-                  <div className="space-y-2 pt-2 border-t-2 border-[#0f172a]/10">
-                    <div className="flex items-center justify-between">
-                      <span className="text-[11px] sm:text-xs font-mono font-bold uppercase tracking-wider text-[#64748b]">
-                        Socials &amp; Profil
-                      </span>
-                      <button
-                        type="button"
-                        onClick={() => setIsFlipped(true)}
-                        className="inline-flex items-center gap-1 text-[10px] sm:text-[11px] font-mono font-bold text-[#0284c7] hover:text-[#0f172a] cursor-pointer"
-                      >
-                        <span>Pesan Rahasia</span>
-                       </button>
-                   </button>
-                    </div>
+                  <div className="pt-2 border-t-2 border-[#0f172a]/10 flex items-center justify-end">
+                    <button
+                      type="button"
+                      onClick={() => setIsFlipped(true)}
+                      className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-[#fffdf5] hover:bg-[#fde047] border-2 border-[#0f172a] text-xs font-mono font-bold text-[#0f172a] shadow-[2px_2px_0px_#0f172a] hover:translate-x-0.5 hover:translate-y-0.5 transition-all cursor-pointer"
+                    >
+                      <span>Pesan Rahasia</span>
+                      <RotateCw className="w-3.5 h-3.5 text-[#0284c7]" />
+                    </button>
                   </div>
                 </div>
 
