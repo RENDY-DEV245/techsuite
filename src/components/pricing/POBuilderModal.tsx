@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   X,
@@ -13,7 +13,11 @@ import {
   ChevronUp,
   Search,
   User,
-  ShieldCheck
+  ShieldCheck,
+  ArrowRight,
+  ArrowLeft,
+  Layers,
+  RotateCcw
 } from 'lucide-react';
 import { useClipboard } from '../../hooks/useClipboard';
 
@@ -32,6 +36,9 @@ export interface ModuleCategory {
   items: ModuleItem[];
 }
 
+// =========================================================================
+// DATABASE LENGKAP 28 KATEGORI (WEBSITE + E-COMMERCE + CAD + 25 MODUL ERP PDF)
+// =========================================================================
 export const COMPLETE_MODULE_CATALOG: ModuleCategory[] = [
   {
     id: 'web-dev',
@@ -603,6 +610,10 @@ interface POBuilderModalProps {
 export const POBuilderModal: React.FC<POBuilderModalProps> = ({ isOpen, onClose }) => {
   const { copied, copy } = useClipboard();
 
+  // Tab State: 'form' (Centang Fitur & Isi Data) vs 'preview' (Draf PO & Kirim)
+  const [activeTab, setActiveTab] = useState<'form' | 'preview'>('form');
+
+  // State Data Klien
   const [clientName, setClientName] = useState('');
   const [companyName, setCompanyName] = useState('');
   const [phone, setPhone] = useState('');
@@ -610,6 +621,7 @@ export const POBuilderModal: React.FC<POBuilderModalProps> = ({ isOpen, onClose 
   const [budgetRange, setBudgetRange] = useState('');
   const [notes, setNotes] = useState('');
 
+  // State Pilihan Fitur & Care Plan
   const [selectedFeatures, setSelectedFeatures] = useState<string[]>([
     'web-compro',
     'web-custom-ui',
@@ -624,9 +636,11 @@ export const POBuilderModal: React.FC<POBuilderModalProps> = ({ isOpen, onClose 
   ]);
   const [selectedCarePlan, setSelectedCarePlan] = useState<string>('care-promo');
 
+  // State Pencarian & Filter Group
   const [searchKeyword, setSearchKeyword] = useState('');
   const [activeGroupFilter, setActiveGroupFilter] = useState<'all' | 'website' | 'ecommerce' | 'cad' | 'erp'>('all');
 
+  // State Accordion
   const [expandedCategories, setExpandedCategories] = useState<Record<string, boolean>>({
     'web-dev': true,
     'ecom-dev': true,
@@ -636,6 +650,18 @@ export const POBuilderModal: React.FC<POBuilderModalProps> = ({ isOpen, onClose 
     'erp-05': true,
     'erp-22': true
   });
+
+  // Cegah body scrolling saat modal terbuka
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [isOpen]);
 
   const toggleCategory = (catId: string) => {
     setExpandedCategories((prev) => ({ ...prev, [catId]: !prev[catId] }));
@@ -738,7 +764,13 @@ ${notes.trim() || 'Tidak ada catatan tambahan.'}
 
   return (
     <AnimatePresence>
-      <div className="fixed inset-0 z-[200] flex items-center justify-center p-2 sm:p-4 lg:p-6 overflow-y-auto select-none">
+      <div
+        data-lenis-prevent="true"
+        data-lenis-prevent-wheel="true"
+        data-lenis-prevent-touch="true"
+        className="fixed inset-0 z-[200] flex items-center justify-center p-2 sm:p-4 lg:p-6 overflow-hidden select-none"
+      >
+        {/* Backdrop Gelap */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -747,29 +779,31 @@ ${notes.trim() || 'Tidak ada catatan tambahan.'}
           className="fixed inset-0 bg-[#071b2f]/90 backdrop-blur-md"
         />
 
+        {/* Modal Window Container */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.95, y: 20 }}
+          initial={{ opacity: 0, scale: 0.95, y: 15 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
-          exit={{ opacity: 0, scale: 0.95, y: 20 }}
+          exit={{ opacity: 0, scale: 0.95, y: 15 }}
           transition={{ type: 'spring', damping: 25, stiffness: 280 }}
-          className="relative z-10 w-full max-w-7xl bg-[#fffdf5] border-3 sm:border-4 border-[#0f172a] rounded-[24px] sm:rounded-[36px] shadow-[8px_8px_0px_#0f172a] sm:shadow-[16px_16px_0px_#0f172a] overflow-hidden my-auto flex flex-col h-[92vh]"
+          className="relative z-10 w-full max-w-4xl bg-[#fffdf5] border-3 sm:border-4 border-[#0f172a] rounded-[24px] sm:rounded-[36px] shadow-[8px_8px_0px_#0f172a] sm:shadow-[16px_16px_0px_#0f172a] overflow-hidden my-auto flex flex-col h-[90vh]"
         >
-          <div className="flex items-center justify-between p-4 sm:p-6 bg-[#071b2f] text-white border-b-3 sm:border-b-4 border-[#0f172a] shrink-0">
-            <div className="flex items-center gap-3">
-              <div className="p-2 sm:p-2.5 rounded-xl bg-[#fde047] text-[#0f172a] border-2 border-[#0f172a] shadow-[2px_2px_0px_#0f172a]">
-                <FileText className="w-5 h-5 sm:w-6 sm:h-6" />
+          {/* Header Pop Up */}
+          <div className="flex items-center justify-between p-3.5 sm:p-5 bg-[#071b2f] text-white border-b-3 sm:border-b-4 border-[#0f172a] shrink-0">
+            <div className="flex items-center gap-2.5 sm:gap-3">
+              <div className="p-2 rounded-xl bg-[#fde047] text-[#0f172a] border-2 border-[#0f172a] shadow-[2px_2px_0px_#0f172a]">
+                <FileText className="w-5 h-5" />
               </div>
               <div>
-                <div className="flex flex-wrap items-center gap-2">
+                <div className="flex items-center gap-2">
                   <span className="text-[10px] sm:text-xs font-mono font-black text-[#fde047] uppercase tracking-wider">
-                    PO BUILDER &amp; SISTEM MODUL
+                    PO BUILDER SYSTEM
                   </span>
-                  <span className="text-[10px] sm:text-[11px] font-mono font-black px-2 py-0.5 rounded-md bg-[#38bdf8] text-[#0f172a] border border-[#0f172a]">
-                    {selectedFeatures.length} / {totalCatalogFeatures} FITUR DIPILIH
+                  <span className="text-[10px] font-mono font-black px-2 py-0.5 rounded-md bg-[#38bdf8] text-[#0f172a] border border-[#0f172a]">
+                    {selectedFeatures.length} DIPILIH
                   </span>
                 </div>
-                <h3 className="text-base sm:text-2xl font-black text-white leading-tight mt-0.5">
-                  Formulir Kebutuhan Jasa &amp; Pre-Order (PO) Komplit
+                <h3 className="text-sm sm:text-xl font-black text-white leading-tight mt-0.5">
+                  Formulir Kebutuhan Jasa &amp; Pre-Order
                 </h3>
               </div>
             </div>
@@ -777,32 +811,64 @@ ${notes.trim() || 'Tidak ada catatan tambahan.'}
             <button
               type="button"
               onClick={onClose}
-              className="p-2 sm:p-2.5 rounded-xl bg-[#fffdf5] hover:bg-[#fee2e2] text-[#0f172a] hover:text-[#dc2626] border-2 border-[#0f172a] shadow-[2px_2px_0px_#0f172a] transition-all cursor-pointer"
+              className="p-1.5 sm:p-2 rounded-xl bg-[#fffdf5] hover:bg-[#fee2e2] text-[#0f172a] hover:text-[#dc2626] border-2 border-[#0f172a] shadow-[2px_2px_0px_#0f172a] transition-all cursor-pointer"
               title="Tutup Modal"
             >
               <X className="w-5 h-5" />
             </button>
           </div>
 
-          <div className="flex-1 min-h-0 grid grid-cols-1 lg:grid-cols-12 overflow-hidden text-[#0f172a]">
-            
-            <div className="lg:col-span-7 flex flex-col min-h-0 border-r-0 lg:border-r-3 border-[#0f172a]/20 bg-[#fffdf5]">
+          {/* Tab Navigation Bar (Sangat Jelas & Mudah Diganti) */}
+          <div className="flex items-center border-b-2 border-[#0f172a] bg-[#faeed1] p-1.5 gap-1.5 shrink-0">
+            <button
+              type="button"
+              onClick={() => setActiveTab('form')}
+              className={`flex-1 flex items-center justify-center gap-2 py-2.5 px-3 rounded-xl font-mono font-black text-xs sm:text-sm border-2 transition-all cursor-pointer ${
+                activeTab === 'form'
+                  ? 'bg-[#fde047] text-[#0f172a] border-[#0f172a] shadow-[2px_2px_0px_#0f172a]'
+                  : 'bg-transparent text-[#64748b] border-transparent hover:bg-white/40'
+              }`}
+            >
+              <CheckSquare className="w-4 h-4 text-[#0284c7]" />
+              <span>1. Centang Fitur &amp; Data ({selectedFeatures.length})</span>
+            </button>
+
+            <button
+              type="button"
+              onClick={() => setActiveTab('preview')}
+              className={`flex-1 flex items-center justify-center gap-2 py-2.5 px-3 rounded-xl font-mono font-black text-xs sm:text-sm border-2 transition-all cursor-pointer ${
+                activeTab === 'preview'
+                  ? 'bg-[#0284c7] text-white border-[#0f172a] shadow-[2px_2px_0px_#0f172a]'
+                  : 'bg-transparent text-[#64748b] border-transparent hover:bg-white/40'
+              }`}
+            >
+              <FileText className="w-4 h-4 text-[#fde047]" />
+              <span>2. Lihat Draf PO &amp; Kirim WA</span>
+            </button>
+          </div>
+
+          {/* =========================================================================
+              TAB 1: CENTANG FITUR & PENGISIAN DATA KLIEN (FULL WIDTH & LEGA DI-SCROLL)
+             ========================================================================= */}
+          {activeTab === 'form' && (
+            <div className="flex-1 overflow-y-auto p-3.5 sm:p-6 space-y-4 bg-[#fffdf5] text-[#0f172a]">
               
-              <div className="p-3 sm:p-4 bg-[#fff9d4] border-b-2 border-[#0f172a]/15 shrink-0 space-y-2.5">
+              {/* Search & Quick Filters */}
+              <div className="p-3 bg-[#fff9d4] rounded-2xl border-2 border-[#0f172a] space-y-2 shadow-[2px_2px_0px_#0f172a]">
                 <div className="relative">
-                  <Search className="w-4 h-4 text-[#64748b] absolute left-3.5 top-1/2 -translate-y-1/2" />
+                  <Search className="w-4 h-4 text-[#64748b] absolute left-3 top-1/2 -translate-y-1/2" />
                   <input
                     type="text"
                     value={searchKeyword}
                     onChange={(e) => setSearchKeyword(e.target.value)}
                     placeholder="Cari modul (contoh: General Ledger, WMS, CAD, Payroll, SAK ETAP, API)..."
-                    className="w-full pl-9 pr-4 py-2 rounded-xl bg-[#fffdf5] border-2 border-[#0f172a] text-xs font-medium text-[#0f172a] placeholder-[#94a3b8] focus:outline-none focus:ring-2 focus:ring-[#0284c7] shadow-[2px_2px_0px_#0f172a]"
+                    className="w-full pl-9 pr-4 py-2 rounded-xl bg-[#fffdf5] border-2 border-[#0f172a] text-xs font-medium text-[#0f172a] focus:outline-none focus:ring-2 focus:ring-[#0284c7]"
                   />
                   {searchKeyword && (
                     <button
                       type="button"
                       onClick={() => setSearchKeyword('')}
-                      className="absolute right-3 top-1/2 -translate-y-1/2 text-xs font-mono font-bold text-[#64748b] hover:text-[#0f172a]"
+                      className="absolute right-3 top-1/2 -translate-y-1/2 text-xs font-mono font-bold text-[#64748b]"
                     >
                       Reset
                     </button>
@@ -811,19 +877,19 @@ ${notes.trim() || 'Tidak ada catatan tambahan.'}
 
                 <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar pb-0.5">
                   {[
-                    { id: 'all', label: 'Semua (28 Kategori)', count: totalCatalogFeatures },
-                    { id: 'website', label: 'Website (8)', count: 8 },
-                    { id: 'ecommerce', label: 'E-Commerce (7)', count: 7 },
-                    { id: 'cad', label: 'CAD & 3D (7)', count: 7 },
-                    { id: 'erp', label: 'ERP 25 Modul PDF', count: totalCatalogFeatures - 22 }
+                    { id: 'all', label: 'Semua (28 Kategori)' },
+                    { id: 'website', label: 'Website (8)' },
+                    { id: 'ecommerce', label: 'E-Commerce (7)' },
+                    { id: 'cad', label: 'CAD & 3D (7)' },
+                    { id: 'erp', label: 'ERP 25 Modul PDF' }
                   ].map((tab) => (
                     <button
                       key={tab.id}
                       type="button"
                       onClick={() => setActiveGroupFilter(tab.id as 'all' | 'website' | 'ecommerce' | 'cad' | 'erp')}
-                      className={`px-3 py-1.5 rounded-xl text-[11px] font-mono font-black border-2 transition-all shrink-0 cursor-pointer ${
+                      className={`px-3 py-1 rounded-xl text-[11px] font-mono font-black border-2 transition-all shrink-0 cursor-pointer ${
                         activeGroupFilter === tab.id
-                          ? 'bg-[#0284c7] text-white border-[#0f172a] shadow-[2px_2px_0px_#0f172a]'
+                          ? 'bg-[#0284c7] text-white border-[#0f172a] shadow-[1.5px_1.5px_0px_#0f172a]'
                           : 'bg-[#fffdf5] hover:bg-[#faeed1] text-[#0f172a] border-[#0f172a]/30'
                       }`}
                     >
@@ -833,272 +899,302 @@ ${notes.trim() || 'Tidak ada catatan tambahan.'}
                 </div>
               </div>
 
-              <div className="flex-1 overflow-y-auto p-4 sm:p-6 space-y-5">
-                
-                <div className="p-4 sm:p-5 rounded-2xl bg-[#fff9d4] border-2 border-[#0f172a] shadow-[3px_3px_0px_#0f172a] space-y-3">
-                  <div className="text-xs font-mono font-black text-[#0f172a] uppercase flex items-center justify-between border-b border-[#0f172a]/15 pb-2">
-                    <span className="flex items-center gap-1.5">
-                      <User className="w-4 h-4 text-[#0284c7]" />
-                      <span>1. DATA IDENTITAS PEMESAN:</span>
-                    </span>
-                    <span className="text-[10px] text-[#15803d] font-bold">Wajib diisi</span>
-                  </div>
-
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    <div>
-                      <label className="text-[11px] font-mono font-bold text-[#475569] block mb-1">
-                        NAMA LENGKAP:
-                      </label>
-                      <input
-                        type="text"
-                        value={clientName}
-                        onChange={(e) => setClientName(e.target.value)}
-                        placeholder="Contoh: Budi Santoso"
-                        className="w-full px-3 py-2 rounded-xl bg-[#fffdf5] border-2 border-[#0f172a] text-xs font-medium text-[#0f172a] focus:outline-none focus:ring-2 focus:ring-[#0284c7]"
-                      />
-                    </div>
-
-                    <div>
-                      <label className="text-[11px] font-mono font-bold text-[#475569] block mb-1">
-                        NAMA INSTANSI / PERUSAHAAN:
-                      </label>
-                      <input
-                        type="text"
-                        value={companyName}
-                        onChange={(e) => setCompanyName(e.target.value)}
-                        placeholder="Contoh: PT. Maju Bersama / CV / Retail"
-                        className="w-full px-3 py-2 rounded-xl bg-[#fffdf5] border-2 border-[#0f172a] text-xs font-medium text-[#0f172a] focus:outline-none focus:ring-2 focus:ring-[#0284c7]"
-                      />
-                    </div>
-
-                    <div>
-                      <label className="text-[11px] font-mono font-bold text-[#475569] block mb-1">
-                        NO. WHATSAPP AKTIF:
-                      </label>
-                      <input
-                        type="tel"
-                        value={phone}
-                        onChange={(e) => setPhone(e.target.value)}
-                        placeholder="Contoh: 081234567890"
-                        className="w-full px-3 py-2 rounded-xl bg-[#fffdf5] border-2 border-[#0f172a] text-xs font-medium text-[#0f172a] focus:outline-none focus:ring-2 focus:ring-[#0284c7]"
-                      />
-                    </div>
-
-                    <div>
-                      <label className="text-[11px] font-mono font-bold text-[#475569] block mb-1">
-                        ESTIMASI BUDGET / ANGGARAN:
-                      </label>
-                      <input
-                        type="text"
-                        value={budgetRange}
-                        onChange={(e) => setBudgetRange(e.target.value)}
-                        placeholder="Contoh: Rp300rb - Rp5jt+ / Konsultasi"
-                        className="w-full px-3 py-2 rounded-xl bg-[#fffdf5] border-2 border-[#0f172a] text-xs font-medium text-[#0f172a] focus:outline-none focus:ring-2 focus:ring-[#0284c7]"
-                      />
-                    </div>
-
-                    <div className="sm:col-span-2">
-                      <label className="text-[11px] font-mono font-bold text-[#475569] block mb-1">
-                        TARGET BATAS SELESAI:
-                      </label>
-                      <input
-                        type="text"
-                        value={deadline}
-                        onChange={(e) => setDeadline(e.target.value)}
-                        placeholder="Contoh: 2-4 Minggu / Urgent"
-                        className="w-full px-3 py-2 rounded-xl bg-[#fffdf5] border-2 border-[#0f172a] text-xs font-medium text-[#0f172a] focus:outline-none focus:ring-2 focus:ring-[#0284c7]"
-                      />
-                    </div>
-                  </div>
+              {/* Data Klien */}
+              <div className="p-4 rounded-2xl bg-[#fff9d4] border-2 border-[#0f172a] shadow-[2.5px_2.5px_0px_#0f172a] space-y-3">
+                <div className="text-xs font-mono font-black text-[#0f172a] uppercase flex items-center justify-between border-b border-[#0f172a]/15 pb-2">
+                  <span className="flex items-center gap-1.5">
+                    <User className="w-4 h-4 text-[#0284c7]" />
+                    <span>1. DATA IDENTITAS PEMESAN:</span>
+                  </span>
+                  <span className="text-[10px] text-[#15803d] font-bold">Wajib Diisi</span>
                 </div>
 
-                <div className="space-y-3">
-                  <div className="flex items-center justify-between text-xs font-mono font-black text-[#0f172a] uppercase">
-                    <span className="flex items-center gap-1.5">
-                      <Sparkles className="w-4 h-4 text-[#0284c7]" />
-                      <span>2. CENTANG KEBUTUHAN MODUL &amp; FITUR:</span>
-                    </span>
-                    <span className="text-[10px] text-[#8c6239] font-bold">
-                      Menampilkan {filteredCategories.length} Kategori
-                    </span>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                  <div>
+                    <label className="text-[11px] font-mono font-bold text-[#475569] block mb-0.5">
+                      NAMA LENGKAP:
+                    </label>
+                    <input
+                      type="text"
+                      value={clientName}
+                      onChange={(e) => setClientName(e.target.value)}
+                      placeholder="Contoh: Budi Santoso"
+                      className="w-full px-3 py-2 rounded-xl bg-[#fffdf5] border-2 border-[#0f172a] text-xs font-medium text-[#0f172a] focus:outline-none focus:ring-2 focus:ring-[#0284c7]"
+                    />
                   </div>
 
-                  <div className="space-y-2.5">
-                    {filteredCategories.map((group) => {
-                      const isExpanded = !expandedCategories[group.id];
-                      const selectedCount = group.items.filter((i) =>
-                        selectedFeatures.includes(i.id)
-                      ).length;
+                  <div>
+                    <label className="text-[11px] font-mono font-bold text-[#475569] block mb-0.5">
+                      NAMA INSTANSI / BISNIS:
+                    </label>
+                    <input
+                      type="text"
+                      value={companyName}
+                      onChange={(e) => setCompanyName(e.target.value)}
+                      placeholder="Contoh: PT. Maju Bersama / CV / Retail"
+                      className="w-full px-3 py-2 rounded-xl bg-[#fffdf5] border-2 border-[#0f172a] text-xs font-medium text-[#0f172a] focus:outline-none focus:ring-2 focus:ring-[#0284c7]"
+                    />
+                  </div>
 
-                      return (
-                        <div
-                          key={group.id}
-                          className="rounded-2xl border-2 border-[#0f172a] bg-[#fffdf5] overflow-hidden shadow-[2px_2px_0px_#0f172a]"
-                        >
-                          <div
-                            onClick={() => toggleCategory(group.id)}
-                            className="flex items-center justify-between p-3 sm:p-3.5 bg-[#faeed1]/70 hover:bg-[#faeed1] cursor-pointer transition-colors border-b border-[#0f172a]/15"
-                          >
-                            <div className="flex items-center gap-2 truncate">
-                              <span className="text-[10px] font-mono font-black px-1.5 py-0.5 rounded bg-[#0f172a] text-white">
-                                {group.categoryNumber}
-                              </span>
-                              <span className="text-xs sm:text-sm font-black text-[#0f172a] truncate">
-                                {group.title}
-                              </span>
-                              <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded-full bg-[#fde047] border border-[#0f172a]">
-                                {selectedCount}/{group.items.length}
-                              </span>
-                            </div>
+                  <div>
+                    <label className="text-[11px] font-mono font-bold text-[#475569] block mb-0.5">
+                      NO. WHATSAPP AKTIF:
+                    </label>
+                    <input
+                      type="tel"
+                      value={phone}
+                      onChange={(e) => setPhone(e.target.value)}
+                      placeholder="Contoh: 081234567890"
+                      className="w-full px-3 py-2 rounded-xl bg-[#fffdf5] border-2 border-[#0f172a] text-xs font-medium text-[#0f172a] focus:outline-none focus:ring-2 focus:ring-[#0284c7]"
+                    />
+                  </div>
 
-                            <div className="flex items-center gap-2 shrink-0">
-                              <button
-                                type="button"
-                                onClick={(e) => {
-                                  e.stopPropagation();
-                                  selectAllInCategory(group);
-                                }}
-                                className="text-[10px] font-mono font-bold text-[#0284c7] hover:underline px-2 py-0.5 rounded bg-[#fffdf5] border border-[#0f172a]/30"
-                              >
-                                {selectedCount === group.items.length ? 'Batal Semua' : 'Pilih Semua'}
-                              </button>
-                              {isExpanded ? (
-                                <ChevronUp className="w-4 h-4 text-[#0f172a]" />
-                              ) : (
-                                <ChevronDown className="w-4 h-4 text-[#0f172a]" />
-                              )}
-                            </div>
-                          </div>
-
-                          {isExpanded && (
-                            <div className="p-3 sm:p-3.5 grid grid-cols-1 gap-2 bg-[#fffdf5]">
-                              {group.items.map((item) => {
-                                const isChecked = selectedFeatures.includes(item.id);
-                                return (
-                                  <div
-                                    key={item.id}
-                                    onClick={() => toggleFeature(item.id)}
-                                    className={`flex items-start gap-2.5 p-2.5 rounded-xl border-2 transition-all cursor-pointer ${
-                                      isChecked
-                                        ? 'bg-[#fde047]/65 border-[#0f172a] shadow-[2px_2px_0px_#0f172a]'
-                                        : 'bg-[#fff9d4]/30 hover:bg-[#fff9d4] border-[#0f172a]/20'
-                                    }`}
-                                  >
-                                    {isChecked ? (
-                                      <CheckSquare className="w-4 h-4 text-[#0f172a] shrink-0 mt-0.5" />
-                                    ) : (
-                                      <Square className="w-4 h-4 text-[#94a3b8] shrink-0 mt-0.5" />
-                                    )}
-                                    <div className="text-left">
-                                      <div className="text-xs font-black text-[#0f172a] leading-tight">
-                                        {item.name}
-                                      </div>
-                                      <div className="text-[11px] text-[#475569] font-medium leading-relaxed mt-0.5">
-                                        {item.desc}
-                                      </div>
-                                    </div>
-                                  </div>
-                                );
-                              })}
-                            </div>
-                          )}
-                        </div>
-                      );
-                    })}
+                  <div>
+                    <label className="text-[11px] font-mono font-bold text-[#475569] block mb-0.5">
+                      ESTIMASI BUDGET / ANGGARAN:
+                    </label>
+                    <input
+                      type="text"
+                      value={budgetRange}
+                      onChange={(e) => setBudgetRange(e.target.value)}
+                      placeholder="Contoh: Rp300rb - Rp5jt+ / Konsultasi"
+                      className="w-full px-3 py-2 rounded-xl bg-[#fffdf5] border-2 border-[#0f172a] text-xs font-medium text-[#0f172a] focus:outline-none focus:ring-2 focus:ring-[#0284c7]"
+                    />
                   </div>
                 </div>
+              </div>
 
-                <div className="p-4 rounded-2xl bg-[#fff9d4] border-2 border-[#0f172a] shadow-[3px_3px_0px_#0f172a] space-y-2.5">
-                  <div className="text-xs font-mono font-black text-[#0f172a] uppercase flex items-center gap-1.5 border-b border-[#0f172a]/15 pb-2">
-                    <ShieldCheck className="w-4 h-4 text-[#15803d]" />
-                    <span>3. PILIHAN KETENTUAN CARE PLAN &amp; MAINTENANCE:</span>
-                  </div>
+              {/* Checklist Seluruh Kategori & Submodul */}
+              <div className="space-y-2.5">
+                <div className="flex items-center justify-between text-xs font-mono font-black text-[#0f172a] uppercase pt-1">
+                  <span className="flex items-center gap-1.5">
+                    <Sparkles className="w-4 h-4 text-[#0284c7]" />
+                    <span>2. CENTANG KEBUTUHAN MODUL &amp; FITUR:</span>
+                  </span>
+                  <span className="text-[10px] text-[#8c6239] font-bold">
+                    {filteredCategories.length} Kategori
+                  </span>
+                </div>
 
-                  <div className="space-y-2">
-                    {CARE_PLAN_OPTIONS.map((plan) => {
-                      const isSelected = selectedCarePlan === plan.id;
-                      return (
+                <div className="space-y-2">
+                  {filteredCategories.map((group) => {
+                    const isExpanded = !expandedCategories[group.id];
+                    const selectedCount = group.items.filter((i) =>
+                      selectedFeatures.includes(i.id)
+                    ).length;
+
+                    return (
+                      <div
+                        key={group.id}
+                        className="rounded-2xl border-2 border-[#0f172a] bg-[#fffdf5] overflow-hidden shadow-[2px_2px_0px_#0f172a]"
+                      >
                         <div
-                          key={plan.id}
-                          onClick={() => setSelectedCarePlan(plan.id)}
-                          className={`p-3 rounded-xl border-2 transition-all cursor-pointer ${
-                            isSelected
-                              ? 'bg-[#fde047] border-[#0f172a] shadow-[2px_2px_0px_#0f172a]'
-                              : 'bg-[#fffdf5] hover:bg-[#fff9d4] border-[#0f172a]/30'
-                          }`}
+                          onClick={() => toggleCategory(group.id)}
+                          className="flex items-center justify-between p-3 bg-[#faeed1]/80 hover:bg-[#faeed1] cursor-pointer transition-colors border-b border-[#0f172a]/15"
                         >
-                          <div className="flex items-center justify-between">
-                            <span className="text-xs font-black text-[#0f172a]">{plan.title}</span>
-                            <span className="text-[9px] font-mono font-black px-2 py-0.5 rounded bg-[#0f172a] text-white">
-                              {plan.badge}
+                          <div className="flex items-center gap-2 truncate">
+                            <span className="text-[10px] font-mono font-black px-1.5 py-0.5 rounded bg-[#0f172a] text-white">
+                              {group.categoryNumber}
+                            </span>
+                            <span className="text-xs sm:text-sm font-black text-[#0f172a] truncate">
+                              {group.title}
+                            </span>
+                            <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded-full bg-[#fde047] border border-[#0f172a]">
+                              {selectedCount}/{group.items.length}
                             </span>
                           </div>
-                          <p className="text-[11px] text-[#475569] font-medium leading-relaxed mt-1">
-                            {plan.desc}
-                          </p>
+
+                          <div className="flex items-center gap-2 shrink-0">
+                            <button
+                              type="button"
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                selectAllInCategory(group);
+                              }}
+                              className="text-[10px] font-mono font-bold text-[#0284c7] hover:underline px-2 py-0.5 rounded bg-[#fffdf5] border border-[#0f172a]/30"
+                            >
+                              {selectedCount === group.items.length ? 'Batal' : 'Pilih Semua'}
+                            </button>
+                            {isExpanded ? (
+                              <ChevronUp className="w-4 h-4 text-[#0f172a]" />
+                            ) : (
+                              <ChevronDown className="w-4 h-4 text-[#0f172a]" />
+                            )}
+                          </div>
                         </div>
-                      );
-                    })}
-                  </div>
-                </div>
 
-                <div className="space-y-1.5">
-                  <label className="text-xs font-mono font-black text-[#0f172a] uppercase block">
-                    4. CATATAN / PERSYARATAN TAMBAHAN:
-                  </label>
-                  <textarea
-                    rows={3}
-                    value={notes}
-                    onChange={(e) => setNotes(e.target.value)}
-                    placeholder="Tuliskan jika ada kebutuhan integrasi API perbankan khusus, migrasi database lama, format laporan spesifik, dll..."
-                    className="w-full px-3.5 py-2.5 rounded-xl bg-[#fff9d4] border-2 border-[#0f172a] text-xs font-medium text-[#0f172a] placeholder-[#94a3b8] focus:outline-none focus:ring-2 focus:ring-[#0284c7]"
-                  />
+                        {isExpanded && (
+                          <div className="p-3 grid grid-cols-1 gap-2 bg-[#fffdf5]">
+                            {group.items.map((item) => {
+                              const isChecked = selectedFeatures.includes(item.id);
+                              return (
+                                <div
+                                  key={item.id}
+                                  onClick={() => toggleFeature(item.id)}
+                                  className={`flex items-start gap-2.5 p-2.5 rounded-xl border-2 transition-all cursor-pointer ${
+                                    isChecked
+                                      ? 'bg-[#fde047]/70 border-[#0f172a] shadow-[2px_2px_0px_#0f172a]'
+                                      : 'bg-[#fff9d4]/30 hover:bg-[#fff9d4] border-[#0f172a]/20'
+                                  }`}
+                                >
+                                  {isChecked ? (
+                                    <CheckSquare className="w-4 h-4 text-[#0f172a] shrink-0 mt-0.5" />
+                                  ) : (
+                                    <Square className="w-4 h-4 text-[#94a3b8] shrink-0 mt-0.5" />
+                                  )}
+                                  <div className="text-left">
+                                    <div className="text-xs font-black text-[#0f172a] leading-tight">
+                                      {item.name}
+                                    </div>
+                                    <div className="text-[11px] text-[#475569] font-medium leading-relaxed mt-0.5">
+                                      {item.desc}
+                                    </div>
+                                  </div>
+                                </div>
+                              );
+                            })}
+                          </div>
+                        )}
+                      </div>
+                    );
+                  })}
                 </div>
-
               </div>
-            </div>
 
-            <div className="lg:col-span-5 flex flex-col justify-between bg-[#fffdf5] p-4 sm:p-6 space-y-4">
-              
-              <div className="space-y-2 flex-1 min-h-0 flex flex-col">
-                <div className="flex items-center justify-between shrink-0">
+              {/* Care Plan Selection */}
+              <div className="p-4 rounded-2xl bg-[#fff9d4] border-2 border-[#0f172a] shadow-[2.5px_2.5px_0px_#0f172a] space-y-2">
+                <div className="text-xs font-mono font-black text-[#0f172a] uppercase flex items-center gap-1.5 border-b border-[#0f172a]/15 pb-1.5">
+                  <ShieldCheck className="w-4 h-4 text-[#15803d]" />
+                  <span>3. PILIHAN KETENTUAN CARE PLAN &amp; MAINTENANCE:</span>
+                </div>
+
+                <div className="space-y-2">
+                  {CARE_PLAN_OPTIONS.map((plan) => {
+                    const isSelected = selectedCarePlan === plan.id;
+                    return (
+                      <div
+                        key={plan.id}
+                        onClick={() => setSelectedCarePlan(plan.id)}
+                        className={`p-2.5 rounded-xl border-2 transition-all cursor-pointer ${
+                          isSelected
+                            ? 'bg-[#fde047] border-[#0f172a] shadow-[2px_2px_0px_#0f172a]'
+                            : 'bg-[#fffdf5] hover:bg-[#fff9d4] border-[#0f172a]/30'
+                        }`}
+                      >
+                        <div className="flex items-center justify-between">
+                          <span className="text-xs font-black text-[#0f172a]">{plan.title}</span>
+                          <span className="text-[9px] font-mono font-black px-1.5 py-0.5 rounded bg-[#0f172a] text-white">
+                            {plan.badge}
+                          </span>
+                        </div>
+                        <p className="text-[11px] text-[#475569] font-medium leading-relaxed mt-0.5">
+                          {plan.desc}
+                        </p>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+
+              {/* Catatan Khusus */}
+              <div className="space-y-1">
+                <label className="text-xs font-mono font-black text-[#0f172a] uppercase block">
+                  4. CATATAN / PERSYARATAN TAMBAHAN:
+                </label>
+                <textarea
+                  rows={2}
+                  value={notes}
+                  onChange={(e) => setNotes(e.target.value)}
+                  placeholder="Tuliskan kebutuhan khusus lainnya jika ada..."
+                  className="w-full px-3 py-2 rounded-xl bg-[#fff9d4] border-2 border-[#0f172a] text-xs font-medium text-[#0f172a] focus:outline-none focus:ring-2 focus:ring-[#0284c7]"
+                />
+              </div>
+
+            </div>
+          )}
+
+          {/* =========================================================================
+              TAB 2: DRAF TEMPLATE PRE-ORDER (PO) RESMI (RAPI & LEGA DI HP & DESKTOP)
+             ========================================================================= */}
+          {activeTab === 'preview' && (
+            <div className="flex-1 overflow-y-auto p-3.5 sm:p-6 space-y-4 bg-[#fffdf5] flex flex-col justify-between">
+              <div className="space-y-2 flex-1 flex flex-col">
+                <div className="flex items-center justify-between">
                   <span className="text-xs font-mono font-black text-[#0f172a] uppercase flex items-center gap-1.5">
                     <FileText className="w-4 h-4 text-[#0284c7]" />
                     <span>DRAF TEMPLATE PRE-ORDER (PO):</span>
                   </span>
                   <span className="text-[10px] font-mono text-[#15803d] font-black bg-[#dcfce7] px-2.5 py-0.5 rounded-lg border border-[#16a34a]">
-                    AUTO-GENERATED
+                    SIAP DIKIRIM
                   </span>
                 </div>
 
-                <div className="flex-1 rounded-2xl bg-[#071b2f] border-2 border-[#0f172a] p-4 text-[#f8fafc] font-mono text-[11px] leading-relaxed overflow-y-auto select-text shadow-inner">
-                  <pre className="whitespace-pre-wrap font-mono">{generatedPOTemplate}</pre>
+                {/* Box Teks PO dengan word-wrap agar di HP tidak terpotong */}
+                <div className="flex-1 rounded-2xl bg-[#071b2f] border-2 border-[#0f172a] p-4 text-[#f8fafc] font-mono text-xs sm:text-sm leading-relaxed overflow-y-auto select-text shadow-inner">
+                  <pre className="whitespace-pre-wrap break-words font-mono">{generatedPOTemplate}</pre>
                 </div>
               </div>
+            </div>
+          )}
 
-              <div className="space-y-2.5 pt-2 border-t-2 border-[#0f172a]/15 shrink-0">
+          {/* =========================================================================
+              STICKY BOTTOM ACTION BAR (SELALU TERLIHAT DI HP MAUPUN DESKTOP)
+             ========================================================================= */}
+          <div className="p-3 sm:p-4 bg-[#fff9d4] border-t-2 sm:border-t-3 border-[#0f172a] flex items-center justify-between gap-2.5 shrink-0">
+            {activeTab === 'form' ? (
+              <>
                 <button
                   type="button"
-                  onClick={handleSendToWhatsApp}
-                  className="w-full flex items-center justify-center gap-2 py-3 sm:py-3.5 px-4 rounded-xl sm:rounded-2xl bg-[#22c55e] hover:bg-[#16a34a] text-white font-mono font-black text-xs sm:text-sm border-2 border-[#0f172a] shadow-[3px_3px_0px_#0f172a] transition-all cursor-pointer hover:translate-x-0.5 hover:translate-y-0.5"
+                  onClick={() => setSelectedFeatures([])}
+                  className="px-3 py-2.5 rounded-xl bg-[#fffdf5] hover:bg-[#fee2e2] text-[#0f172a] border-2 border-[#0f172a] text-xs font-mono font-bold transition-all cursor-pointer flex items-center gap-1.5"
+                  title="Reset Semua Centang"
                 >
-                  <Send className="w-4 h-4" />
-                  <span>Kirim PO &amp; Spesifikasi via WhatsApp</span>
+                  <RotateCcw className="w-3.5 h-3.5" />
+                  <span className="hidden sm:inline">Reset</span>
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() => setActiveTab('preview')}
+                  className="flex-1 flex items-center justify-center gap-2 py-3 px-4 rounded-xl sm:rounded-2xl bg-[#fde047] hover:bg-[#facc15] text-[#0f172a] font-mono font-black text-xs sm:text-sm border-2 border-[#0f172a] shadow-[2.5px_2.5px_0px_#0f172a] transition-all cursor-pointer hover:translate-x-0.5 hover:translate-y-0.5"
+                >
+                  <FileText className="w-4 h-4" />
+                  <span>Lihat Draf PO ({selectedFeatures.length} Fitur)</span>
+                  <ArrowRight className="w-4 h-4" />
+                </button>
+              </>
+            ) : (
+              <>
+                <button
+                  type="button"
+                  onClick={() => setActiveTab('form')}
+                  className="px-3.5 py-3 rounded-xl bg-[#fffdf5] hover:bg-[#faeed1] text-[#0f172a] border-2 border-[#0f172a] text-xs font-mono font-bold transition-all cursor-pointer flex items-center gap-1.5"
+                >
+                  <ArrowLeft className="w-4 h-4" />
+                  <span>Edit Fitur</span>
                 </button>
 
                 <button
                   type="button"
                   onClick={() => copy(generatedPOTemplate)}
-                  className="w-full flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl bg-[#fff9d4] hover:bg-[#fde047] text-[#0f172a] font-mono font-bold text-xs border-2 border-[#0f172a] shadow-[2px_2px_0px_#0f172a] transition-all cursor-pointer"
+                  className="px-3.5 py-3 rounded-xl bg-[#fffdf5] hover:bg-[#faeed1] text-[#0f172a] border-2 border-[#0f172a] text-xs font-mono font-bold transition-all cursor-pointer flex items-center gap-1.5 shadow-[2px_2px_0px_#0f172a]"
                 >
                   {copied ? <Check className="w-4 h-4 text-[#15803d]" /> : <Copy className="w-4 h-4 text-[#0284c7]" />}
-                  <span>{copied ? 'Format Teks PO Berhasil Disalin!' : 'Salin Format Teks PO'}</span>
+                  <span className="hidden sm:inline">{copied ? 'Tersalin!' : 'Salin Teks'}</span>
                 </button>
-              </div>
 
-            </div>
-
+                <button
+                  type="button"
+                  onClick={handleSendToWhatsApp}
+                  className="flex-1 flex items-center justify-center gap-2 py-3 px-4 rounded-xl sm:rounded-2xl bg-[#22c55e] hover:bg-[#16a34a] text-white font-mono font-black text-xs sm:text-sm border-2 border-[#0f172a] shadow-[3px_3px_0px_#0f172a] transition-all cursor-pointer hover:translate-x-0.5 hover:translate-y-0.5"
+                >
+                  <Send className="w-4 h-4" />
+                  <span>Kirim ke WhatsApp</span>
+                </button>
+              </>
+            )}
           </div>
+
         </motion.div>
       </div>
     </AnimatePresence>
