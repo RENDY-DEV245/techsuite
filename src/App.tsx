@@ -11,14 +11,15 @@ import { TechGrid } from './components/tech/TechGrid';
 import { JourneyTimeline } from './components/journey/JourneyTimeline';
 import { StorySection } from './components/story/StorySection';
 import { BatchCardSection } from './components/pricing/BatchCardSection';
+import { PaymentCardSection } from './components/pricing/PaymentCardSection'; // ← IMPORT CARD PAYMENT TERPISAH
 import { ContactSection } from './components/contact/ContactSection';
 import { ProjectCaseStudyModal } from './components/projects/ProjectCaseStudyModal';
-import { LeadCaptureModal } from './components/common/LeadCaptureModal'; // ← 1. TAMBAHKAN IMPORT INI
+import { LeadCaptureModal } from './components/common/LeadCaptureModal';
 
 export function App() {
   const [isVerified, setIsVerified] = useState(false);
   const [showWelcome, setShowWelcome] = useState(true);
-  const [showLeadModal, setShowLeadModal] = useState(true); // ← 2. STATE POP-UP WA
+  const [showLeadModal, setShowLeadModal] = useState(true);
   const [activeModalProject, setActiveModalProject] = useState<Project | null>(null);
 
   useLenisSmoothScroll();
@@ -33,7 +34,6 @@ export function App() {
         <WelcomeAnimation onComplete={() => setShowWelcome(false)} />
       )}
 
-      {/* 3. PASANG POP-UP LEAD CAPTURE DI SINI */}
       <LeadCaptureModal
         isOpen={showLeadModal}
         onSuccess={() => setShowLeadModal(false)}
@@ -49,6 +49,8 @@ export function App() {
         <JourneyTimeline />
         <StorySection />
         <BatchCardSection />
+        {/* CARD PAYMENT TERPISAH BERDIRI SENDIRI DI BAWAH CARD PO */}
+        <PaymentCardSection />
         <ContactSection />
       </main>
 
