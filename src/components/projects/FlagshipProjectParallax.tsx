@@ -192,7 +192,20 @@ export const FlagshipSlideCard: React.FC<FlagshipSlideCardProps> = ({
 
               {/* Action Buttons */}
               <div className="pt-1.5 sm:pt-2 border-t border-[#e2d3b3] flex flex-wrap gap-2 items-center">
-                {index === 1 ? (
+                {index === 0 ? (
+<a
+      href={`https://wa.me/6285141220521?text=${encodeURIComponent(
+        'Halo Rendy, saya tertarik membuat website untuk bisnis saya. Bisa tolong jelaskan lebih lanjut?'
+      )}`}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="inline-flex items-center justify-center gap-1.5 px-4 py-2 sm:px-5 sm:py-2.5 rounded-xl bg-[#fde047] hover:bg-[#facc15] text-[#0f172a] font-mono font-black text-xs sm:text-sm border-2 border-[#0f172a] shadow-[2.5px_2.5px_0px_#0f172a] hover:translate-x-0.5 hover:translate-y-0.5 transition-all cursor-pointer flex-1"
+    >
+      <Sparkles className="w-3.5 h-3.5 text-[#0f172a]" />
+      <span>Konsultasi Website</span>
+      <ExternalLink className="w-3.5 h-3.5" />
+    </a>
+) : index === 1 ? (
                   /* Slide 02 E-Commerce: Tahu Lebih Lanjut & Coba Gratis */
                   <>
                     <button
@@ -257,9 +270,10 @@ Bisa tolong jelaskan lebih lanjut mengenai layanan CAD & 3D Modeling ini? Terima
     >
       <Play className="w-4 h-4 fill-[#0f172a] shrink-0" />
       <span>Lihat Prototype CAD (Kirim Link ke WA)</span>
-    </a>
+</a>
   </div>
-) : (
+) : index === 4 ? (
+  /* Slide 05 ERP ... */
                   /* Slide 05 ERP: Tahu Lebih Lanjut & Coba Gratis */
                   <>
                     <button
@@ -281,7 +295,7 @@ Bisa tolong jelaskan lebih lanjut mengenai layanan CAD & 3D Modeling ini? Terima
                       <ExternalLink className="w-3.5 h-3.5" />
                     </a>
                   </>
-                )}
+                ) : null}
               </div>
             </div>
 
