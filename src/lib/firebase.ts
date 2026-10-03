@@ -29,19 +29,41 @@ export function normalizePhone(raw: string): string {
 }
 
 export async function saveLead({ name, phone, services }: LeadInput) {
+  console.log('MULAI KIRIM KE FIREBASE');
+
+  const savePromise = addDoc(collection(db, 'leads'), {
+    name: name.trim(),
+    phone: normalizePhone(phone),
+    services,
+    source: 'portfolio-modal',
+    createdAt: serverTimestamp(),
+  });
+
+  const timeoutPromise = new Promise<never>((_, reject) => {
+    setTimeout(() => {
+      reject(
+        new Error(
+          'Firebase timeout: data tidak berhasil dikirim dalam 15 detik.'
+        )
+      );
+    }, 15000);
+  });
+
   try {
-    await addDoc(collection(db, 'leads'), {
-      name: name.trim(),
-      phone: normalizePhone(phone),
-      services,
-      source: 'portfolio-modal',
-      createdAt: serverTimestamp(),
-    });
+    await Promise.race([
+      savePromise,
+      timeoutPromise,
+    ]);
 
     console.log('LEAD BERHASIL DISIMPAN');
   } catch (error) {
     console.error('FIREBASE ERROR:', error);
-    alert('Gagal menyimpan lead: ' + String(error));
+
+    alert(
+      'Gagal menyimpan lead:\n\n' +
+      String(error)
+    );
+
     throw error;
   }
-}
+      }
