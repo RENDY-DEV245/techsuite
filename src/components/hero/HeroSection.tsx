@@ -104,17 +104,25 @@ export const HeroSection: React.FC = () => {
   };
 
   // Navigasi scroll presisi ke 5 slide proyek
+// GANTI KODE DI BARIS 107 - 122 INI
   const handleScrollToSlide = (slideIndex: number) => {
     setShowPrototypeMenu(false);
+    setShowProposalMenu(false);
+
     const projectsEl = document.getElementById('projects');
     if (!projectsEl) return;
 
-    const projectsTop = projectsEl.getBoundingClientRect().top + window.scrollY;
+    // Ambil koordinat awal section #projects
+    const rect = projectsEl.getBoundingClientRect();
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    const projectsTop = rect.top + scrollTop;
     const totalScrollableHeight = projectsEl.scrollHeight - window.innerHeight;
 
-    const slideProgressPositions = [0.03, 0.32, 0.52, 0.72, 0.94];
+    // Posisi snap tiap slide (0: Web, 1: E-Commerce, 2: HRIS, 3: CAD, 4: ERP)
+    const slideProgressPositions = [0.02, 0.23, 0.44, 0.65, 0.88];
     const targetScrollY = projectsTop + (totalScrollableHeight * slideProgressPositions[slideIndex]);
 
+    // Eksekusi scroll yang kompatibel baik dengan Lenis maupun scroll bawaan
     window.scrollTo({
       top: targetScrollY,
       behavior: 'smooth'
@@ -182,11 +190,16 @@ export const HeroSection: React.FC = () => {
   };
 
   const handleScrollToProjects = () => {
-    const el = document.getElementById('projects');
-    if (el) {
-      el.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
+  setShowProposalMenu(false);
+  setShowPrototypeMenu(false);
+
+  const el = document.getElementById('projects');
+  if (el) {
+    const yOffset = -20;
+    const y = el.getBoundingClientRect().top + window.pageYOffset + yOffset;
+    window.scrollTo({ top: y, behavior: 'smooth' });
+  }
+};
 
   return (
     <section className="relative w-full h-screen min-h-[700px] flex flex-col justify-between pt-16 pb-10 overflow-hidden select-none">
