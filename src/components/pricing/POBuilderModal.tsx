@@ -13,14 +13,7 @@ import {
   ChevronUp,
   Search,
   User,
-  Phone,
-  Building,
-  Calendar,
-  ShieldCheck,
-  Globe,
-  ShoppingCart,
-  Box,
-  Database
+  ShieldCheck
 } from 'lucide-react';
 import { useClipboard } from '../../hooks/useClipboard';
 
@@ -39,11 +32,7 @@ export interface ModuleCategory {
   items: ModuleItem[];
 }
 
-// =========================================================================
-// DATABASE KOMPLIT 28 KATEGORI: WEBSITE + E-COMMERCE + CAD + 25 MODUL ERP PDF
-// =========================================================================
 export const COMPLETE_MODULE_CATALOG: ModuleCategory[] = [
-  // --- LAYANAN UTAMA WEBSITE, E-COMMERCE, & CAD ---
   {
     id: 'web-dev',
     categoryNumber: '01',
@@ -93,8 +82,6 @@ export const COMPLETE_MODULE_CATALOG: ModuleCategory[] = [
       { id: 'cad-sheet-metal', name: 'Sheet Metal & Welding Fabrication Blueprints', desc: 'Pola bentangan plat tekuk (flat pattern) dan spesifikasi pengelasan terstandar.' }
     ]
   },
-
-  // --- 25 MODUL ERP LENGKAP DARI DOKUMEN PDF ---
   {
     id: 'erp-01',
     categoryNumber: '04',
@@ -587,7 +574,6 @@ export const COMPLETE_MODULE_CATALOG: ModuleCategory[] = [
   }
 ];
 
-// OPSI KETENTUAN CARE PLAN SESUAI SCREENSHOT WHATSAPP
 const CARE_PLAN_OPTIONS = [
   {
     id: 'care-promo',
@@ -617,7 +603,6 @@ interface POBuilderModalProps {
 export const POBuilderModal: React.FC<POBuilderModalProps> = ({ isOpen, onClose }) => {
   const { copied, copy } = useClipboard();
 
-  // State Data Klien
   const [clientName, setClientName] = useState('');
   const [companyName, setCompanyName] = useState('');
   const [phone, setPhone] = useState('');
@@ -625,7 +610,6 @@ export const POBuilderModal: React.FC<POBuilderModalProps> = ({ isOpen, onClose 
   const [budgetRange, setBudgetRange] = useState('');
   const [notes, setNotes] = useState('');
 
-  // State Pilihan Fitur & Care Plan
   const [selectedFeatures, setSelectedFeatures] = useState<string[]>([
     'web-compro',
     'web-custom-ui',
@@ -640,11 +624,9 @@ export const POBuilderModal: React.FC<POBuilderModalProps> = ({ isOpen, onClose 
   ]);
   const [selectedCarePlan, setSelectedCarePlan] = useState<string>('care-promo');
 
-  // State Pencarian & Filter Group
   const [searchKeyword, setSearchKeyword] = useState('');
   const [activeGroupFilter, setActiveGroupFilter] = useState<'all' | 'website' | 'ecommerce' | 'cad' | 'erp'>('all');
 
-  // State Accordion Terbuka
   const [expandedCategories, setExpandedCategories] = useState<Record<string, boolean>>({
     'web-dev': true,
     'ecom-dev': true,
@@ -676,7 +658,6 @@ export const POBuilderModal: React.FC<POBuilderModalProps> = ({ isOpen, onClose 
     }
   };
 
-  // Filter Kategori Berdasarkan Keyword & Tab Filter
   const filteredCategories = useMemo(() => {
     return COMPLETE_MODULE_CATALOG.filter((cat) => {
       const matchGroup = activeGroupFilter === 'all' || cat.groupType === activeGroupFilter;
@@ -694,12 +675,10 @@ export const POBuilderModal: React.FC<POBuilderModalProps> = ({ isOpen, onClose 
     });
   }, [activeGroupFilter, searchKeyword]);
 
-  // Total Semua Fitur di Katalog
   const totalCatalogFeatures = useMemo(() => {
     return COMPLETE_MODULE_CATALOG.reduce((acc, cat) => acc + cat.items.length, 0);
   }, []);
 
-  // Format Template PO Komplit Sesuai Format WhatsApp & Dokumen PDF
   const generatedPOTemplate = useMemo(() => {
     const activeCare = CARE_PLAN_OPTIONS.find((c) => c.id === selectedCarePlan);
     const poNumber = `PO/TECH-${new Date().getFullYear()}${String(new Date().getMonth() + 1).padStart(2, '0')}-${Math.floor(1000 + Math.random() * 9000)}`;
@@ -750,7 +729,6 @@ ${notes.trim() || 'Tidak ada catatan tambahan.'}
 ================================================`;
   }, [clientName, companyName, phone, budgetRange, deadline, notes, selectedFeatures, selectedCarePlan, totalCatalogFeatures]);
 
-  // Kirim Langsung ke WhatsApp
   const handleSendToWhatsApp = () => {
     const waUrl = `https://wa.me/6285141220521?text=${encodeURIComponent(generatedPOTemplate)}`;
     window.open(waUrl, '_blank');
@@ -761,7 +739,6 @@ ${notes.trim() || 'Tidak ada catatan tambahan.'}
   return (
     <AnimatePresence>
       <div className="fixed inset-0 z-[200] flex items-center justify-center p-2 sm:p-4 lg:p-6 overflow-y-auto select-none">
-        {/* Backdrop Gelap */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -770,7 +747,6 @@ ${notes.trim() || 'Tidak ada catatan tambahan.'}
           className="fixed inset-0 bg-[#071b2f]/90 backdrop-blur-md"
         />
 
-        {/* Modal Utama Neo-Brutalist */}
         <motion.div
           initial={{ opacity: 0, scale: 0.95, y: 20 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -778,7 +754,6 @@ ${notes.trim() || 'Tidak ada catatan tambahan.'}
           transition={{ type: 'spring', damping: 25, stiffness: 280 }}
           className="relative z-10 w-full max-w-7xl bg-[#fffdf5] border-3 sm:border-4 border-[#0f172a] rounded-[24px] sm:rounded-[36px] shadow-[8px_8px_0px_#0f172a] sm:shadow-[16px_16px_0px_#0f172a] overflow-hidden my-auto flex flex-col h-[92vh]"
         >
-          {/* Header Pop Up */}
           <div className="flex items-center justify-between p-4 sm:p-6 bg-[#071b2f] text-white border-b-3 sm:border-b-4 border-[#0f172a] shrink-0">
             <div className="flex items-center gap-3">
               <div className="p-2 sm:p-2.5 rounded-xl bg-[#fde047] text-[#0f172a] border-2 border-[#0f172a] shadow-[2px_2px_0px_#0f172a]">
@@ -809,17 +784,11 @@ ${notes.trim() || 'Tidak ada catatan tambahan.'}
             </button>
           </div>
 
-          {/* Konten Dua Kolom: Form & Checklist di Kiri, Live Preview PO di Kanan */}
           <div className="flex-1 min-h-0 grid grid-cols-1 lg:grid-cols-12 overflow-hidden text-[#0f172a]">
             
-            {/* =========================================================================
-                KOLOM KIRI (7 Kolom): Data Pemesan, Filter Kategori, & Checklist Lengkap
-               ========================================================================= */}
             <div className="lg:col-span-7 flex flex-col min-h-0 border-r-0 lg:border-r-3 border-[#0f172a]/20 bg-[#fffdf5]">
               
-              {/* Filter Tabs & Search Bar */}
               <div className="p-3 sm:p-4 bg-[#fff9d4] border-b-2 border-[#0f172a]/15 shrink-0 space-y-2.5">
-                {/* Search Input */}
                 <div className="relative">
                   <Search className="w-4 h-4 text-[#64748b] absolute left-3.5 top-1/2 -translate-y-1/2" />
                   <input
@@ -840,7 +809,6 @@ ${notes.trim() || 'Tidak ada catatan tambahan.'}
                   )}
                 </div>
 
-                {/* Filter Kategori Cepat */}
                 <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar pb-0.5">
                   {[
                     { id: 'all', label: 'Semua (28 Kategori)', count: totalCatalogFeatures },
@@ -852,7 +820,7 @@ ${notes.trim() || 'Tidak ada catatan tambahan.'}
                     <button
                       key={tab.id}
                       type="button"
-                      onClick={() => setActiveGroupFilter(tab.id as any)}
+                      onClick={() => setActiveGroupFilter(tab.id as 'all' | 'website' | 'ecommerce' | 'cad' | 'erp')}
                       className={`px-3 py-1.5 rounded-xl text-[11px] font-mono font-black border-2 transition-all shrink-0 cursor-pointer ${
                         activeGroupFilter === tab.id
                           ? 'bg-[#0284c7] text-white border-[#0f172a] shadow-[2px_2px_0px_#0f172a]'
@@ -865,10 +833,8 @@ ${notes.trim() || 'Tidak ada catatan tambahan.'}
                 </div>
               </div>
 
-              {/* Body Checklist Ber-Scroll */}
               <div className="flex-1 overflow-y-auto p-4 sm:p-6 space-y-5">
                 
-                {/* Section 1: Data Klien / Pemesan */}
                 <div className="p-4 sm:p-5 rounded-2xl bg-[#fff9d4] border-2 border-[#0f172a] shadow-[3px_3px_0px_#0f172a] space-y-3">
                   <div className="text-xs font-mono font-black text-[#0f172a] uppercase flex items-center justify-between border-b border-[#0f172a]/15 pb-2">
                     <span className="flex items-center gap-1.5">
@@ -920,6 +886,19 @@ ${notes.trim() || 'Tidak ada catatan tambahan.'}
 
                     <div>
                       <label className="text-[11px] font-mono font-bold text-[#475569] block mb-1">
+                        ESTIMASI BUDGET / ANGGARAN:
+                      </label>
+                      <input
+                        type="text"
+                        value={budgetRange}
+                        onChange={(e) => setBudgetRange(e.target.value)}
+                        placeholder="Contoh: Rp300rb - Rp5jt+ / Konsultasi"
+                        className="w-full px-3 py-2 rounded-xl bg-[#fffdf5] border-2 border-[#0f172a] text-xs font-medium text-[#0f172a] focus:outline-none focus:ring-2 focus:ring-[#0284c7]"
+                      />
+                    </div>
+
+                    <div className="sm:col-span-2">
+                      <label className="text-[11px] font-mono font-bold text-[#475569] block mb-1">
                         TARGET BATAS SELESAI:
                       </label>
                       <input
@@ -933,7 +912,6 @@ ${notes.trim() || 'Tidak ada catatan tambahan.'}
                   </div>
                 </div>
 
-                {/* Section 2: Checklist Seluruh Modul (Accordion) */}
                 <div className="space-y-3">
                   <div className="flex items-center justify-between text-xs font-mono font-black text-[#0f172a] uppercase">
                     <span className="flex items-center gap-1.5">
@@ -947,7 +925,7 @@ ${notes.trim() || 'Tidak ada catatan tambahan.'}
 
                   <div className="space-y-2.5">
                     {filteredCategories.map((group) => {
-                      const isExpanded = !!expandedCategories[group.id];
+                      const isExpanded = !expandedCategories[group.id];
                       const selectedCount = group.items.filter((i) =>
                         selectedFeatures.includes(i.id)
                       ).length;
@@ -957,7 +935,6 @@ ${notes.trim() || 'Tidak ada catatan tambahan.'}
                           key={group.id}
                           className="rounded-2xl border-2 border-[#0f172a] bg-[#fffdf5] overflow-hidden shadow-[2px_2px_0px_#0f172a]"
                         >
-                          {/* Header Accordion Kategori */}
                           <div
                             onClick={() => toggleCategory(group.id)}
                             className="flex items-center justify-between p-3 sm:p-3.5 bg-[#faeed1]/70 hover:bg-[#faeed1] cursor-pointer transition-colors border-b border-[#0f172a]/15"
@@ -993,7 +970,6 @@ ${notes.trim() || 'Tidak ada catatan tambahan.'}
                             </div>
                           </div>
 
-                          {/* Isi Submodul & Deskripsi */}
                           {isExpanded && (
                             <div className="p-3 sm:p-3.5 grid grid-cols-1 gap-2 bg-[#fffdf5]">
                               {group.items.map((item) => {
@@ -1032,7 +1008,6 @@ ${notes.trim() || 'Tidak ada catatan tambahan.'}
                   </div>
                 </div>
 
-                {/* Section 3: Pilihan Care Plan & SLA Terms */}
                 <div className="p-4 rounded-2xl bg-[#fff9d4] border-2 border-[#0f172a] shadow-[3px_3px_0px_#0f172a] space-y-2.5">
                   <div className="text-xs font-mono font-black text-[#0f172a] uppercase flex items-center gap-1.5 border-b border-[#0f172a]/15 pb-2">
                     <ShieldCheck className="w-4 h-4 text-[#15803d]" />
@@ -1067,7 +1042,6 @@ ${notes.trim() || 'Tidak ada catatan tambahan.'}
                   </div>
                 </div>
 
-                {/* Section 4: Catatan Tambahan */}
                 <div className="space-y-1.5">
                   <label className="text-xs font-mono font-black text-[#0f172a] uppercase block">
                     4. CATATAN / PERSYARATAN TAMBAHAN:
@@ -1084,9 +1058,6 @@ ${notes.trim() || 'Tidak ada catatan tambahan.'}
               </div>
             </div>
 
-            {/* =========================================================================
-                KOLOM KANAN (5 Kolom): Live Preview Template PO Resmi & Tombol Aksi
-               ========================================================================= */}
             <div className="lg:col-span-5 flex flex-col justify-between bg-[#fffdf5] p-4 sm:p-6 space-y-4">
               
               <div className="space-y-2 flex-1 min-h-0 flex flex-col">
@@ -1100,13 +1071,11 @@ ${notes.trim() || 'Tidak ada catatan tambahan.'}
                   </span>
                 </div>
 
-                {/* Output Box PO */}
                 <div className="flex-1 rounded-2xl bg-[#071b2f] border-2 border-[#0f172a] p-4 text-[#f8fafc] font-mono text-[11px] leading-relaxed overflow-y-auto select-text shadow-inner">
                   <pre className="whitespace-pre-wrap font-mono">{generatedPOTemplate}</pre>
                 </div>
               </div>
 
-              {/* Action Buttons: Kirim WA & Salin */}
               <div className="space-y-2.5 pt-2 border-t-2 border-[#0f172a]/15 shrink-0">
                 <button
                   type="button"
