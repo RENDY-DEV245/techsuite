@@ -29,11 +29,19 @@ export function normalizePhone(raw: string): string {
 }
 
 export async function saveLead({ name, phone, services }: LeadInput) {
-  await addDoc(collection(db, 'leads'), {
-    name: name.trim(),
-    phone: normalizePhone(phone),
-    services,
-    source: 'portfolio-modal',
-    createdAt: serverTimestamp(),
-  });
+  try {
+    await addDoc(collection(db, 'leads'), {
+      name: name.trim(),
+      phone: normalizePhone(phone),
+      services,
+      source: 'portfolio-modal',
+      createdAt: serverTimestamp(),
+    });
+
+    console.log('LEAD BERHASIL DISIMPAN');
+  } catch (error) {
+    console.error('FIREBASE ERROR:', error);
+    alert('Gagal menyimpan lead: ' + String(error));
+    throw error;
+  }
 }
