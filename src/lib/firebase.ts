@@ -1,15 +1,19 @@
 import { initializeApp } from 'firebase/app';
-import { getFirestore, collection, addDoc, serverTimestamp } from 'firebase/firestore';
+import {
+  getFirestore,
+  collection,
+  addDoc,
+  serverTimestamp,
+} from 'firebase/firestore';
 
 const firebaseConfig = {
-  apiKey: 'AIzaSyB_H3cVrzvqNxPyRBYBgK5JDwpeSK_u7hw',
-  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
-  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
-  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
-  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
-  appId: import.meta.env.VITE_FIREBASE_APP_ID,
+  apiKey: 'API_KEY_KAMU',
+  authDomain: 'lead-capture-605bc.firebaseapp.com',
+  projectId: 'lead-capture-605bc',
+  storageBucket: 'lead-capture-605bc.firebasestorage.app',
+  messagingSenderId: '570274412418',
+  appId: '1:570274412418:web:141b27fc45d474d5eb419b',
 };
-
 
 const app = initializeApp(firebaseConfig);
 export const db = getFirestore(app);
@@ -22,13 +26,19 @@ export interface LeadInput {
 
 export function normalizePhone(raw: string): string {
   const digits = raw.replace(/\D/g, '');
+
   if (digits.startsWith('62')) return digits;
   if (digits.startsWith('0')) return '62' + digits.slice(1);
   if (digits.startsWith('8')) return '62' + digits;
+
   return digits;
 }
 
-export async function saveLead({ name, phone, services }: LeadInput) {
+export async function saveLead({
+  name,
+  phone,
+  services,
+}: LeadInput) {
   console.log('MULAI KIRIM KE FIREBASE');
 
   const savePromise = addDoc(collection(db, 'leads'), {
@@ -66,4 +76,4 @@ export async function saveLead({ name, phone, services }: LeadInput) {
 
     throw error;
   }
-      }
+}
