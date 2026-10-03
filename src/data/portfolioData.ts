@@ -256,7 +256,7 @@ export const projectsData: Project[] = [
     ],
     challenges: 'Menghadirkan performa loading instan untuk berbagai industri bisnis dengan kebutuhan visual dan interaksi yang berbeda-beda.',
     role: 'Full Stack & Web Architect',
-    demoUrl: 'https://maqdisgroup.com/',
+    demoUrl: 'https://wa.me/6285141220521?text=Halo%20Rendy%2C%20saya%20tertarik%20Coba%20Gratis%20dan%20Konsultasi%20Website%20Kustom',
     imageUrl: '',
     imageFit: 'cover',
     featured: true,
@@ -317,8 +317,7 @@ export const projectsData: Project[] = [
     ],
     challenges: 'Menghubungkan data presensi real-time dengan formula lembur dan potongan gaji yang kompleks sesuai regulasi ketenagakerjaan.',
     role: 'HRIS System Architect',
-    demoUrl: 'https://wa.me/6285141220521?text=Halo%20Rendy%2C%20saya%20tertarik%20demo%20Sistem%20HRIS',
-    imageUrl: '',
+    demoUrl: 'https://wa.me/6285141220521?text=Halo%20Rendy%2C%20saya%20tertarik%20Coba%20Gratis%2014%20Hari%20dan%20Demo%20Sistem%20HRIS',    imageUrl: '',
     imageFit: 'cover',
     featured: true,
     metrics: [
@@ -348,7 +347,7 @@ export const projectsData: Project[] = [
     ],
     challenges: 'Memastikan toleransi geometrik dan dimensi presisi 100% akurat sebelum masuk ke tahap pemotongan dan fabrikasi nyata.',
     role: 'CAD Design Engineer',
-    demoUrl: 'https://wa.me/6285141220521?text=Halo%20Rendy%2C%20saya%20tertarik%20layanan%20CAD%20Engineering',
+    demoUrl: 'https://wa.me/6285141220521?text=Halo%20Rendy%2C%20saya%20ingin%20melihat%20Prototype%20dan%20portofolio%20CAD%203D%20Engineering',
     imageUrl: '',
     imageFit: 'cover',
     featured: true,
@@ -363,6 +362,7 @@ export const projectsData: Project[] = [
     title: 'Sistem Operasional Bisnis ,Bukan Sekadar Akuntansi',
     subtitle: 'Setiap Transaksi Langsung Jadi Laporan. Tanpa Rekap. Tanpa Akuntan. Tanpa Excel.',
     category: 'fullstack',
+    demoUrl: 'https://wa.me/6285141220521?text=Halo%20Rendy%2C%20saya%20ingin%20Coba%20Gratis%2014%20Hari%20Clarate%20ERP%20System',
     summary: 'Clarate ERP menghubungkan kasir, stok, pembelian, penjualan, dan akuntansi dalam satu sistem. Setiap kali ada transaksi, laporan keuangan langsung terupdate ,tanpa kamu harus input apapun dua kali.',
     description: `Coba Gratis 14 Hari | Lihat Harga
 Trial gratis 14 hari • Tanpa kartu kredit • Data 100% milikmu • Support tersedia
