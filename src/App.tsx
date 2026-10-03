@@ -10,13 +10,15 @@ import { ProjectShowcase } from './components/projects/ProjectShowcase';
 import { TechGrid } from './components/tech/TechGrid';
 import { JourneyTimeline } from './components/journey/JourneyTimeline';
 import { StorySection } from './components/story/StorySection';
-import { BatchCardSection } from './components/pricing/BatchCardSection'; // ← 1. IMPORT INI
+import { BatchCardSection } from './components/pricing/BatchCardSection';
 import { ContactSection } from './components/contact/ContactSection';
 import { ProjectCaseStudyModal } from './components/projects/ProjectCaseStudyModal';
+import { LeadCaptureModal } from './components/common/LeadCaptureModal'; // ← 1. TAMBAHKAN IMPORT INI
 
 export function App() {
   const [isVerified, setIsVerified] = useState(false);
   const [showWelcome, setShowWelcome] = useState(true);
+  const [showLeadModal, setShowLeadModal] = useState(true); // ← 2. STATE POP-UP WA
   const [activeModalProject, setActiveModalProject] = useState<Project | null>(null);
 
   useLenisSmoothScroll();
@@ -31,6 +33,12 @@ export function App() {
         <WelcomeAnimation onComplete={() => setShowWelcome(false)} />
       )}
 
+      {/* 3. PASANG POP-UP LEAD CAPTURE DI SINI */}
+      <LeadCaptureModal
+        isOpen={showLeadModal}
+        onSuccess={() => setShowLeadModal(false)}
+      />
+
       <NavigationBar />
 
       <main className="relative">
@@ -40,7 +48,7 @@ export function App() {
         <TechGrid onOpenProject={setActiveModalProject} />
         <JourneyTimeline />
         <StorySection />
-        <BatchCardSection /> {/* ← 2. PASANG DI TENGAH SINI */}
+        <BatchCardSection />
         <ContactSection />
       </main>
 
