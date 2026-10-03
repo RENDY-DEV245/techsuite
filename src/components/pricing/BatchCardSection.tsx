@@ -4,8 +4,8 @@ import { ZoomIn, X, Sparkles, AlertCircle } from 'lucide-react';
 
 export const BatchCardSection: React.FC = () => {
   const [isZoomed, setIsZoomed] = useState(false);
-  const imageUrl = "https://i.ibb.co.com/whPTJVLp/file-000000009d0c8207a4ce69aad00cf100.png";
-
+  const imageUrl = "https://i.ibb.co.com/jvrZNp5Q/IMG-20261003-094342.jpg";
+  
   return (
     <section
       id="batch-card"
