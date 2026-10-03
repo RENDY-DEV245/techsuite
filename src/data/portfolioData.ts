@@ -195,7 +195,7 @@ export const techStackData: TechItem[] = [
     projectLinks: ['web-solutions', 'ecommerce-solutions']
   }, 
 
-    // CAD & 3D Engineering layer
+  // CAD & 3D Engineering layer
   {
     name: 'AutoCAD',
     category: 'tools',
@@ -229,6 +229,7 @@ export const techStackData: TechItem[] = [
     projectLinks: ['erp-system', 'hris-system']
   }
 ];
+
 export const projectsData: Project[] = [
   {
     id: 'web-solutions',
@@ -286,7 +287,7 @@ export const projectsData: Project[] = [
     ],
     challenges: 'Memastikan integrasi alur order instan tanpa hambatan dan sinkronisasi stok real-time antar channel penjualan.',
     role: 'Lead E-Commerce Developer',
-    demoUrl: 'https://raliecare.my.id',
+    demoUrl: 'https://wa.me/6285141220521?text=Halo%20Rendy%2C%20saya%20tertarik%20Coba%20Gratis%20Toko%20Online%20E-Commerce',
     imageUrl: '',
     imageFit: 'cover',
     featured: true,
@@ -317,7 +318,8 @@ export const projectsData: Project[] = [
     ],
     challenges: 'Menghubungkan data presensi real-time dengan formula lembur dan potongan gaji yang kompleks sesuai regulasi ketenagakerjaan.',
     role: 'HRIS System Architect',
-    demoUrl: 'https://wa.me/6285141220521?text=Halo%20Rendy%2C%20saya%20tertarik%20Coba%20Gratis%2014%20Hari%20dan%20Demo%20Sistem%20HRIS',    imageUrl: '',
+    demoUrl: 'https://wa.me/6285141220521?text=Halo%20Rendy%2C%20saya%20tertarik%20Coba%20Gratis%2014%20Hari%20dan%20Demo%20Sistem%20HRIS',
+    imageUrl: '',
     imageFit: 'cover',
     featured: true,
     metrics: [
@@ -357,12 +359,11 @@ export const projectsData: Project[] = [
       { label: 'Integrasi', value: 'BOM & Fabrikasi' }
     ]
   },
-{
+  {
     id: 'erp-system',
     title: 'Sistem Operasional Bisnis ,Bukan Sekadar Akuntansi',
     subtitle: 'Setiap Transaksi Langsung Jadi Laporan. Tanpa Rekap. Tanpa Akuntan. Tanpa Excel.',
     category: 'fullstack',
-    demoUrl: 'https://wa.me/6285141220521?text=Halo%20Rendy%2C%20saya%20ingin%20Coba%20Gratis%2014%20Hari%20Clarate%20ERP%20System',
     summary: 'Clarate ERP menghubungkan kasir, stok, pembelian, penjualan, dan akuntansi dalam satu sistem. Setiap kali ada transaksi, laporan keuangan langsung terupdate ,tanpa kamu harus input apapun dua kali.',
     description: `Coba Gratis 14 Hari | Lihat Harga
 Trial gratis 14 hari • Tanpa kartu kredit • Data 100% milikmu • Support tersedia
@@ -447,7 +448,7 @@ Export Excel & Export PDF. Dihitung dari jurnal yang sama dengan Neraca,angkanya
     ],
     challenges: 'Terlalu banyak pengusaha kerja keras, tapi tidak tahu bisnisnya untung atau rugi karena data bisnis mereka tersebar di buku kas, Excel, dan aplikasi yang tidak terhubung satu sama lain (stok habis tak terpantau, food cost membengkak, dan invoice lewat tempo).',
     role: 'Clarate ERP Ecosystem',
-    demoUrl: 'https://clarate.id/id/register?service_id=1',
+    demoUrl: 'https://wa.me/6285141220521?text=Halo%20Rendy%2C%20saya%20ingin%20Coba%20Gratis%2014%20Hari%20Clarate%20ERP%20System',
     imageUrl: '',
     imageFit: 'cover',
     featured: true,
@@ -456,7 +457,7 @@ Export Excel & Export PDF. Dihitung dari jurnal yang sama dengan Neraca,angkanya
       { label: 'Laporan', value: '20+ Siap Pakai' },
       { label: 'Standar', value: 'SAK ETAP' }
     ]
-}
+  }
 ];
 
 export const experienceData: ExperienceItem[] = [
