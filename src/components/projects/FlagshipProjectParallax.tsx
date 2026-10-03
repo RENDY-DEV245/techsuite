@@ -1485,14 +1485,13 @@ export const FlagshipSlideCard: React.FC<FlagshipSlideCardProps> = ({
                     Tutup
                   </button>
                   <a
-                    href="https://clarate.id/id/register?service_id=1"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-xl bg-[#0284c7] hover:bg-[#0369a1] text-white text-xs sm:text-sm font-mono font-black border-2 border-[#0f172a] shadow-[3px_3px_0px_#0f172a] hover:translate-x-0.5 hover:translate-y-0.5 transition-all cursor-pointer flex-1 sm:flex-none"
-                  >
-                    <span>Coba Gratis 14 Hari</span>
-                    <ArrowRight className="w-4 h-4" />
-                  </a>
+  href="https://wa.me/6285141220521?text=Halo%20Rendy%2C%20saya%20tertarik%20Coba%20Gratis%20dan%20Demo%20Sistem"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-[#fde047] hover:bg-[#facc15] text-[#0f172a] font-mono font-black text-xs border-2 border-[#0f172a] shadow-[3px_3px_0px_#0f172a] transition-all"
+>
+  <span>Coba Gratis 14 Hari (Chat WA)</span>
+</a>
                 </div>
               </div>
             </motion.div>
