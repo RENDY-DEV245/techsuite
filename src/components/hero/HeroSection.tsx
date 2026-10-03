@@ -40,7 +40,7 @@ export const HeroSection: React.FC = () => {
   const proposalDropdownRef = useRef<HTMLDivElement | null>(null);
   const prototypeDropdownRef = useRef<HTMLDivElement | null>(null);
 
-  // Deteksi klik di luar kedua menu
+  // Deteksi klik di luar menu & auto-close saat layar di-scroll
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       const target = event.target as Node;
@@ -51,8 +51,19 @@ export const HeroSection: React.FC = () => {
         setShowPrototypeMenu(false);
       }
     };
+
+    const handleScroll = () => {
+      setShowProposalMenu(false);
+      setShowPrototypeMenu(false);
+    };
+
     document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
+    window.addEventListener('scroll', handleScroll, { passive: true });
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+      window.removeEventListener('scroll', handleScroll);
+    };
   }, []);
 
   // Data 5 Pilihan Proposal
@@ -104,7 +115,6 @@ export const HeroSection: React.FC = () => {
   };
 
   // Navigasi scroll presisi ke 5 slide proyek
-// GANTI KODE DI BARIS 107 - 122 INI
   const handleScrollToSlide = (slideIndex: number) => {
     setShowPrototypeMenu(false);
     setShowProposalMenu(false);
@@ -112,17 +122,15 @@ export const HeroSection: React.FC = () => {
     const projectsEl = document.getElementById('projects');
     if (!projectsEl) return;
 
-    // Ambil koordinat awal section #projects
     const rect = projectsEl.getBoundingClientRect();
     const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
     const projectsTop = rect.top + scrollTop;
     const totalScrollableHeight = projectsEl.scrollHeight - window.innerHeight;
 
-    // Posisi snap tiap slide (0: Web, 1: E-Commerce, 2: HRIS, 3: CAD, 4: ERP)
+    // Posisi snap tiap slide
     const slideProgressPositions = [0.02, 0.23, 0.44, 0.65, 0.88];
     const targetScrollY = projectsTop + (totalScrollableHeight * slideProgressPositions[slideIndex]);
 
-    // Eksekusi scroll yang kompatibel baik dengan Lenis maupun scroll bawaan
     window.scrollTo({
       top: targetScrollY,
       behavior: 'smooth'
@@ -190,16 +198,16 @@ export const HeroSection: React.FC = () => {
   };
 
   const handleScrollToProjects = () => {
-  setShowProposalMenu(false);
-  setShowPrototypeMenu(false);
+    setShowProposalMenu(false);
+    setShowPrototypeMenu(false);
 
-  const el = document.getElementById('projects');
-  if (el) {
-    const yOffset = -20;
-    const y = el.getBoundingClientRect().top + window.pageYOffset + yOffset;
-    window.scrollTo({ top: y, behavior: 'smooth' });
-  }
-};
+    const el = document.getElementById('projects');
+    if (el) {
+      const yOffset = -20;
+      const y = el.getBoundingClientRect().top + window.pageYOffset + yOffset;
+      window.scrollTo({ top: y, behavior: 'smooth' });
+    }
+  };
 
   return (
     <section className="relative w-full h-screen min-h-[700px] flex flex-col justify-between pt-16 pb-10 overflow-hidden select-none">
@@ -235,7 +243,7 @@ export const HeroSection: React.FC = () => {
             Full Stack Software Engineer. Merancang dan membangun website, aplikasi, CAD hingga sistem ERP dari nol untuk startup, dan enterprise.
           </p>
 
-          <div className="mt-4 sm:mt-6 flex flex-wrap items-center justify-center gap-2 sm:gap-3.5 px-2">
+          <div className="mt-4 sm:mt-6 flex flex-wrap items-center justify-center gap-2 sm:gap-3.5 px-2 relative z-50">
             {/* 1. Tombol Lihat Proyek */}
             <TactileButton
               variant="primary"
@@ -262,56 +270,46 @@ export const HeroSection: React.FC = () => {
 
               <AnimatePresence>
                 {showProposalMenu && (
-                  <>
-                    <motion.div
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      exit={{ opacity: 0 }}
-                      onClick={() => setShowProposalMenu(false)}
-                      className="fixed inset-0 bg-black/50 backdrop-blur-xs z-[90] sm:hidden"
-                    />
+                  <motion.div
+                    initial={{ opacity: 0, y: 8, scale: 0.95 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    exit={{ opacity: 0, y: 8, scale: 0.95 }}
+                    transition={{ duration: 0.15 }}
+                    className="absolute left-1/2 -translate-x-1/2 top-full mt-2 w-[285px] sm:w-72 p-2.5 rounded-2xl bg-[#071b2f]/98 border-2 border-[#38bdf8]/70 shadow-[0_10px_35px_rgba(0,0,0,0.8)] z-[100] flex flex-col gap-1.5 backdrop-blur-xl"
+                  >
+                    <div className="flex items-center justify-between px-3 py-1.5 border-b border-[#224c75]/70">
+                      <span className="text-[11px] font-mono font-bold text-[#38bdf8] uppercase tracking-wider">
+                        Pilih Jenis Proposal:
+                      </span>
+                      <button
+                        type="button"
+                        onClick={() => setShowProposalMenu(false)}
+                        className="text-gray-400 hover:text-white p-1 cursor-pointer"
+                      >
+                        <X className="w-3.5 h-3.5" />
+                      </button>
+                    </div>
 
-                    <motion.div
-                      initial={{ opacity: 0, y: 10, scale: 0.95 }}
-                      animate={{ opacity: 1, y: 0, scale: 1 }}
-                      exit={{ opacity: 0, y: 10, scale: 0.95 }}
-                      transition={{ duration: 0.15 }}
-                      className="fixed sm:absolute left-4 right-4 top-1/2 -translate-y-1/2 sm:top-full sm:translate-y-0 sm:left-1/2 sm:-translate-x-1/2 sm:right-auto mt-0 sm:mt-2 sm:w-72 p-2.5 rounded-2xl bg-[#071b2f] border-2 border-[#38bdf8]/60 shadow-[0_10px_35px_rgba(0,0,0,0.8)] z-[100] flex flex-col gap-1.5"
-                    >
-                      <div className="flex items-center justify-between px-3 py-1.5 border-b border-[#224c75]/70">
-                        <span className="text-[11px] font-mono font-bold text-[#38bdf8] uppercase tracking-wider">
-                          Pilih Jenis Proposal:
-                        </span>
+                    {proposalList.map((item, idx) => {
+                      const Icon = item.icon;
+                      return (
                         <button
+                          key={idx}
                           type="button"
-                          onClick={() => setShowProposalMenu(false)}
-                          className="sm:hidden text-gray-400 hover:text-white p-1"
+                          onClick={() => handleDirectDownload(item.url)}
+                          className="w-full flex items-center justify-between px-3 py-2 rounded-xl text-xs font-semibold text-[#f8fafc] bg-[#0c233c]/80 hover:bg-[#123559] hover:text-[#38bdf8] border border-transparent hover:border-[#38bdf8]/40 transition-all group/item text-left cursor-pointer"
                         >
-                          <X className="w-4 h-4" />
-                        </button>
-                      </div>
-
-                      {proposalList.map((item, idx) => {
-                        const Icon = item.icon;
-                        return (
-                          <button
-                            key={idx}
-                            type="button"
-                            onClick={() => handleDirectDownload(item.url)}
-                            className="w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-xs font-semibold text-[#f8fafc] bg-[#0c233c]/60 hover:bg-[#123559] hover:text-[#38bdf8] border border-transparent hover:border-[#38bdf8]/30 transition-all group/item text-left cursor-pointer"
-                          >
-                            <div className="flex items-center gap-2.5">
-                              <div className="p-1.5 rounded-lg bg-[#0d2844] border border-[#224c75] group-hover/item:border-[#38bdf8]">
-                                <Icon className="w-3.5 h-3.5 text-[#38bdf8]" />
-                              </div>
-                              <span>{item.label}</span>
+                          <div className="flex items-center gap-2">
+                            <div className="p-1.5 rounded-lg bg-[#0d2844] border border-[#224c75] group-hover/item:border-[#38bdf8]">
+                              <Icon className="w-3.5 h-3.5 text-[#38bdf8]" />
                             </div>
-                            <Download className="w-3.5 h-3.5 text-[#64748b] group-hover/item:text-[#38bdf8] group-hover/item:translate-y-0.5 transition-transform" />
-                          </button>
-                        );
-                      })}
-                    </motion.div>
-                  </>
+                            <span className="truncate">{item.label}</span>
+                          </div>
+                          <Download className="w-3.5 h-3.5 text-[#64748b] group-hover/item:text-[#38bdf8] group-hover/item:translate-y-0.5 transition-transform shrink-0" />
+                        </button>
+                      );
+                    })}
+                  </motion.div>
                 )}
               </AnimatePresence>
             </div>
@@ -333,59 +331,49 @@ export const HeroSection: React.FC = () => {
 
               <AnimatePresence>
                 {showPrototypeMenu && (
-                  <>
-                    <motion.div
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      exit={{ opacity: 0 }}
-                      onClick={() => setShowPrototypeMenu(false)}
-                      className="fixed inset-0 bg-black/50 backdrop-blur-xs z-[90] sm:hidden"
-                    />
+                  <motion.div
+                    initial={{ opacity: 0, y: 8, scale: 0.95 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    exit={{ opacity: 0, y: 8, scale: 0.95 }}
+                    transition={{ duration: 0.15 }}
+                    className="absolute left-1/2 -translate-x-1/2 top-full mt-2 w-[285px] sm:w-72 p-2.5 rounded-2xl bg-[#071b2f]/98 border-2 border-[#38bdf8]/70 shadow-[0_10px_35px_rgba(0,0,0,0.8)] z-[100] flex flex-col gap-1.5 backdrop-blur-xl"
+                  >
+                    <div className="flex items-center justify-between px-3 py-1.5 border-b border-[#224c75]/70">
+                      <span className="text-[11px] font-mono font-bold text-[#38bdf8] uppercase tracking-wider">
+                        Pilih Slide Prototype:
+                      </span>
+                      <button
+                        type="button"
+                        onClick={() => setShowPrototypeMenu(false)}
+                        className="text-gray-400 hover:text-white p-1 cursor-pointer"
+                      >
+                        <X className="w-3.5 h-3.5" />
+                      </button>
+                    </div>
 
-                    <motion.div
-                      initial={{ opacity: 0, y: 10, scale: 0.95 }}
-                      animate={{ opacity: 1, y: 0, scale: 1 }}
-                      exit={{ opacity: 0, y: 10, scale: 0.95 }}
-                      transition={{ duration: 0.15 }}
-                      className="fixed sm:absolute left-4 right-4 top-1/2 -translate-y-1/2 sm:top-full sm:translate-y-0 sm:left-1/2 sm:-translate-x-1/2 sm:right-auto mt-0 sm:mt-2 sm:w-72 p-2.5 rounded-2xl bg-[#071b2f] border-2 border-[#38bdf8]/60 shadow-[0_10px_35px_rgba(0,0,0,0.8)] z-[100] flex flex-col gap-1.5"
-                    >
-                      <div className="flex items-center justify-between px-3 py-1.5 border-b border-[#224c75]/70">
-                        <span className="text-[11px] font-mono font-bold text-[#38bdf8] uppercase tracking-wider">
-                          Pilih Slide Prototype:
-                        </span>
+                    {prototypeList.map((item, idx) => {
+                      const Icon = item.icon;
+                      return (
                         <button
+                          key={idx}
                           type="button"
-                          onClick={() => setShowPrototypeMenu(false)}
-                          className="sm:hidden text-gray-400 hover:text-white p-1 cursor-pointer"
+                          onClick={() => handleScrollToSlide(item.slideIndex)}
+                          className="w-full flex items-center justify-between px-3 py-2 rounded-xl text-xs font-semibold text-[#f8fafc] bg-[#0c233c]/80 hover:bg-[#123559] hover:text-[#38bdf8] border border-transparent hover:border-[#38bdf8]/40 transition-all group/item text-left cursor-pointer"
                         >
-                          <X className="w-4 h-4" />
-                        </button>
-                      </div>
-
-                      {prototypeList.map((item, idx) => {
-                        const Icon = item.icon;
-                        return (
-                          <button
-                            key={idx}
-                            type="button"
-                            onClick={() => handleScrollToSlide(item.slideIndex)}
-                            className="w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-xs font-semibold text-[#f8fafc] bg-[#0c233c]/60 hover:bg-[#123559] hover:text-[#38bdf8] border border-transparent hover:border-[#38bdf8]/30 transition-all group/item text-left cursor-pointer"
-                          >
-                            <div className="flex items-center gap-2.5">
-                              <span className="text-[10px] font-mono font-black text-[#38bdf8] px-1.5 py-0.5 rounded bg-[#0d2844] border border-[#224c75]">
-                                {item.num}
-                              </span>
-                              <div className="p-1.5 rounded-lg bg-[#0d2844] border border-[#224c75] group-hover/item:border-[#38bdf8]">
-                                <Icon className="w-3.5 h-3.5 text-[#38bdf8]" />
-                              </div>
-                              <span>{item.label}</span>
+                          <div className="flex items-center gap-2">
+                            <span className="text-[10px] font-mono font-black text-[#38bdf8] px-1.5 py-0.5 rounded bg-[#0d2844] border border-[#224c75]">
+                              {item.num}
+                            </span>
+                            <div className="p-1.5 rounded-lg bg-[#0d2844] border border-[#224c75] group-hover/item:border-[#38bdf8]">
+                              <Icon className="w-3.5 h-3.5 text-[#38bdf8]" />
                             </div>
-                            <ArrowDown className="w-3.5 h-3.5 text-[#64748b] group-hover/item:text-[#38bdf8] group-hover/item:translate-y-0.5 transition-transform" />
-                          </button>
-                        );
-                      })}
-                    </motion.div>
-                  </>
+                            <span className="truncate">{item.label}</span>
+                          </div>
+                          <ArrowDown className="w-3.5 h-3.5 text-[#64748b] group-hover/item:text-[#38bdf8] group-hover/item:translate-y-0.5 transition-transform shrink-0" />
+                        </button>
+                      );
+                    })}
+                  </motion.div>
                 )}
               </AnimatePresence>
             </div>
