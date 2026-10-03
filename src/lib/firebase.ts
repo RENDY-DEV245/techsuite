@@ -1,15 +1,6 @@
 import { initializeApp } from 'firebase/app';
 import { getFirestore, collection, addDoc, serverTimestamp } from 'firebase/firestore';
 
-const firebaseConfig = {
-  apiKey: 'AIzaSyB_H3cVrzvqNxPyRBYBgK5JDwpeSK_u7hw',
-  authDomain: 'lead-capture-605bc.firebaseapp.com',
-  projectId: 'lead-capture-605bc',
-  storageBucket: 'lead-capture-605bc.firebasestorage.app',
-  messagingSenderId: '570274412418',
-  appId: '1:570274412418:web:141b27fc45d474d5eb419b',
-};
-
 const app = initializeApp(firebaseConfig);
 export const db = getFirestore(app);
 
