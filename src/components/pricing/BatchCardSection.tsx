@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ZoomIn, X, Sparkles, AlertCircle } from 'lucide-react';
+import { ZoomIn, X, Sparkles, AlertCircle, FileText, ArrowRight } from 'lucide-react';
+import { POBuilderModal } from './POBuilderModal';
 
 export const BatchCardSection: React.FC = () => {
   const [isZoomed, setIsZoomed] = useState(false);
+  const [isPOModalOpen, setIsPOModalOpen] = useState(false);
   const imageUrl = "https://i.ibb.co.com/jvrZNp5Q/IMG-20261003-094342.jpg";
   
   return (
@@ -19,7 +21,7 @@ export const BatchCardSection: React.FC = () => {
           whileInView={{ opacity: 1, y: 0, rotate: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, type: 'spring', stiffness: 220, damping: 20 }}
-          className="relative rounded-[32px] p-4 sm:p-6 bg-[#fffdf5] border-3 sm:border-4 border-[#0f172a] shadow-[8px_8px_0px_#0f172a] sm:shadow-[12px_12px_0px_#0f172a] space-y-3.5"
+          className="relative rounded-[32px] p-4 sm:p-6 bg-[#fffdf5] border-3 sm:border-4 border-[#0f172a] shadow-[8px_8px_0px_#0f172a] sm:shadow-[12px_12px_0px_#0f172a] space-y-4"
         >
           {/* Gantungan / Slot Lubang ID Card */}
           <div className="flex justify-center -mt-2">
@@ -30,14 +32,14 @@ export const BatchCardSection: React.FC = () => {
           <div className="flex items-center justify-between pb-2 border-b-2 border-[#0f172a]/15 text-xs font-mono font-black text-[#0f172a]">
             <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-[#fde047] border border-[#0f172a]">
               <AlertCircle className="w-3.5 h-3.5 text-[#ef4444]" />
-              <span>Care Plan 1</span>
+              <span>Care Plan 1 &amp; SLA Terms</span>
             </div>
-            <span className="text-[10px] sm:text-xs text-[#64748b] tracking-wider uppercase">
+            <span className="text-[10px] sm:text-xs text-[#15803d] bg-[#dcfce7] px-2 py-0.5 rounded border border-[#16a34a] tracking-wider uppercase font-bold">
               STATUS: AKTIF
             </span>
           </div>
 
-          {/* Frame Foto (Mirip Photo Card Profil) */}
+          {/* Frame Foto Screenshot WhatsApp */}
           <div
             onClick={() => setIsZoomed(true)}
             className="group relative w-full rounded-2xl overflow-hidden bg-[#faeed1] border-2 border-[#0f172a] shadow-[3px_3px_0px_#0f172a] cursor-pointer"
@@ -56,13 +58,27 @@ export const BatchCardSection: React.FC = () => {
             </div>
           </div>
 
-          {/* Footer ID Card */}
-          <div className="pt-2 flex items-center justify-between text-[11px] font-mono font-bold text-[#8c6239] border-t-2 border-[#0f172a]/10">
-            <div className="flex items-center gap-1">
-              <Sparkles className="w-3.5 h-3.5 text-[#f59e0b]" />
-              <span>TERBATAS</span>
+          {/* TOMBOL PENGGANTI "TERBATAS": BUAT PO & PILIH MODUL LENGKAP */}
+          <div className="pt-2 border-t-2 border-[#0f172a]/10 space-y-2.5">
+            <button
+              type="button"
+              onClick={() => setIsPOModalOpen(true)}
+              className="w-full flex items-center justify-between p-3.5 rounded-2xl bg-[#fde047] hover:bg-[#facc15] text-[#0f172a] font-mono font-black text-xs sm:text-sm border-2 border-[#0f172a] shadow-[3px_3px_0px_#0f172a] hover:translate-x-0.5 hover:translate-y-0.5 transition-all cursor-pointer"
+            >
+              <div className="flex items-center gap-2">
+                <FileText className="w-4 h-4 text-[#0284c7]" />
+                <span>Buat PO &amp; Centang Fitur Kustom</span>
+              </div>
+              <ArrowRight className="w-4 h-4 text-[#0f172a]" />
+            </button>
+
+            <div className="flex items-center justify-between text-[11px] font-mono font-bold text-[#8c6239] px-1">
+              <div className="flex items-center gap-1">
+                <Sparkles className="w-3.5 h-3.5 text-[#f59e0b]" />
+                <span>Website • CAD • E-Commerce • 25 Modul ERP</span>
+              </div>
+              <span>ID // TECHSUITE-PO</span>
             </div>
-            <span>ID // TECHSUITE-PASS</span>
           </div>
         </motion.div>
       </div>
@@ -88,7 +104,7 @@ export const BatchCardSection: React.FC = () => {
             >
               <div className="flex items-center justify-between pb-2 border-b-2 border-[#0f172a]/15">
                 <span className="text-xs font-mono font-black text-[#0f172a]">
-                  PREVIEW BATCH INFO
+                  PREVIEW KETENTUAN CARE PLAN &amp; PO
                 </span>
                 <button
                   type="button"
@@ -109,15 +125,25 @@ export const BatchCardSection: React.FC = () => {
 
               <button
                 type="button"
-                onClick={() => setIsZoomed(false)}
-                className="w-full py-2.5 rounded-xl bg-[#fde047] hover:bg-[#facc15] text-[#0f172a] font-mono font-black text-xs border-2 border-[#0f172a] shadow-[2px_2px_0px_#0f172a] cursor-pointer text-center"
+                onClick={() => {
+                  setIsZoomed(false);
+                  setIsPOModalOpen(true);
+                }}
+                className="w-full py-2.5 rounded-xl bg-[#fde047] hover:bg-[#facc15] text-[#0f172a] font-mono font-black text-xs border-2 border-[#0f172a] shadow-[2px_2px_0px_#0f172a] cursor-pointer text-center flex items-center justify-center gap-2"
               >
-                Tutup
+                <FileText className="w-4 h-4" />
+                <span>Buka Form &amp; Buat PO Sekarang</span>
               </button>
             </motion.div>
           </div>
         )}
       </AnimatePresence>
+
+      {/* POP-UP PO BUILDER MODAL KOMPLIT */}
+      <POBuilderModal
+        isOpen={isPOModalOpen}
+        onClose={() => setIsPOModalOpen(false)}
+      />
     </section>
   );
 };
