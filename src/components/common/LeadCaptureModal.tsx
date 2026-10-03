@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Send, CheckSquare, Square, Sparkles, User, Phone, AlertCircle } from 'lucide-react';
+import { Send, Loader2, CheckSquare, Square, Sparkles, User, Phone, AlertCircle } from 'lucide-react';
+import { saveLead } from '../../lib/firebase';
 
 const SERVICE_OPTIONS = [
   { id: 'compro', label: 'Website Compro / LP' },
@@ -20,6 +21,7 @@ export const LeadCaptureModal: React.FC<LeadCaptureModalProps> = ({ isOpen, onSu
   const [phone, setPhone] = useState('');
   const [selectedServices, setSelectedServices] = useState<string[]>(['compro']);
   const [errorMessage, setErrorMessage] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const toggleService = (id: string) => {
     setSelectedServices((prev) =>
@@ -27,8 +29,9 @@ export const LeadCaptureModal: React.FC<LeadCaptureModalProps> = ({ isOpen, onSu
     );
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (isSubmitting) return;
 
     if (!name.trim()) {
       setErrorMessage('⚠️ Silakan isi nama lengkap Anda!');
@@ -44,31 +47,17 @@ export const LeadCaptureModal: React.FC<LeadCaptureModalProps> = ({ isOpen, onSu
     }
 
     setErrorMessage('');
+    setIsSubmitting(true);
 
-    // Rangkum label layanan yang dipilih
-    const chosenLabels = SERVICE_OPTIONS.filter((s) =>
-      selectedServices.includes(s.id)
-    ).map((s) => `• ${s.label}`);
-
-    // Format pesan WhatsApp otomatis
-    const waMessage = `Halo Rendy, saya ingin konsultasi dan coba demo sistem.
-
-*Data Kontak:*
-👤 *Nama:* ${name.trim()}
-📱 *No. WhatsApp:* ${phone.trim()}
-
-*Kebutuhan Layanan:*
-${chosenLabels.join('\n')}
-
-Mohon informasi penawaran dan akses demonya ya, terima kasih!`;
-
-    const waUrl = `https://wa.me/6285141220521?text=${encodeURIComponent(waMessage)}`;
-
-    // Buka WhatsApp di tab baru
-    window.open(waUrl, '_blank');
-
-    // Callback menutup modal
-    onSuccess();
+    try {
+      await saveLead({ name, phone, services: selectedServices });
+      onSuccess();
+    } catch (err) {
+      console.error('Gagal menyimpan lead:', err);
+      setErrorMessage('❌ Gagal menyimpan data. Coba lagi sebentar ya.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   if (!isOpen) return null;
@@ -100,7 +89,7 @@ Mohon informasi penawaran dan akses demonya ya, terima kasih!`;
               Mulai Konsultasi &amp; Akses Demo
             </h3>
             <p className="text-xs text-[#475569] font-medium leading-relaxed">
-              Lengkapi data singkat di bawah untuk terhubung langsung ke WhatsApp pengembang.
+              Lengkapi data singkat di bawah, nanti tim kami hubungi Anda lewat WhatsApp.
             </p>
           </div>
 
@@ -177,14 +166,19 @@ Mohon informasi penawaran dan akses demonya ya, terima kasih!`;
               </div>
             )}
 
-            {/* Tombol Kirim ke WhatsApp (Satu-satunya cara menutup pop-up) */}
+            {/* Tombol Kirim (Satu-satunya cara menutup pop-up) */}
             <div className="pt-2">
               <button
                 type="submit"
-                className="w-full flex items-center justify-center gap-2 py-3 sm:py-3.5 px-4 rounded-xl sm:rounded-2xl bg-[#22c55e] hover:bg-[#16a34a] text-white font-mono font-black text-xs sm:text-sm border-2 border-[#0f172a] shadow-[3px_3px_0px_#0f172a] sm:shadow-[4px_4px_0px_#0f172a] hover:translate-x-0.5 hover:translate-y-0.5 transition-all cursor-pointer"
+                disabled={isSubmitting}
+                className="w-full disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-2 py-3 sm:py-3.5 px-4 rounded-xl sm:rounded-2xl bg-[#22c55e] hover:bg-[#16a34a] text-white font-mono font-black text-xs sm:text-sm border-2 border-[#0f172a] shadow-[3px_3px_0px_#0f172a] sm:shadow-[4px_4px_0px_#0f172a] hover:translate-x-0.5 hover:translate-y-0.5 transition-all cursor-pointer"
               >
-                <Send className="w-4 h-4" />
-                <span>Kirim ke WhatsApp &amp; Buka Portofolio</span>
+                {isSubmitting ? (
+                  <Loader2 className="w-4 h-4 animate-spin" />
+                ) : (
+                  <Send className="w-4 h-4" />
+                )}
+                <span>{isSubmitting ? 'Menyimpan...' : 'Kirim Data & Buka Portofolio'}</span>
               </button>
             </div>
           </form>
