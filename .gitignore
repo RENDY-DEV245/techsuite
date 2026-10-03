@@ -31,3 +31,6 @@ skills-lock.json
 
 # Environment and local flakes
 .direnv
+.env
+.env.local
+.env.*.local
