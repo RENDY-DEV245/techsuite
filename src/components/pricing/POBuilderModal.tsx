@@ -16,7 +16,6 @@ import {
   ShieldCheck,
   ArrowRight,
   ArrowLeft,
-  Layers,
   RotateCcw
 } from 'lucide-react';
 import { useClipboard } from '../../hooks/useClipboard';
@@ -617,7 +616,7 @@ export const POBuilderModal: React.FC<POBuilderModalProps> = ({ isOpen, onClose 
   const [clientName, setClientName] = useState('');
   const [companyName, setCompanyName] = useState('');
   const [phone, setPhone] = useState('');
-  const [deadline, setDeadline] = useState('');
+  const [deadline] = useState('');
   const [budgetRange, setBudgetRange] = useState('');
   const [notes, setNotes] = useState('');
 
