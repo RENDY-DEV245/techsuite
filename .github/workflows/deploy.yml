@@ -30,6 +30,22 @@ jobs:
       - name: Install dependencies
         run: npm install
 
+      - name: Check Firebase Variables
+        env:
+          VITE_FIREBASE_API_KEY: ${{ vars.VITE_FIREBASE_API_KEY }}
+          VITE_FIREBASE_AUTH_DOMAIN: ${{ vars.VITE_FIREBASE_AUTH_DOMAIN }}
+          VITE_FIREBASE_PROJECT_ID: ${{ vars.VITE_FIREBASE_PROJECT_ID }}
+          VITE_FIREBASE_STORAGE_BUCKET: ${{ vars.VITE_FIREBASE_STORAGE_BUCKET }}
+          VITE_FIREBASE_MESSAGING_SENDER_ID: ${{ vars.VITE_FIREBASE_MESSAGING_SENDER_ID }}
+          VITE_FIREBASE_APP_ID: ${{ vars.VITE_FIREBASE_APP_ID }}
+        run: |
+          test -n "$VITE_FIREBASE_API_KEY" && echo "API_KEY: ADA" || echo "API_KEY: KOSONG"
+          test -n "$VITE_FIREBASE_AUTH_DOMAIN" && echo "AUTH_DOMAIN: ADA" || echo "AUTH_DOMAIN: KOSONG"
+          test -n "$VITE_FIREBASE_PROJECT_ID" && echo "PROJECT_ID: ADA" || echo "PROJECT_ID: KOSONG"
+          test -n "$VITE_FIREBASE_STORAGE_BUCKET" && echo "STORAGE_BUCKET: ADA" || echo "STORAGE_BUCKET: KOSONG"
+          test -n "$VITE_FIREBASE_MESSAGING_SENDER_ID" && echo "SENDER_ID: ADA" || echo "SENDER_ID: KOSONG"
+          test -n "$VITE_FIREBASE_APP_ID" && echo "APP_ID: ADA" || echo "APP_ID: KOSONG"
+
       - name: Build
         env:
           VITE_FIREBASE_API_KEY: ${{ vars.VITE_FIREBASE_API_KEY }}
