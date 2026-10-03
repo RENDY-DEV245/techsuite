@@ -30,7 +30,7 @@ export const BatchCardSection: React.FC = () => {
           <div className="flex items-center justify-between pb-2 border-b-2 border-[#0f172a]/15 text-xs font-mono font-black text-[#0f172a]">
             <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-[#fde047] border border-[#0f172a]">
               <AlertCircle className="w-3.5 h-3.5 text-[#ef4444]" />
-              <span>TIER PASS // BATCH 1</span>
+              <span>Care Plan 1</span>
             </div>
             <span className="text-[10px] sm:text-xs text-[#64748b] tracking-wider uppercase">
               STATUS: AKTIF
