@@ -245,9 +245,9 @@ export const FlagshipSlideCard: React.FC<FlagshipSlideCardProps> = ({
 
 1. Demo AutoLISP Wire Cut: https://www.youtube.com/watch?v=yVHtiViLXOE
 2. Demo Excel to AutoCAD: https://youtu.be/Z0pubFYgGWQ?si=Dij1XHhmxRDsvAML
-3. Demo Prototype CAD 3: https://www.youtube.com
-4. Demo Prototype CAD 4: https://www.youtube.com
-5. Demo Prototype CAD 5: https://www.youtube.com
+3. Demo Prototype CAD 3: https://youtu.be/nKtrD4gul28?si=L9EgL32aGL8Grvot
+4. Demo Prototype CAD 4: https://youtu.be/Q8kaISvWWMk?si=l9LLrujLDX0Dj_bs
+5. Demo Prototype CAD 5: https://youtu.be/Ygt7UGw0ok4?si=r-_GpzjPlw4qPVpo
 
 Bisa tolong jelaskan lebih lanjut mengenai layanan CAD & 3D Modeling ini? Terima kasih!`
       )}`}
@@ -684,7 +684,7 @@ Bisa tolong jelaskan lebih lanjut mengenai layanan CAD & 3D Modeling ini? Terima
                     Tutup
                   </button>
                   <a
-                    href="https://clarate.id/id/register?service_id=2"
+                    href="https://wa.me/6285141220521?text=Halo%20Rendy%2C%20saya%20ingin%20Coba%20Gratis%2014%20Hari%20Clarate%20ERP%20System"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-xl bg-[#0284c7] hover:bg-[#0369a1] text-white text-xs sm:text-sm font-mono font-black border-2 border-[#0f172a] shadow-[3px_3px_0px_#0f172a] hover:translate-x-0.5 hover:translate-y-0.5 transition-all cursor-pointer flex-1 sm:flex-none"
@@ -932,31 +932,29 @@ Bisa tolong jelaskan lebih lanjut mengenai layanan CAD & 3D Modeling ini? Terima
                   </div>
                 </div>
               </div>
-
-              {/* Footer CTA Modal 02 HRIS */}
+{/* Footer CTA Modal 02 HRIS */}
           <div className="pt-4 border-t-2 border-[#0f172a]/15 flex flex-col sm:flex-row items-center justify-between gap-3">
-                <div className="text-xs font-mono font-bold text-[#64748b] text-center sm:text-left">
-                  Sistem HRIS aktif seketika • Bebas coba 14 hari penuh
-                </div>
-                <div className="flex items-center gap-2.5 w-full sm:w-auto">
-                  <button
-                    type="button"
-                    onClick={() => setShowHrisModal(false)}
-                    className="px-4 py-2.5 rounded-xl bg-[#fff9d4] hover:bg-[#faeed1] text-[#0f172a] text-xs font-mono font-black border-2 border-[#0f172a] shadow-[2px_2px_0px_#0f172a] transition-all cursor-pointer flex-1 sm:flex-none"
-                  >
-                    Tutup
-                  </button>
-                  <a
-                    href="https://clarate.id/id/register?service_id=3"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-xl bg-[#0284c7] hover:bg-[#0369a1] text-white text-xs sm:text-sm font-mono font-black border-2 border-[#0f172a] shadow-[3px_3px_0px_#0f172a] hover:translate-x-0.5 hover:translate-y-0.5 transition-all cursor-pointer flex-1 sm:flex-none"
-                  >
-                    <span>Coba Gratis 14 Hari</span>
-                    <ArrowRight className="w-4 h-4" />
-                  </a>
-                </div>
-              </div>
+            <div className="text-xs font-mono font-bold text-[#64748b] text-center sm:text-left">
+              Sistem HRIS aktif seketika • Bebas coba 14 hari penuh
+            </div>
+            <div className="flex items-center gap-2.5 w-full sm:w-auto">
+              <button
+                type="button"
+                onClick={() => setShowHrisModal(false)}
+                className="px-4 py-2.5 rounded-xl bg-[#fff9d4] hover:bg-[#faeed1] text-[#0f172a] text-xs font-mono font-bold border border-[#0f172a]"
+              >
+                Tutup
+              </button>
+              <a
+                href="https://wa.me/6285141220521?text=Halo%20Rendy%2C%20saya%20tertarik%20Coba%20Gratis%2014%20Hari%20dan%20Demo%20Sistem%20HRIS"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-[#fde047] hover:bg-[#facc15] text-[#0f172a] font-mono font-bold text-xs border-2 border-[#0f172a] shadow-[2px_2px_0px_#0f172a] cursor-pointer"
+              >
+                <span>Coba Gratis 14 Hari (Chat WA)</span>
+              </a>
+            </div>
+          </div>
             </motion.div>
           </motion.div>
         )}
